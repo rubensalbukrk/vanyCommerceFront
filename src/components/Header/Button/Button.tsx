@@ -4,7 +4,7 @@ interface ButtonProps {
   children?: ReactNode
   title: string;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({children, title, className, onClick}) => {

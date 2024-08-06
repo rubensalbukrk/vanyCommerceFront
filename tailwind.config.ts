@@ -17,7 +17,8 @@ const config: Config = {
       colors: {
         sky: {
           100: '#C0D8DC',
-          200: '#D9EBFA'
+          200: '#D9EBFA',
+          50: '#B5CBE3'
         },
         zinc: {
           100: '#595F62'
