@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import "./globals.css";
 import Image from "next/image";
 import Header from "../components/Header/Header";
@@ -12,6 +12,40 @@ import Button from "@/components/Header/Button/Button";
 import Star from '../assets/star.svg'
 import ArrowIcon from '../assets/arrow-right.png'
 import Separator from "@/components/Separator/Separator";
+import Mulher from '../assets/mulher-container3.png'
+import Oculos1 from '../assets/oculos1-container3.png'
+import Oculos2 from '../assets/oculos2-container3.png'
+import CardRecent from "@/components/CardRecents/CardRecent";
+import Payments from '@/assets/payments.png'
+
+const produtos = [
+  {
+      id: 1,
+      title: "Rommeu",
+      price: "69,90",
+      img: require('../assets/Oculos/oculos1.png')
+  },
+  {
+      id: 2,
+      title: "Armação",
+      price: "89,99",
+      img: require('../assets/Oculos/oculos2.png')
+  },
+  {
+      id: 3,
+      title: "Rayban",
+      price: "59,90",
+      img: require('../assets/Oculos/oculos3.png')
+  },
+  {
+    id: 4,
+    title: "Social",
+    price: "49,90",
+    img: require('../assets/Oculos/oculos4.png')
+},
+
+]
+
 
 function App() {
   return (
@@ -21,7 +55,6 @@ function App() {
       <Container>
         <Image className="w-full" alt="background" src={Background} />
       </Container>
-
 
       <Container className="flex-row h-96 py-12 px-12 gap-x-8 ">
         <Card className="bg-sky-600 flex-row ">
@@ -98,11 +131,47 @@ function App() {
 
       <Separator />
 
-      <Container className="flex flex-row bg-red-400">
-        <div className="bg-blue-500 w-64 h-28">
+      <Container className="flex flex-row">
         
+        <div className="flex flex-3 flex-col justify-between items-center gap-y-4">
+          <div className="flex flex-1 bg-slate-100 justify-center items-center rounded-br-2xl rounded-tr-2xl shadow-black/40 shadow-lg">
+            <Image src={Oculos1}  alt="image" />
+          </div>
+          <div className="flex-1 rounded-br-xl rounded-tr-xl">
+          <Image src={Oculos2}  alt="image" className="rounded-br-2xl rounded-tr-2xl  shadow-black/40 shadow-lg" />
+          </div>
+        </div>
+        <div className="flex flex-1 h-96 px-8 justify-center items-center ">
+          <h1 className="text-black/70 text-center font-extralight text-4xl">lorem idpson d dsads dsds
+            2321 dsadasd dasdsadas</h1>
+        </div>
+        <div className="flex-3 pt-8">
+          <Image src={Mulher} alt="image"className="bg-slate-200 shadow-black/40 shadow-lg rounded-lg rounded-bl-2xl rounded-tl-2xl" />
         </div>
 
+      </Container>
+
+      <Separator />
+
+      <Container className="flex flex-col px-8">
+
+        <div className="flex flex-1 flex-col min-h-96">
+        <h1 className="font-light mb-6 text-black/80 text-6xl">Lançamentos</h1>
+        <div className="flex flex-1 flex-row gap-x-6 ">
+         {produtos.map((item) => {
+          return <CardRecent key={item.id} img={item.img} title={item.title} price={item.price} id={item.id} />
+         })}
+        </div>
+        </div>
+      </Container>
+
+      <Separator />
+
+      <Container>
+        <div className="flex flex-1 flex-col justify-center items-center">
+        <h1 className="text-black text-4xl tracking-custom">FACILIDADE  NO  PAGAMENTO</h1>
+        <Image src={Payments} alt="meios  de  pagamentos" />
+        </div>
       </Container>
     </div>
   );

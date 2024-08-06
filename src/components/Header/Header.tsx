@@ -6,7 +6,7 @@ import Button from "./Button/Button";
 
 const Header = () => {
   return (
-    <div className="flex w-full h-20 px-2 top-0 fixed justify-between items-center bg-slate-100/70 backdrop-blur-md shadow-black/20 shadow-md">
+    <div className="flex w-full h-20 px-2 top-0 z-40 fixed justify-between items-center bg-slate-100/70 backdrop-blur-md shadow-black/20 shadow-md">
       <Image
         src={Logo}
         alt="vannyOculos logo"

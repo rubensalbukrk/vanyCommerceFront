@@ -16,12 +16,21 @@ const config: Config = {
 
       colors: {
         sky: {
-          100: '#C0D8DC'
+          100: '#C0D8DC',
+          200: '#D9EBFA'
         },
         zinc: {
           100: '#595F62'
+        },
+        slate: {
+          100: '#F2F2F2'
         }
-      }
+      },
+
+      letterSpacing: {
+        custom: '0.50em', // Espaçamento personalizado
+      },
+
     },
   },
   plugins: [],
