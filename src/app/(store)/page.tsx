@@ -1,53 +1,56 @@
 "use client"
-import "./globals.css";
+import "../globals.css";
 import Image from "next/image";
-import Header from "../components/Header/Header";
-import Background from "../assets/header-background.png";
-import Container from "../components/Container/Container";
-import Card from "../components/Cards/Cards";
-import Collections from "../assets/family.jpg";
-import CardImage from "../assets/Cards/card1.png";
-import CardImage2 from "../assets/Cards/card2.png";
+import Header from "../../components/Header/Header";
+import Background from "../../assets/header-background.png";
+import Container from "../../components/Container/Container";
+import Card from "../../components/Cards/Cards";
+import Collections from "../../assets/family.jpg";
+import CardImage from "../../assets/Cards/card1.png";
+import CardImage2 from "../../assets/Cards/card2.png";
 import Button from "@/components/Header/Button/Button";
-import Star from '../assets/star.svg'
-import ArrowIcon from '../assets/arrow-right.png'
+import Star from '../../assets/star.svg'
+import ArrowIcon from '../../assets/arrow-right.png'
 import Separator from "@/components/Separator/Separator";
-import Mulher from '../assets/mulher-container3.png'
-import Oculos1 from '../assets/oculos1-container3.png'
-import Oculos2 from '../assets/oculos2-container3.png'
+import Mulher from '../../assets/mulher-container3.png'
+import Oculos1 from '../../assets/oculos1-container3.png'
+import Oculos2 from '../../assets/oculos2-container3.png'
 import CardRecent from "@/components/CardRecents/CardRecent";
 import Payments from '@/assets/payments.png'
+import { useContext } from "react";
+import CarrinhoContext from "@/contexts/CarrinhoContext/carrinhoContext";
 
 const produtos = [
   {
       id: 1,
       title: "Rommeu",
       price: "69,90",
-      img: require('../assets/Oculos/oculos1.png')
+      img: require('../../assets/Oculos/oculos1.png')
   },
   {
       id: 2,
       title: "Armação",
       price: "89,99",
-      img: require('../assets/Oculos/oculos2.png')
+      img: require('../../assets/Oculos/oculos2.png')
   },
   {
       id: 3,
       title: "Rayban",
       price: "59,90",
-      img: require('../assets/Oculos/oculos3.png')
+      img: require('../../assets/Oculos/oculos3.png')
   },
   {
     id: 4,
     title: "Social",
     price: "49,90",
-    img: require('../assets/Oculos/oculos4.png')
+    img: require('../../assets/Oculos/oculos4.png')
 },
 
 ]
 
 
 function App() {
+  const {total} = useContext(CarrinhoContext);
   return (
     <div className="w-screen items-center bg-white">
       <Header />
@@ -108,7 +111,7 @@ function App() {
 
     
       </Container>
-
+    <p className="text-2xl text-black">NUMERO: {total}</p>
       <Separator />
 
       <Container className="flex-1 w-full">
@@ -171,6 +174,12 @@ function App() {
         <div className="flex flex-1 flex-col justify-center items-center">
         <h1 className="text-black text-4xl tracking-custom">FACILIDADE  NO  PAGAMENTO</h1>
         <Image src={Payments} alt="meios  de  pagamentos" />
+        </div>
+      </Container>
+
+      <Container>
+        <div>
+          
         </div>
       </Container>
     </div>
