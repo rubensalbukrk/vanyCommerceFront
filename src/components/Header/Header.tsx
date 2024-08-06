@@ -12,7 +12,7 @@ const Header = () => {
         alt="vannyOculos logo"
         className="w-16 h-12 bg-transparent"
       />
-        <Button title="Inicio" onClick={() => alert('PAGINA INICIAL')} />
+        <Button title="Inicio" onClick={() => alert('PAGINA HOME')} />
         <Button title="Produtos" onClick={() => alert('PAGINA DE PRODUTOS')} />
         <Button title="Promoções" onClick={() => alert('PAGINA DE PROMOÇÕES')} />
 
