@@ -1,6 +1,7 @@
 import React from "react";
 import IconCart from '@/assets/cart.png'
 import Image from "next/image";
+import IconAddCart from "@/assets/CARTADDICON.png"
 
 const ButtonCard = (props: any) => {
     return (
@@ -9,7 +10,7 @@ const ButtonCard = (props: any) => {
         hover:bg-blue-500 transition duration-1000 ease-in-out
         active:bg-blue-700
          ">
-            <Image src={IconCart} alt='icon cart' />
+            <Image src={IconAddCart} alt='icon cart' />
             <p className="text-white text-2xl">Adicionar</p>
         </button>
     )

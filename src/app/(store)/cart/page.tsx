@@ -1,31 +1,45 @@
-"use client"
-import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
-import React, {useEffect} from "react";
-import CardItem from "@/components/CardItems/cardItems";
+"use client";
+import React from "react";
+import Image from "next/image";
+import noCartItems from "@/assets/noCart.png";
+import Header from '../../../components/Header/Header'
 import Produto from "@/model/produtos/produtos";
-import Header from "@/components/Header/Header";
+import CartItem from "@/components/CartItems/cartItem";
+import CartDetails from "@/templates/Cart/cartDetails";
+import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
 
 const Carrinho = () => {
+  const { items } = useCarrinho();
 
-const {items, produtos, total, setTotal} = useCarrinho()
+  return (
+    <div className="flex flex-col pb-10 w-full min-h-screen bg-slate-200 justify-between items-center">
+
+      <Header />
 
 
-useEffect(() => {
-items.map((item: Produto) => {
-      setTotal(total + item.price)
-  })
-
-// eslint-disable-next-line react-hooks/exhaustive-deps
-},[items])
-
-    return(
-        <div className="flex flex-1 h-screen py-20 flex-col w-full bg-slate-200 justify-center items-center">
-            <Header />
-        
-        <h1 className="text-4xl text-black/50">QUANTIDADE ITEMS: {items ? items?.length : "Não tem items"}</h1>
-        <h1 className="text-4xl text-black/50">Total do pagamento: {total}</h1>
-        <div className="flex flex-1 flex-row">
-        {items.map((item: Produto) => <CardItem
+      {items.length == 0 ? (
+        <div className="flex flex-1 w-full flex-col gap-8 min-h-screen absolute z-40 justify-center items-center bg-slate-200">
+          <Image src={noCartItems} alt="cart image" className="w-80 h-40" />
+          <h1 className="text-black/60 drop-shadow-lg text-2xl">
+            NÃO AH ITEMS NO CARRINHO
+          </h1>
+        </div>
+      ) : null}
+      
+      <div className="flex w-full pt-24  flex-row justify-around items-center bg-slate-100 shadow-sm shadow-black/10">
+        <div className="pb-2">
+        <h1 className="w-8/12 mt-8 text-start text-4xl justify-start font-bold text-black/80">
+          MEU CARRINHO
+        </h1>
+        <h1 className="w-8/12 mt-8 text-start text-xl justify-start font-bold text-zinc-100">
+          Antes de realizar a compra, verifique todos seus items!
+        </h1>
+        </div>
+        <CartDetails />
+      </div>
+      <div className="flex-1 flex-col w-8/12 px-8 py-8">
+        {items.map((item: Produto) => (
+          <CartItem
             key={item.id}
             id={item.id}
             estoque={item.estoque}
@@ -34,11 +48,12 @@ items.map((item: Produto) => {
             descount={item.descount}
             descrition={item.descrition}
             img={item.img}
-          /> )}
-        </div>
-
-        </div>
-    )
-}
+          />
+        ))}
+      </div>
+      
+    </div>
+  );
+};
 
 export default Carrinho;

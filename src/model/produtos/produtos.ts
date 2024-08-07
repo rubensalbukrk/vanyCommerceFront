@@ -4,6 +4,6 @@ export default interface Produto {
     title: string
     price: number
     descrition: string 
-    descount: string
+    descount: number
     img: any;
 }

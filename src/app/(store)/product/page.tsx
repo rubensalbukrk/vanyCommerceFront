@@ -2,16 +2,16 @@
 import React from "react";
 import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
 import CardItem from "@/components/CardItems/cardItems";
-import Header from "@/components/Header/Header";
-import Image from "next/image";
-import BackgroundProducts from "@/assets/BackgroundProducts.png";
-import Button from "@/components/Header/Button/Button";
+import Header from '../../../components/Header/Header'
+
 
 const Product = () => {
   const { produtos, increment, decrement } = useCarrinho();
   return (
-    <div className="flex flex-col w-full h-full bg-slate-200 justify-center items-center">
+    <div className="flex-col w-full h-full bg-slate-200 justify-center items-center">
+
       <Header />
+
 
       <div className="flex flex-1 my-16 mt-36">
         <h1 className="text-6xl font-sans z-10 text-black/70 drop-shadow-lg ">
@@ -38,11 +38,15 @@ const Product = () => {
       </div>
 
       <div className="flex w-full justify-center items-center my-12">
-        <Button
-          className="bg-blue-600 text-white shadow-black/40 shadow-lg"
-          title="VER MAIS"
+        <button
+          className="w-36 h-12 bg-blue-700 shadow-black/40 shadow-lg text-white bg-transparent font-bold 
+          drop-shadow-lg hover:text-white text-lg border-0 rounded-2xl
+        hover:bg-sky-500 hover:shadow-lg hover:shadow-sky-400 active:bg-sky-300 
+          transition-all duration-1000 ease-in-out "
           onClick={() => alert("VER MAIS")}
-        ></Button>
+        >
+          VER MAIS
+        </button>
       </div>
     </div>
   );

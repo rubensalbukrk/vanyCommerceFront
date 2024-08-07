@@ -6,10 +6,10 @@ import Payments from "@/assets/payments.png";
 import Card from "../../components/Cards/Cards";
 import Collections from "../../assets/family.jpg";
 import ArrowIcon from "../../assets/arrow-right.png";
-import Header from "../../components/Header/Header";
+import Header from '../../components/Header/Header'
 import CardImage from "../../assets/Cards/card1.png";
 import CardImage2 from "../../assets/Cards/card2.png";
-import Button from "@/components/Header/Button/Button";
+import Button from "../../components/Header/Button/Button";
 import Mulher from "../../assets/mulher-container3.png";
 import Separator from "@/components/Separator/Separator";
 import Oculos1 from "../../assets/oculos1-container3.png";
@@ -24,8 +24,10 @@ function App() {
   const { produtos } = useCarrinho();
 
   return (
-    <div className="w-screen items-center bg-white">
+    <div className="w-full items-center bg-slate-200">
+
       <Header />
+
 
       <Container>
         <Image className="w-full" alt="background" src={Background} />
@@ -143,20 +145,23 @@ function App() {
 
       <Separator />
 
-      <Container className="flex flex-col px-8">
-        <div className="flex flex-1 flex-col min-h-96">
-          <h1 className="font-light mb-6 text-black/80 text-6xl">
+      <Container className="w-full flex flex-col">
+        <div className="flex flex-1 flex-col min-h-96 w-full">
+          <h1 className="font-light mb-6 ml-4 text-black/80 text-6xl">
             Lançamentos
           </h1>
-          <div className="flex flex-1 flex-row gap-x-6 ">
+          <div className="flex flex-1 w-full flex-row gap-x-6 flex-wrap gap-y-8 justify-center items-center">
             {produtos.map((item, index) => {
               return (
                 <CardRecent
+                  id={item.id}
                   key={item.id}
                   img={item.img}
+                  descount={item.descount}
+                  estoque={item.estoque}
+                  descrition={item.descrition}
                   title={item.title}
                   price={item.price}
-                  id={index}
                 />
               );
             })}

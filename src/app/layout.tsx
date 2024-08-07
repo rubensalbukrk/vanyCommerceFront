@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Kanit } from "next/font/google";
 import "./globals.css";
-import CarrinhoContext from "@/contexts/CarrinhoContext/carrinhoContext";
 
-const inter = Inter({ subsets: ["latin"] });
+const kanit = Kanit({
+  style: 'normal',
+  weight: "200",
+  subsets: ['latin']
+  });
 
 export const metadata: Metadata = {
   title: "Vanny Óculos",
-  description: "Com estilo para você!",
+  description: "Com estilo para você!"
 };
 
 export default function RootLayout({
@@ -17,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={kanit.className}>{children}</body>
     </html>
   );
 }

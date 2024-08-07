@@ -11,7 +11,7 @@ const CardItem = (props: Produto) => {
 
   return (
     <div
-      className="flex flex-col w-64 h-96 bg-white shadow-black/40 shadow-lg rounded-xl justify-between 
+      className="flex flex-col w-64 h-80 bg-white shadow-black/40 shadow-lg rounded-xl justify-between 
         transition duration-900 ease-linear
         hover:scale-110
         "
@@ -23,14 +23,13 @@ const CardItem = (props: Produto) => {
       <Image
         src={img}
         alt="item product"
-        className="w-full h-44 rounded-tl-xl rounded-tr-xl"
+        className="w-full h-40 rounded-tl-xl rounded-tr-xl"
       />
       <div className="flex px-3 flex-col mb-2">
       <p className="text-black text-xl font-bold">{title}</p>
-      <p className="text-black">R$: {price}</p>
-      <p className="text-zinc-100 font-bold line-through ">
-        {" "}
-        R$: {descount}{" "}
+      <p className="text-black">R$: {price.toFixed(2).replace('.', ',')}</p>
+      <p className="text-zinc-100 font-bold">
+        Desconto {descount.toFixed(2).replace('0.', '')}%
       </p>
       </div>
       <ButtonCard onClick={() => {
