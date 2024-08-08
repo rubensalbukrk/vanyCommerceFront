@@ -1,6 +1,5 @@
 import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
 import IconCart from "../../assets/cart.svg";
-import Button from "@/templates/Header/Button/Button";
 
 const Carrinho = () => {
   const { items } = useCarrinho();
