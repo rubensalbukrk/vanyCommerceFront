@@ -8,7 +8,6 @@ import CartDetails from "@/templates/Cart/cartDetails";
 import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
 import ItemCarrinho from "@/model/itemCarrinho/itemCarrinho";
 
-
 const Carrinho = () => {
   const {items, itemsCount, addItem, removerItem } = useCarrinho();
   return (
