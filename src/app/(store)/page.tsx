@@ -12,13 +12,13 @@ import CardImage2 from "../../assets/Cards/card2.png";
 import Button from "../../components/Header/Button/Button";
 import Mulher from "../../assets/mulher-container3.png";
 import Separator from "@/components/Separator/Separator";
+import FooterBackground from "@/assets/footerimage.png";
 import Oculos1 from "../../assets/oculos1-container3.png";
 import Oculos2 from "../../assets/oculos2-container3.png";
 import Background from "../../assets/header-background.png";
 import Container from "../../components/Container/Container";
 import CardRecent from "@/components/CardRecents/CardRecent";
 import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
-import FooterBackground from "@/assets/footerimage.png";
 
 function App() {
   const { produtos } = useCarrinho();
@@ -131,7 +131,7 @@ function App() {
         </div>
         <div className="flex flex-1 h-96 px-8 justify-center items-center ">
           <h1 className="text-black/70 text-center font-extralight text-4xl">
-            lorem idpson d dsads dsds 2321 dsadasd dasdsadas
+          Com óculos, você não só aprimora sua visão, mas também refina sua presença com uma elegância sutil e inconfundível.
           </h1>
         </div>
         <div className="flex-3 pt-8">

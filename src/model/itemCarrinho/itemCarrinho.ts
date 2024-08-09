@@ -1,6 +1,6 @@
 import Produto from "../produtos/produtos";
 
-export default interface ItemCarrinho extends Produto {
-    items: Produto
-    total?: number
+export default interface ItemCarrinho {
+  produto: Produto
+  quantidade: number
 }

@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="flex w-full h-20 px-2 top-0 z-40 fixed justify-between items-center bg-slate-100/30 backdrop-blur-lg shadow-black/20 shadow-md">
+    <header className="flex w-full h-20 px-2 top-0 z-40 fixed justify-between items-center bg-slate-100/80 backdrop-blur-lg shadow-black/20 shadow-md">
       <Logo className="ml-4" />
 
       <Link href="/">

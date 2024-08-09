@@ -2,15 +2,19 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import Produto from "@/model/produtos/produtos";
 
 interface ContextCarrinhoProps {
+  items: ItemCart[]
+  itemsCount: number
   produtos: Array<Produto>;
-  items?: any
-  increment: () => void;
-  decrement: () => void;
-  addItem: (produto: Produto) => void;
-  total: number
+  addItem: (item: Produto) => void;
+  removerItem: (produto: Produto) => void;
   descount: number
-  setTotal: (total: number) => void;
 }
+
+interface ItemCart {
+  produto: Produto
+  quantidade: number
+}
+
 const ContextCarrinho = createContext<ContextCarrinhoProps>({} as any);
 
 export function ProvedorCarrinho(props: any) {
@@ -88,46 +92,64 @@ export function ProvedorCarrinho(props: any) {
     img: require('../../assets/Oculos/oculos4.png')
 }
   ]);
-  const [items, setItems] = useState<any | undefined>([]);
+  const [items, setItems] = useState<ItemCart[]>([]);
   const [total, setTotal] = useState(0);
   const [descount, setDescount] = useState(0)
 
   const addItem = (produto: Produto) => {
-    setItems([...items, {
-      id: produto.id,
-      title: produto.title,
-      descrition: produto.descrition,
-      descount: produto.descount,
-      price: produto.price,
-      img: produto.img,
-      estoque: produto.estoque
-    }])
+    const indice = items.findIndex((i) => i.produto.id === produto.id )
+    
+    if (indice === -1){
+      setItems([...items, {produto, quantidade: 1}])
+    }else {
+      const novoItens = [...items]
+      novoItens[indice].quantidade++
+      setItems(novoItens)
+    }
     calcularDesconto(produto.price, produto.descount)
+  }
+  const removerItem = (produto: Produto) => {
+    const novosItems = items.map((i) => { 
+      if(i.produto.id === produto.id){
+        i.quantidade--
+      }
+      return i
+    }).filter((i) => i.quantidade > 0)
+    setItems(novosItems)
+    retirarDesconto(produto.price, produto.descount)
   }
   function calcularDesconto(valor: number, descountItem: number) {
     const desconto = valor * descountItem;
     const valorComDesconto = valor - desconto;
     setDescount(descount + valorComDesconto)
   }
+  function retirarDesconto(valor: number, descountItem: number) {
+    const desconto = valor * descountItem;
+    const valorComDesconto = valor - desconto;
+    setDescount(descount - valorComDesconto)
+  }
 
-  useEffect(() => {
-    items.map((item: Produto) => {
-          setTotal(total + item.price)
+
+  {useEffect(() => {
+    items.map((item: ItemCart) => {
+          setTotal(total + item.produto.price)
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[items])
+    },[items])}
 
   return (
     <ContextCarrinho.Provider
       value={{
         produtos,
+        get itemsCount() {
+          return items.reduce((acumulador, valorAtual) => {
+            return acumulador + valorAtual.quantidade;
+          }, 0)
+        },
         items,
-        increment: () => setTotal(total + 1),
-        decrement: () => setTotal(total - 1),
         addItem,
-        total,
-        descount,
-        setTotal
+        removerItem,
+        descount      
       }}
     >
       {props.children}

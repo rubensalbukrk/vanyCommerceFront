@@ -3,22 +3,20 @@ import React from "react";
 import Image from "next/image";
 import noCartItems from "@/assets/noCart.png";
 import Header from '../../../components/Header/Header'
-import Produto from "@/model/produtos/produtos";
 import CartItem from "@/components/CartItems/cartItem";
 import CartDetails from "@/templates/Cart/cartDetails";
 import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
+import ItemCarrinho from "@/model/itemCarrinho/itemCarrinho";
+
 
 const Carrinho = () => {
-  const { items } = useCarrinho();
-
+  const {items, itemsCount, addItem, removerItem } = useCarrinho();
   return (
     <div className="flex flex-col pb-10 w-full min-h-screen bg-slate-200 justify-between items-center">
-
       <Header />
 
-
-      {items.length == 0 ? (
-        <div className="flex flex-1 w-full flex-col gap-8 min-h-screen absolute z-40 justify-center items-center bg-slate-200">
+      {items?.length == 0 ? (
+        <div className="flex flex-1 w-full flex-col gap-8 min-h-screen absolute z-30 justify-center items-center bg-slate-200">
           <Image src={noCartItems} alt="cart image" className="w-80 h-40" />
           <h1 className="text-black/60 drop-shadow-lg text-2xl">
             NÃO AH ITEMS NO CARRINHO
@@ -38,16 +36,12 @@ const Carrinho = () => {
         <CartDetails />
       </div>
       <div className="flex-1 flex-col w-8/12 px-8 py-8">
-        {items.map((item: Produto) => (
+        {items?.map((item) => (
           <CartItem
-            key={item.id}
-            id={item.id}
-            estoque={item.estoque}
-            price={item.price}
-            title={item.title}
-            descount={item.descount}
-            descrition={item.descrition}
-            img={item.img}
+            key={item.produto.id}
+            item={item}
+            adicionar={(item: ItemCarrinho) => addItem(item?.produto)}
+            remover={(item: ItemCarrinho) => removerItem(item.produto)}
           />
         ))}
       </div>

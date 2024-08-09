@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
 
 const CartDetails = () => {
-    const {total, descount} = useCarrinho();
+    const {items, itemsCount, descount} = useCarrinho();
+    const total = items.reduce((acc, item) => acc + item.produto.price * item?.quantidade, 0)
 
   return (
     <div className="w-96 relative h-32 justify-between items-center">
@@ -15,7 +16,7 @@ const CartDetails = () => {
               Total
             </h1>
             <h1 className="text-start text-md justify-start font-bold text-black/80 text-wrap">
-              R$ {total.toFixed(2)}
+              {total.toFixed(2)}
             </h1>
           </div>
 
