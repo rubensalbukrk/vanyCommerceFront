@@ -6,7 +6,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({children, className}) => {
-  const style = 'flex-1 h-64 rounded-lg shadow-black/50 shadow-lg '
+  const style = 'flex-1 h-64 rounded-lg shadow-black/20 shadow-lg '
   return (
     <div 
     className={`${style + className}`}>

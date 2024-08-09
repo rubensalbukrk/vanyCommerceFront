@@ -24,7 +24,7 @@ const Carrinho = () => {
         </div>
       ) : null}
       
-      <div className="flex w-full pt-24  flex-row justify-around items-center bg-slate-100 shadow-sm shadow-black/10">
+      <div className="flex w-full pt-24 px-2 flex-row justify-around items-center bg-slate-100 shadow-sm shadow-black/10">
         <div className="pb-2">
         <h1 className="w-8/12 mt-8 text-start text-4xl justify-start font-bold text-black/80">
           MEU CARRINHO
@@ -35,6 +35,7 @@ const Carrinho = () => {
         </div>
         <CartDetails />
       </div>
+
       <div className="flex-1 flex-col w-8/12 px-8 py-8">
         {items?.map((item) => (
           <CartItem

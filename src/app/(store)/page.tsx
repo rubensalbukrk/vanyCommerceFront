@@ -28,9 +28,8 @@ function App() {
 
       <Header />
 
-
       <Container>
-        <Image className="w-full" alt="background" src={Background} />
+        <Image className="object-cover" alt="background" src={Background} />
       </Container>
 
       <Container className="flex-row h-96 py-12 px-12 gap-x-8 ">
@@ -109,7 +108,7 @@ function App() {
 
       <Container className="flex-1 w-full flex flex-col gap-y-4 justify-center items-center">
         <h1 className="text-6xl text-black/80">Proteção UV 400</h1>
-        <h2 className="text-6xl font-mono text-zinc-100">
+        <h2 className="responsive-text text-6xl font-mono text-zinc-100">
           Bloqueiam 100% dos raios UVA e UVB.
         </h2>
       </Container>
@@ -117,20 +116,21 @@ function App() {
       <Separator />
 
       <Container className="flex flex-row">
-        <div className="flex flex-3 flex-col justify-between items-center gap-y-4">
-          <div className="flex flex-1 bg-slate-100 justify-center items-center rounded-br-2xl rounded-tr-2xl shadow-black/40 shadow-lg">
+        <div className="flex flex-3 flex-col justify-between items-center gap-y-8">
+
+          <div className="flex flex-1 bg-slate-100 justify-center items-center rounded-br-2xl rounded-tr-2xl shadow-black/10 shadow-lg">
             <Image src={Oculos1} alt="image" />
           </div>
-          <div className="flex-1 rounded-br-xl rounded-tr-xl">
+          <div className="flex-1 rounded-br-xl rounded-tr-xl ">
             <Image
               src={Oculos2}
               alt="image"
-              className="rounded-br-2xl rounded-tr-2xl  shadow-black/40 shadow-lg"
+              className="rounded-br-2xl rounded-tr-2xl  shadow-black/10 shadow-lg"
             />
           </div>
         </div>
         <div className="flex flex-1 h-96 px-8 justify-center items-center ">
-          <h1 className="text-black/70 text-center font-extralight text-4xl">
+          <h1 className="responsive-text-small text-black/70 text-center font-extralight text-3xl">
           Com óculos, você não só aprimora sua visão, mas também refina sua presença com uma elegância sutil e inconfundível.
           </h1>
         </div>
@@ -138,7 +138,7 @@ function App() {
           <Image
             src={Mulher}
             alt="image"
-            className="bg-slate-200 shadow-black/40 shadow-lg rounded-lg rounded-bl-2xl rounded-tl-2xl"
+            className="bg-slate-200 shadow-black/20 shadow-lg rounded-bl-2xl rounded-tl-2xl"
           />
         </div>
       </Container>
@@ -173,7 +173,7 @@ function App() {
 
       <Container>
         <div className="flex flex-1 flex-col justify-center items-center">
-          <h1 className="text-black text-4xl tracking-custom">
+          <h1 className="responsive-text min-w-80 px-3 text-black text-4xl tracking-custom">
             FACILIDADE NO PAGAMENTO
           </h1>
           <Image src={Payments} alt="meios  de  pagamentos" />

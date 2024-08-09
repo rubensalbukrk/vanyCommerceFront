@@ -14,7 +14,7 @@ const Product = () => {
 
 
       <div className="flex flex-1 my-16 mt-36">
-        <h1 className="text-6xl font-sans z-10 text-black/70 drop-shadow-lg ">
+        <h1 className="text-6xl px-3 font-sans z-10 text-black/70 drop-shadow-lg ">
           CONFIRA NOSSO CATÁLOGO
         </h1>
       </div>
