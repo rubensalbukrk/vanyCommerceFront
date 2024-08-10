@@ -43,6 +43,7 @@ const CartDetails = () => {
         </div>
       </div>
 
+      <a href="whatsapp://send?abid=5583986731696&text=Hello%2C%20World!">
       <button
         className="flex w-40 h-12 text-white text-lg font-bold bg-sky-600 shadow-sky-400 shadow-lg justify-center items-center gap-x-6 
           hover:text-white  hover:bg-sky-400 hover:shadow-lg hover:shadow-sky-400
@@ -54,6 +55,8 @@ const CartDetails = () => {
           className="w-12 h-10 object-over"
         /> Finalizar
       </button>
+      </a>
+      
     </div>
   );
 };
