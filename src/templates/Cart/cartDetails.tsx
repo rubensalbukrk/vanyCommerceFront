@@ -43,12 +43,7 @@ const CartDetails = () => {
         </div>
       </div>
 
-      <a className="flex w-40 h-12 px-4 text-white text-lg font-bold bg-green-500 justify-center items-center gap-x-6 
-          hover:text-white  hover:bg-green-700 hover:shadow-lg hover:shadow-green-400
-          active:bg-green-700 rounded-lg transition duration-1000 ease-in-out" href="https://wa.me/5583986731696?text=Olá%2C+estou+enviando+meu+pedido%3A%0D%0A%0D%0A%0D📩+/+NUMERO+DO+PEDIDO:+222222+%0D%0A💰+/+VALOR+TOTAL++%3A++12%2C90++%0D%0A📍+/+ENDEREÇO+%3A+Rua+do+Colégio%2C+123++/++BAIRRO+%3A+POPULAR%0D%0A🔗+/+Aguardando%20link%20de%20pagamento...%20obrigado!" target="_blank">
-      <FaWhatsapp size={38} color="white" />
-      <p className="text-xs">WHATSAPP</p>
-      </a>
+    
       <button
       onClick={() => window.open("https://wa.me/5583986731696?text=Olá%2C+estou+enviando+meu+pedido%3A%0D%0A%0D%0A%0D📩+/+NUMERO+DO+PEDIDO:+222222+%0D%0A💰+/+VALOR+TOTAL++%3A++12%2C90++%0D%0A📍+/+ENDEREÇO+%3A+Rua+do+Colégio%2C+123++/++BAIRRO+%3A+POPULAR%0D%0A🔗+/+Aguardando%20link%20de%20pagamento...%20obrigado!")}
         className="flex w-40 h-12 text-white text-lg font-bold bg-sky-600 shadow-sky-400 shadow-lg justify-center items-center gap-x-6 
