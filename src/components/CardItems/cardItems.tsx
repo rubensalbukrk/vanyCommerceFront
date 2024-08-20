@@ -1,3 +1,4 @@
+"use client"
 import React, { ReactNode } from "react";
 import Produto from "@/model/produtos/produtos";
 import CartIcon from "@/assets/cart.png";
@@ -21,16 +22,18 @@ const CardItem = (props: Produto) => {
       </div>
 
       <Image
-        src={img}
-        alt="item product"
-        className="w-full h-40 rounded-tl-xl rounded-tr-xl"
+          src={img}
+         alt="item product"
+         width={80}
+         height={40}
+         className="w-full h-40 rounded-tl-xl rounded-tr-xl"
       />
       <div className="flex px-3 flex-col mb-2">
       <p className="text-black text-xl font-bold">{title}</p>
-      <p className="text-black">R$: {price.toFixed(2).replace('.', ',')}</p>
+      <p className="text-black">R$: {price}</p>
       <p className="text-zinc-100 font-bold">
-        Desconto {descount.toFixed(2).replace('0.', '')}%
-      </p>
+        Desconto {descount}%
+      </p>t
       </div>
       <ButtonCard onClick={() => {
         addItem({

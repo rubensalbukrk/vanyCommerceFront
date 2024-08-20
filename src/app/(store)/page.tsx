@@ -6,7 +6,7 @@ import Payments from "@/assets/payments.png";
 import Card from "../../components/Cards/Cards";
 import Collections from "../../assets/family.jpg";
 import ArrowIcon from "../../assets/arrow-right.png";
-import Header from '../../components/Header/Header'
+import Header from "../../components/Header/Header";
 import CardImage from "../../assets/Cards/card1.png";
 import CardImage2 from "../../assets/Cards/card2.png";
 import Button from "../../components/Header/Button/Button";
@@ -25,8 +25,9 @@ function App() {
 
   return (
     <div className="w-full items-center bg-slate-200">
-
+      <header>
       <Header />
+      </header>
 
       <Container>
         <Image className="object-cover" alt="background" src={Background} />
@@ -117,7 +118,6 @@ function App() {
 
       <Container className="flex flex-row">
         <div className="flex flex-3 flex-col justify-between items-center gap-y-8">
-
           <div className="flex flex-1 bg-slate-100 justify-center items-center rounded-br-2xl rounded-tr-2xl shadow-black/10 shadow-lg">
             <Image src={Oculos1} alt="image" />
           </div>
@@ -131,7 +131,8 @@ function App() {
         </div>
         <div className="flex flex-1 h-96 px-8 justify-center items-center ">
           <h1 className="responsive-text-small text-black/70 text-center font-extralight text-3xl">
-          Com óculos, você não só aprimora sua visão, mas também refina sua presença com uma elegância sutil e inconfundível.
+            Com óculos, você não só aprimora sua visão, mas também refina sua
+            presença com uma elegância sutil e inconfundível.
           </h1>
         </div>
         <div className="flex-3 pt-8">
@@ -145,12 +146,12 @@ function App() {
 
       <Separator />
 
-      <Container className="w-full flex flex-col">
-        <div className="flex flex-1 flex-col min-h-96 w-full">
+      <Container className="w-full flex flex-col flex-wrap">
+        <div className="flex flex-1 flex-wrap flex-col min-h-96 w-full">
           <h1 className="font-light mb-6 ml-4 text-black/80 text-6xl">
             Lançamentos
           </h1>
-          <div className="flex flex-1 w-full flex-row gap-x-6 flex-wrap gap-y-8 justify-center items-center">
+          <div className="flex grid-flow-col gap-x-6 flex-wrap gap-y-8">
             {produtos.map((item, index) => {
               return (
                 <CardRecent
@@ -181,37 +182,49 @@ function App() {
       </Container>
 
       <Container>
-        <footer className="flex flex-1 h-96">
+        <footer className="flex flex-1 h-96 flex-wrap">
           <Image
             src={FooterBackground}
             alt="footer background"
             className="flex flex-1"
           />
-          <div className="flex flex-col w-full h-80 pt-6 absolute z-10 right-0 justify-end gap-x-20">
-            <div className="flex flex-1 justify-end gap-x-20 pr-28">
-            <div>
-              <h1 className="text-3xl text-slate-900">Empresa</h1>
-              <h2 className="text-xl text-sky-600 cursor-pointer hover:underline">Sobre nós</h2>
-              <h2 className="text-xl text-sky-600 cursor-pointer hover:underline">Segurança</h2>
-            </div>
-            <div>
-              <h1 className="text-3xl text-slate-900">Recursos</h1>
-              <h2 className="text-xl text-sky-600 cursor-pointer hover:underline">@VanyOculos</h2>
-            </div>
-            <div>
-              <h1 className="text-3xl text-slate-900">Contato</h1>
-              <h2 className="text-xl text-sky-600 cursor-pointer">(83) - 98484-1211</h2>
-              <h2 className="text-xl underline text-sky-600 cursor-pointer">exemplo@email.com.br</h2>
-            </div>
+          <div className="flex flex-wrap flex-col flex-1 h-80 pt-6 absolute z-10 right-0 justify-end gap-x-12">
+            <div className="flex flex-1 flex-wrap gap-x-6 px-10 justify-between">
+              <div className="flex flex-col">
+                <h1 className="text-xl text-slate-900 font-semibold drop-shadow-lg">Empresa</h1>
+                <h2 className="text-xl text-sky-600 cursor-pointer hover:underline">
+                  Sobre nós
+                </h2>
+                <h2 className="text-xl text-sky-600 cursor-pointer hover:underline">
+                  Segurança
+                </h2>
+              </div>
+              <div className="flex flex-col">
+                <h1 className="text-xl font-semibold text-slate-900 drop-shadow-lg">Recursos</h1>
+                <h2 className="text-xl text-sky-600 cursor-pointer hover:underline">
+                  @VanyOculos
+                </h2>
+              </div>
+              <div className="flex flex-col">
+                <h1 className="text-xl font-semibold text-slate-900 drop-shadow-md">Contato</h1>
+                <h2 className="text-xl text-sky-600 cursor-pointer">
+                  (83) - 98484-1211
+                </h2>
+                <h2 className="text-xl underline text-sky-600 cursor-pointer">
+                  exemplo@email.com.br
+                </h2>
+              </div>
             </div>
 
             <div className="flex flex-1 flex-col justify-center items-center gap-y-4">
-              <h1 className="text-4xl text-black/80">Todos os direitos reservados ©2024</h1>
-              <h1 className="text-4xl text-black/80">Vision E-Commerce</h1>
+              <h1 className="text-2xl text-black/80">
+                Todos os direitos reservados ©2024
+              </h1>
+              <h1 className="text-2xl text-black/80">
+                VANNY ÓCULOS E-Commerce
+              </h1>
             </div>
-
           </div>
-          
         </footer>
       </Container>
     </div>
