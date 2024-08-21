@@ -146,12 +146,12 @@ function App() {
 
       <Separator />
 
-      <Container className="w-full flex flex-col flex-wrap">
-        <div className="flex flex-1 flex-wrap flex-col min-h-96 w-full">
+      <Container className="w-flex flex-1 flex-col">
+ 
           <h1 className="font-light mb-6 ml-4 text-black/80 text-6xl">
             Lançamentos
           </h1>
-          <div className="flex grid-flow-col gap-x-6 flex-wrap gap-y-8">
+          <div className="w-full flex flex-1 flex-row flex-wrap px-20 gap-x-80 whitespace-break-spaces justify-start items-center">
             {produtos.map((item, index) => {
               return (
                 <CardRecent
@@ -167,7 +167,7 @@ function App() {
               );
             })}
           </div>
-        </div>
+       
       </Container>
 
       <Separator />

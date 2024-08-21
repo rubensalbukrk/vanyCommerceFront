@@ -19,14 +19,14 @@ const CardRecent: React.FC<CardRecentProps> = ({
 }) => {
   return (
     <div
-      className="flex w-5/12 my-4 h-40
+      className="flex w-56 flex-col flex-wrap my-4 h-40
     "
     >
-      <Image src={img} alt={title} className="object-cover rounded-lg" />
-      <div className="flex-row justify-between px-4">
+      <Image src={img} alt={title} className="w-64 h-40 object-cover rounded-lg" />
+      <div className="flex-2 flex-row justify-between px-4">
         <div className="w-full">
           <h1 className="text-2xl text-black/80">{title}</h1>
-          <h1 className="text-md text-zinc-100">{descrition}</h1>
+          <h1 className="text-md text-zinc-100 text-ellipsi line-clamp-2 ">{descrition}</h1>
         </div>
         <div
           className="flex w-24 flex-row justify-start items-center gap-x-2
