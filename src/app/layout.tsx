@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import "./globals.css";
+
 
 const kanit = Kanit({
   style: 'normal',
@@ -19,8 +21,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    
     <html lang="en">
-      <body className={kanit.className}>{children}</body>
+      <body className={kanit.className}>
+      <AppRouterCacheProvider>
+        {children}
+        </AppRouterCacheProvider>
+        </body>
     </html>
+    
   );
 }

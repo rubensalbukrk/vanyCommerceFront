@@ -15,8 +15,7 @@ export interface CartItemProps{
 const CardItem = (props: CartItemProps) => {
   return (
     <div
-      className="flex flex-row px-3 h-36 my-4 bg-white shadow-black/10 shadow-md rounded-xl 
-        "
+      className="flex flex-row px-3 h-36 my-4 bg-white shadow-black/10 shadow-md rounded-xl"
     >
       <Image
         src={props.item?.produto.img}
@@ -25,9 +24,9 @@ const CardItem = (props: CartItemProps) => {
       />
       <div className="flex px-3 flex-col mb-2 justify-around">
         <p className="text-black text-xl font-bold">{props.item?.produto.title}</p>
-        <p className="text-zinc-100 text-sm text-clip line-clamp-2">{props.item?.produto.descrition}</p>
+        <p className="text-zinc-500 text-sm text-clip line-clamp-2">{props.item?.produto.descrition}</p>
         <p className="text-black">R$: {props.item?.produto.price.toFixed(2).replace('.', ',')}</p>
-        <p className="text-zinc-100 font-bold ">
+        <p className="text-zinc-500 font-bold ">
           Desconto de {props.item?.produto.descount.toFixed(2).replace('0.', '')}%
         </p>
       </div>
@@ -35,7 +34,7 @@ const CardItem = (props: CartItemProps) => {
       <button className="w-7" onClick={() => props.adicionar?.(props.item)}>
         <Image src={AddItemIcon} alt='addicon' />
       </button>
-      <h1 className="text-zinc-100 text-center flex-1 mr-2">{props?.item.quantidade}</h1>  
+      <h1 className="text-zinc-500 text-center flex-1 mr-2">{props?.item.quantidade}</h1>  
       <button className="w-7" onClick={() => props.remover?.(props.item)}>
         <Image src={RemoveItemIcon} alt='addicon' />
       </button>  

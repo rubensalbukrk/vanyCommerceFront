@@ -31,9 +31,9 @@ const CardItem = (props: Produto) => {
       <div className="flex px-3 flex-col mb-2">
       <p className="text-black text-xl font-bold">{title}</p>
       <p className="text-black">R$: {price}</p>
-      <p className="text-zinc-100 font-bold">
+      <p className="text-zinc-400 font-bold">
         Desconto {descount}%
-      </p>t
+      </p>
       </div>
       <ButtonCard onClick={() => {
         addItem({
@@ -45,7 +45,7 @@ const CardItem = (props: Produto) => {
             img: img,
             price: price
         })
-        
+
       }} />
     </div>
   );

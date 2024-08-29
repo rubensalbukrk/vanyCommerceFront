@@ -4,14 +4,14 @@ import colors from "tailwindcss/colors";
 import { FiImage } from "react-icons/fi";
 import Button from "@/components/Header/Button/Button";
 import Header from "../../../components/Header/Header";
-import ProductList from "../manager/components/ProductlList";
+import ProductList from "../manager/_components/ProductlList";
+import Dashboard from "@/templates/dashboard/Dashboard";
 
 const Manager = () => {
 
   return (
     <div className="flex flex-1 h-screen pb-10 px-4 flex-col w-full bg-slate-100 justify-center items-center">
       <Header />
-
       <h1 className="w-full text-4xl text-start px-8 my-8 mt-36 font-semibold  text-slate-900 drop-shadow-lg ">
         GERENCIAMENTO DA LOJA
       </h1>
@@ -22,7 +22,6 @@ const Manager = () => {
         bg-slate-50 rounded-lg shadow-black/20 shadow-lg"
         >
           <ProductList />
-    
         </div>
         <div
           className="flex flex-1 flex-col p-6 basis-1 justify-between items-center
@@ -103,4 +102,4 @@ const Manager = () => {
   );
 };
 
-export default Manager;
+export default Dashboard;
