@@ -1,7 +1,7 @@
 "use client";
 import "../globals.css";
 import Image from "next/image";
-import Star from "../../assets/star.svg";
+import { FaStar } from "react-icons/fa";
 import Payments from "@/assets/payments.png";
 import Card from "../../components/Cards/Cards";
 import Collections from "../../assets/family.jpg";
@@ -33,7 +33,7 @@ function App() {
         <Image className="object-cover" alt="background" src={Background} />
       </Container>
 
-      <Container className="flex-row h-96 py-12 px-12 gap-x-8 ">
+      <Container className="flex-row py-4 px-12 gap-x-8 ">
         <Card className="bg-sky-600 flex-row ">
           <div className="flex flex-row px-6 justify-between cursor-pointer">
             <div className="flex flex-col w-48 mt-8 justify-start items-start">
@@ -72,13 +72,14 @@ function App() {
                 </h1>
               </div>
 
-              <div className="flex justify-center items-end">
+              <div className="flex justify-center gap-x-8 items-end">
                 <Button
                   title="Novidades"
                   onClick={() => alert("PAGINA DE NOVIDADES")}
-                  className="bg-white/50 flex flex-row w-48 mt-6 gap-x-2 justify-center items-center text-2xl text-zinc-100"
+                  className="flex bg-sky-500 flex-row w-40 mt-6 gap-x-2 justify-center items-center 
+                  text-2xl text-white"
                 >
-                  <Image className="w-6 h-6" src={Star} alt="start image" />
+                  <FaStar size={22} color="white" />
                 </Button>
               </div>
             </div>

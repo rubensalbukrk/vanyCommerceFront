@@ -10,7 +10,7 @@ const ButtonCard = (props: any) => {
         hover:bg-blue-500 transition duration-1000 ease-in-out
         active:bg-blue-700
          ">
-            <Image src={IconAddCart} alt='icon cart' />
+            <Image src={IconAddCart} alt='icon cart' className="w-8 h-6" />
             <p className="text-white text-2xl">Adicionar</p>
         </button>
     )

@@ -54,7 +54,7 @@ const CartDetails = () => {
         <Image
           src={CartCheck}
           alt="icon check"
-          className="w-12 h-10 object-over"
+          className="w-8 h-6 object-over"
         /> Finalizar
       </button>
      
