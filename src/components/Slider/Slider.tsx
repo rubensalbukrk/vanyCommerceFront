@@ -2,11 +2,11 @@ import React from "react";
 import { Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay} from 'swiper/modules'
 import Image from "next/image";
-import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
+import { useCart } from "@/contexts/CartContext/cartContext";
 import Produto from "@/model/produtos/produtos";
 
 const Slider: React.FC = () => {
-  const {produtos} = useCarrinho();
+  const {products} = useCart();
   
   return (
       <Swiper
@@ -24,7 +24,7 @@ const Slider: React.FC = () => {
         
         className="flex flex-1 w-80 h-80 justify-center items-center"
       >
-        {produtos && produtos.map((produto: Produto, index: number) => (
+        {products && products.map((produto: Produto, index: number) => (
           <SwiperSlide key={index}>
             <Image src={produto.img} width={200} height={100} alt={produto.title}/>
             <p>{produto.title}</p>

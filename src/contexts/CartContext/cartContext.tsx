@@ -1,27 +1,26 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import Produto from "@/model/produtos/produtos";
 
-interface ContextCarrinhoProps {
+interface ContextCartProps {
   items: ItemCart[]
   itemsCount: number
-  produtos: Array<Produto>;
+  products: Array<Produto>;
   addItem: (item: Produto) => void;
   removerItem: (produto: Produto) => void;
   descount: number
 }
-
 interface ItemCart {
   produto: Produto
   quantidade: number
 }
 
-const ContextCarrinho = createContext<ContextCarrinhoProps>({} as any);
+const ContextCart = createContext<ContextCartProps>({} as any);
 
-export function ProvedorCarrinho(props: any) {
-  const [produtos, setProdutos] = useState([
+export function CartProvider(props: any) {
+  const [products, setProducts] = useState([
     {
         id: 1,
-        estoque: true,
+        avaiable: true,
         title: "Rommeu",
         price: 80.86,
         descount: 0.10,
@@ -30,7 +29,7 @@ export function ProvedorCarrinho(props: any) {
     },
     {
         id: 2,
-        estoque: true,
+        avaiable: true,
         title: "Armação",
         price: 90.99,
         descrition: "Os óculos de sol aviador clássico são um ícone de estilo intemporal. Com armação metálica dourada e lentes polarizadas, oferecem proteção UV400, garantindo segurança e elegância em qualquer ocasião.",
@@ -39,7 +38,7 @@ export function ProvedorCarrinho(props: any) {
     },
     {
         id: 3,
-        estoque: false,        
+        avaiable: false,        
         title: "Rayban",
         price: 35.00,
         descount: 0.20,
@@ -48,7 +47,7 @@ export function ProvedorCarrinho(props: any) {
     },
     {
       id: 4,
-      estoque: false,
+      avaiable: false,
       title: "Social",
       price: 45.00,
       descount: 0.15,
@@ -57,7 +56,7 @@ export function ProvedorCarrinho(props: any) {
     },
     {
       id: 5,
-      estoque: false,
+      avaiable: false,
       title: "Rommeu",
       price: 69.00,
       descount: 0.10,
@@ -66,7 +65,7 @@ export function ProvedorCarrinho(props: any) {
   },
   {
       id: 6,
-      estoque: true,
+      avaiable: true,
       title: "Armação",
       price: 110.00,
       descrition: "Os óculos de grau clássico tartaruga combinam tradição e sofisticação. A armação em padrão tartaruga é leve e confortável, e as lentes de alta precisão oferecem uma visão clara e sem distorções.",
@@ -75,7 +74,7 @@ export function ProvedorCarrinho(props: any) {
   },
   {
       id: 7,
-      estoque: true,
+      avaiable: true,
       title: "Rayban",
       price: 85.00,
       descount: 0.10,
@@ -84,7 +83,7 @@ export function ProvedorCarrinho(props: any) {
   },
   {
     id: 8,
-    estoque: true,
+    avaiable: true,
     title: "Social",
     price: 75.00,
     descount: 0.20,
@@ -129,7 +128,6 @@ export function ProvedorCarrinho(props: any) {
     setDescount(descount - valorComDesconto)
   }
 
-
   {useEffect(() => {
     items.map((item: ItemCart) => {
           setTotal(total + item.produto.price)
@@ -138,9 +136,9 @@ export function ProvedorCarrinho(props: any) {
     },[items])}
 
   return (
-    <ContextCarrinho.Provider
+    <ContextCart.Provider
       value={{
-        produtos,
+        products,
         get itemsCount() {
           return items.reduce((acumulador, valorAtual) => {
             return acumulador + valorAtual.quantidade;
@@ -153,10 +151,10 @@ export function ProvedorCarrinho(props: any) {
       }}
     >
       {props.children}
-    </ContextCarrinho.Provider>
+    </ContextCart.Provider>
   );
 }
 
-export const useCarrinho = () => useContext(ContextCarrinho);
+export const useCart= () => useContext(ContextCart);
 
-export default ContextCarrinho;
+export default ContextCart;

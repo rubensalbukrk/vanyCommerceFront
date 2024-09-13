@@ -1,8 +1,11 @@
 "use client";
 import axios from "axios";
+import Image from "next/image";
+import Logo from "@/assets/logo.png"
+import { useRouter } from "next/navigation";
+import Header from "@/components/Header/Header";
 import React, { useState, useEffect } from "react";
 import { authentication } from "@/services/authentication";
-import { useRouter } from "next/navigation";
 import CompactMenu from "@/components/MenuCompact/MenuCompact";
 
 export default function App() {
@@ -41,21 +44,33 @@ export default function App() {
 
   return (
     <div className="body-login flex-col w-full h-full bg-slate-200 justify-center items-center">
-      <nav className="w-screen absolute top-0 justify-end">
+      <nav className="flex w-screen flex-row items-center justify-between px-4">
+        <Image
+          className="object-contain"
+          src={Logo}
+          alt="logo"
+          width={40}
+          height={10}
+        />
+        <p className="text-2xl font-bold text- text-black/60">VANNY ÓCULOS</p>
         <CompactMenu />
       </nav>
+      <header>
+        <Header />
+      </header>
       {loading ? (
         <div className="flex flex-1 justify-center items-center">
-          <h1 className="text-2xl font-bold">CARREGANDO ....</h1>
+          <h1 className="text-2xl font-bold">Loading ....</h1>
         </div>
       ) : (
         <form className="form-login" action="">
-          <div className="titulo-login text-3xl">
-            <h1 className="h1-login">Faça o seu login</h1>
-            <div className="barra-horizontal"></div>
+          <div className="flex flex-col text-3xl">
+            <h1 className="text-xl border-green-600 border-b-4 rounded-lg">
+            Log in now
+            </h1>
           </div>
 
-          <div className=" bg-slate-100 input-login">
+          <div className="flex flex-col roundend-lg">
             <label id="email">E-mail*</label>
             <input
               onChange={(text) =>
@@ -63,29 +78,25 @@ export default function App() {
               }
               type="email"
               id="email"
-              className="rounded-lg px-2"
+              className="rounded-lg px-2 bg-slate-100"
             />
           </div>
 
-          <div className=" bg-slate-100 input-login">
-            <label id="pass">Senha*</label>
+          <div className="flex flex-col roundend-lg">
+            <label id="pass">Password*</label>
             <input
               onChange={(text) =>
                 setFormData({ ...formData, password: text.target.value })
               }
               type="password"
               id="pass"
-              className="rounded-lg px-2"
+              className="rounded-lg px-2 bg-slate-100"
             />
           </div>
 
-          <div className="remember">
-            <input
-              type="checkbox"
-              id="checkbox"
-              onChange={() => alert("salvo automaticamente!")}
-            />
-            <p>Lembrar-me</p>
+          <div className="flex gap-x-2">
+            <input type="checkbox" id="checkbox" onChange={() => null} />
+            <p>Remenber</p>
           </div>
 
           <button
@@ -95,13 +106,15 @@ export default function App() {
               handleLogin(), setLoading(true);
             }}
           >
-            Entrar
+            Sign in
           </button>
 
-          <p className="esqueceu-senha">
-            Esqueceu sua senha?
-            <a href="">Clique aqui</a>
+          <div className="flex w-80 justify-center gap-x-2">
+          <p className="text-center">
+          Forgot your password?
           </p>
+          <a href="" className="underline text-blue-500">Click here</a>
+          </div>
         </form>
       )}
     </div>

@@ -1,8 +1,8 @@
-import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
+import { useCart } from "@/contexts/CartContext/cartContext";
 import IconCart from "../../assets/cart.svg";
 
-const Carrinho = () => {
-  const { items, itemsCount } = useCarrinho();
+const Cart = () => {
+  const { items, itemsCount } = useCart();
 
   return (
     <button
@@ -19,4 +19,4 @@ const Carrinho = () => {
     </button>
   );
 };
-export default Carrinho;
+export default Cart;

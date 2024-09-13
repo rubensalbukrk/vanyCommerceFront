@@ -2,17 +2,24 @@
 import React from "react";
 import Image from "next/image";
 import Logo from '@/assets/logo.png'
-import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
-import CardItem from "@/components/CardItems/cardItems";
 import Header from "../../../components/Header/Header";
+import CardItem from "@/components/CardItems/cardItems";
+import { useCart } from "@/contexts/CartContext/cartContext";
 import CompactMenu from "@/components/MenuCompact/MenuCompact";
 
 const Product = () => {
-  const { produtos } = useCarrinho();
+  const { products } = useCart();
   return (
     <div className="flex-col w-full h-full bg-slate-200 justify-center items-center">
-      <nav>
-      <Image src={Logo} alt='logo' width={40} height={40} />
+      <nav className="flex w-screen flex-row items-center justify-between px-4">
+        <Image
+          className="object-contain"
+          src={Logo}
+          alt="logo"
+          width={40}
+          height={10}
+        />
+        <p className="text-2xl font-bold text- text-black/60">VANNY ÓCULOS</p>
         <CompactMenu />
       </nav>
       <header>
@@ -29,11 +36,11 @@ const Product = () => {
         className="flex z-10 w-screen flex-row 
              justify-center items-center gap-x-12 gap-y-12 flex-wrap"
       >
-        {produtos.map((item) => (
+        {products.map((item) => (
           <CardItem
             key={item.id}
             id={item.id}
-            estoque={item.estoque}
+            avaiable={item.avaiable}
             price={item.price}
             title={item.title}
             descount={item.descount}

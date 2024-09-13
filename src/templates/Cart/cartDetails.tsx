@@ -1,13 +1,11 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import CartCheck from "@/assets/cart-check.png";
-import { FaWhatsapp } from 'react-icons/fa6'
-import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
+import { useCart } from "@/contexts/CartContext/cartContext";
 
 const CartDetails = () => {
-  const { items, itemsCount, descount } = useCarrinho();
+  const { items, itemsCount, descount } = useCart();
   const total = items.reduce(
     (acc, item) => acc + item.produto.price * item?.quantidade,
     0

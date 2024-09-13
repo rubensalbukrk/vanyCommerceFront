@@ -4,11 +4,11 @@ import Produto from "@/model/produtos/produtos";
 import CartIcon from "@/assets/cart.png";
 import Image from "next/image";
 import ButtonCard from "./button/button";
-import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
+import { useCart } from "@/contexts/CartContext/cartContext";
 
 const CardItem = (props: Produto) => {
-    const {id, title, price, descount, descrition, estoque, img} = props;
-    const {items, addItem} = useCarrinho()
+    const {id, title, price, descount, descrition, avaiable, img} = props;
+    const {items, addItem} = useCart()
 
   return (
     <div
@@ -18,7 +18,7 @@ const CardItem = (props: Produto) => {
         "
     >
       <div className="relative w-44 left-4 top-2 text-black text-xl">
-        <p>{estoque ? "Disponível" : "Esgotado"}</p>
+        <p>{avaiable ? "Disponível" : "Esgotado"}</p>
       </div>
 
       <Image
@@ -41,7 +41,7 @@ const CardItem = (props: Produto) => {
             title: title,
             descrition: descrition,
             descount: descount,
-            estoque: estoque,
+            avaiable: avaiable,
             img: img,
             price: price
         })

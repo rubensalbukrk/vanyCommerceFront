@@ -6,16 +6,23 @@ import Logo from '@/assets/logo.png'
 import Header from "../../../components/Header/Header";
 import CartItem from "@/components/CartItems/cartItem";
 import CartDetails from "@/templates/Cart/cartDetails";
-import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
+import { useCart } from "@/contexts/CartContext/cartContext";
 import ItemCarrinho from "@/model/itemCarrinho/itemCarrinho";
 import CompactMenu from "@/components/MenuCompact/MenuCompact";
 
-const Carrinho = () => {
-  const { items, itemsCount, addItem, removerItem } = useCarrinho();
+const Cart = () => {
+  const { items, itemsCount, addItem, removerItem } = useCart();
   return (
     <div className="flex-col pb-10 w-full min-h-screen bg-slate-200 justify-between items-center">
-      <nav>
-        <Image src={Logo} alt='logo' width={40} height={40} />
+      <nav className="flex w-screen flex-row items-center justify-between px-4">
+        <Image
+          className="object-contain"
+          src={Logo}
+          alt="logo"
+          width={40}
+          height={10}
+        />
+        <p className="text-2xl font-bold text- text-black/60">VANNY ÓCULOS</p>
         <CompactMenu />
       </nav>
       <header>
@@ -23,7 +30,7 @@ const Carrinho = () => {
       </header>
 
       {items?.length == 0 ? (
-        <div className="flex flex-1 w-full flex-col gap-8 min-h-screen absolute z-30 justify-center items-center bg-slate-200">
+        <div className="flex flex-1 w-full flex-col gap-8 min-h-screen absolute z-20 justify-center items-center bg-slate-200">
           <Image src={noCartItems} alt="cart image" className="w-80 h-40" />
           <h1 className="text-black/60 drop-shadow-lg text-2xl">
             NÃO AH ITEMS NO CARRINHO
@@ -57,4 +64,4 @@ const Carrinho = () => {
   );
 };
 
-export default Carrinho;
+export default Cart;

@@ -1,19 +1,20 @@
 "use client";
 import axios from "axios";
-import React, { useState } from "react";
 import { api } from "@/services/api";
+import React, { useState } from "react";
 import Produto from "@/model/produtos/produtos";
 
-function GetProdutos() {
-  const [produtos, setProdutos] = useState<Produto[]>([]);
+function GetProducts() {
+  const [products, setProducts] = useState<Produto[]>([]);
   
   // const response = await axios
   //   .get(`${api}/products`)
   //   .then((response) => setProdutos(response?.data?.Products));
-  const oculos = [
+  
+  const glasses = [
     {
       id: 1,
-      estoque: true,
+      avaiable: true,
       title: "oculos 1",
       descrition: "este oculos tem estilo verão este oculos tem estilo verão este oculos tem estilo verão",
       descount: 20,
@@ -22,7 +23,7 @@ function GetProdutos() {
     },
     {
       id: 2,
-      estoque: true,
+      avaiable: true,
       title: "oculos 2",
       descrition: "este oculos tem estilo verão",
       descount: 20,
@@ -31,7 +32,7 @@ function GetProdutos() {
     },
     {
       id: 3,
-      estoque: false,
+      avaiable: false,
       title: "oculos 3",
       descrition: "este oculos tem estilo verão",
       descount: 20,
@@ -40,7 +41,7 @@ function GetProdutos() {
     },
     {
       id: 4,
-      estoque: false,
+      avaiable: false,
       title: "oculos 4",
       descrition: "este oculos tem estilo verão",
       descount: 20,
@@ -49,7 +50,7 @@ function GetProdutos() {
     },
     {
       id: 5,
-      estoque: true,
+      avaiable: true,
       title: "oculos 5",
       descrition: "este oculos tem estilo verão este oculos tem estilo verão este oculos tem estilo verão",
       descount: 20,
@@ -58,7 +59,7 @@ function GetProdutos() {
     },
     {
       id: 6,
-      estoque: true,
+      avaiable: true,
       title: "oculos 6",
       descrition: "este oculos tem estilo verão",
       descount: 20,
@@ -67,7 +68,7 @@ function GetProdutos() {
     },
     {
       id: 7,
-      estoque: false,
+      avaiable: false,
       title: "oculos 7",
       descrition: "este oculos tem estilo verão",
       descount: 20,
@@ -76,7 +77,7 @@ function GetProdutos() {
     },
     {
       id: 8,
-      estoque: false,
+      avaiable: false,
       title: "oculos 8",
       descrition: "este oculos tem estilo verão",
       descount: 20,
@@ -85,7 +86,7 @@ function GetProdutos() {
     },
   ];
   
-  return oculos;
+  return glasses;
 }
 
-export default GetProdutos;
+export default GetProducts;

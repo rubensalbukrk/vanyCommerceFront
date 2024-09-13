@@ -1,11 +1,12 @@
 "use client";
 import "../globals.css";
 import Image from "next/image";
-import { FaStar } from "react-icons/fa";
+import "swiper/swiper-bundle.css";
+import Logo from "@/assets/logo.png";
+import "swiper/css/effect-coverflow";
 import Payments from "@/assets/payments.png";
 import Card from "../../components/Cards/Cards";
 import Slider from "@/components/Slider/Slider";
-import Logo from "@/assets/logo.png";
 import Collections from "../../assets/family.jpg";
 import Header from "../../components/Header/Header";
 import CardImage from "../../assets/Cards/card1.png";
@@ -14,18 +15,15 @@ import CardImage2 from "../../assets/Cards/card2.png";
 import FooterBackground from "@/assets/footerimage.png";
 import Mulher from "../../assets/mulher-container3.png";
 import Separator from "@/components/Separator/Separator";
-import Oculos1 from "../../assets/oculos1-container3.png";
 import Oculos2 from "../../assets/oculos2-container3.png";
 import Button from "../../components/Header/Button/Button";
 import Background from "../../assets/header-background.png";
 import Container from "../../components/Container/Container";
-import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
-import "swiper/swiper-bundle.css";
-import "swiper/css/effect-coverflow";
+import { useCart } from "@/contexts/CartContext/cartContext";
 import CompactMenu from "@/components/MenuCompact/MenuCompact";
 
 function App() {
-  const { produtos } = useCarrinho();
+  const { products } = useCart();
 
   return (
     <div className="w-full items-center bg-slate-200">
@@ -65,7 +63,7 @@ function App() {
             <div className="w-48 mt-12">
               <Image className="ml-6 mt-1" alt="Card item" src={CardImage} />
             </div>
-            <a onClick={() => alert("CLICK NO ARROW")}>
+            <a onClick={() => null}>
               <Image
                 src={ArrowIcon}
                 alt="ARROW ICON"
@@ -80,10 +78,10 @@ function App() {
        
               <Image className="relative  object-cover ml-6  justify-end items-end" alt="card item" src={CardImage2} />
 
-            <div className="flex flex-3 flex-col gap-y-6 ">
+            <div className="flex flex-2 flex-col gap-y-6 ">
               <div className="flex flex-col w-80 mt-8  mr-8 justify-start items-start">
-                <h1 className="text-slate-600 text-4xl z-10 h1-mob">Óculos com</h1>
-                <h1 className="text-slate-600 font-bold text-4xl z-10 h1-mob">
+                <h1 className="text-slate-600 text-2xl z-10">Óculos com</h1>
+                <h1 className="text-slate-600 font-bold text-xl z-10">
                   lentes inclusas
                 </h1>
               </div>
@@ -140,7 +138,7 @@ function App() {
           <Image
             src={Mulher}
             alt="image"
-            className="bg-slate-200 shadow-black/20 shadow-lg rounded-bl-2xl rounded-tl-2xl"
+            className="bg-slate-200 shadow-black/20 shadow-lg rounded-2xl rounded-tl-2xl"
           />
         </div>
         

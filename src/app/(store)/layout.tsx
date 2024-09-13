@@ -1,10 +1,10 @@
 "use client";
-import { ProvedorCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
+import { CartProvider } from "@/contexts/CartContext/cartContext";
 
 export default function Layout(props: any) {
   return (
-    <ProvedorCarrinho>
+    <CartProvider>
       <div className="flex">{props.children}</div>
-    </ProvedorCarrinho>
+    </CartProvider>
   );
 }

@@ -1,6 +1,6 @@
 export default interface Produto {
     id?: number
-    estoque: boolean
+    avaiable: boolean
     title: string
     price: number
     descrition: string 

@@ -2,7 +2,7 @@
 import React from "react";
 import Logo from "../../assets/logo.svg";
 import Button from "./Button/Button";
-import Carrinho from "@/components/Carrinho/Carrinho";
+import Cart from "@/components/Cart/Cart";
 import Link from "next/link";
 
 const Header = () => {
@@ -23,7 +23,7 @@ const Header = () => {
       <Button title="Nós" />
 
       <Link href="/cart">
-        <Carrinho />
+        <Cart />
       </Link>
     </nav>
   );
