@@ -50,9 +50,9 @@ function App() {
 
       <Separator />
 
-      <Container className="flex flex-row py-4 px-12 gap-x-8 container1">
-        <Card className="bg-sky-600 flex-row ">
-          <div className="flex flex-row px-6 justify-between cursor-pointer">
+      <Container className="w-screen flex flex-row py-4 px-12 gap-x-8 container1">
+        <Card className="bg-sky-600 flex-row flex-2 ">
+          <div className="flex flex-2 flex-row px-6 justify-between cursor-pointer">
             <div className="flex flex-col w-48 mt-8 justify-start items-start">
               <h1 className="text-6xl z-10">50%</h1>
               <h1 className="text-black/50 font-bold text-4xl z-10">
@@ -75,29 +75,20 @@ function App() {
           </div>
         </Card>
 
-        <Card className="bg-sky-200">
-          <div className="flex flex-row px-6 justify-between cursor-pointer">
-            <div className="w-60 mt-12">
-              <Image className="ml-6 mt-1" alt="card item" src={CardImage2} />
-            </div>
+        <Card className="bg-sky-200 flex-row flex-2">
+          <div className="flex flex-row cursor-pointer">
+       
+              <Image className="relative  object-cover ml-6  justify-end items-end" alt="card item" src={CardImage2} />
 
-            <div className="flex flex-col gap-y-6">
-              <div className="flex flex-col w-80 mt-8 justify-start items-start">
-                <h1 className="text-slate-600 text-4xl z-10">Óculos com</h1>
-                <h1 className="text-slate-600 font-bold text-4xl z-10">
+            <div className="flex flex-3 flex-col gap-y-6 ">
+              <div className="flex flex-col w-80 mt-8  mr-8 justify-start items-start">
+                <h1 className="text-slate-600 text-4xl z-10 h1-mob">Óculos com</h1>
+                <h1 className="text-slate-600 font-bold text-4xl z-10 h1-mob">
                   lentes inclusas
                 </h1>
               </div>
-
-              <div className="flex justify-center gap-x-8 items-end">
-                <Button
-                  title="Novidades"
-                  onClick={() => alert("PAGINA DE NOVIDADES")}
-                  className="flex bg-sky-500 flex-row w-40 mt-6 gap-x-2 justify-center items-center 
-                  text-2xl text-white"
-                >
-                  <FaStar size={22} color="white" />
-                </Button>
+              <div className="flex flex-col w-80  mr-8 justify-start items-start">
+                <Button title="NOVIDADES" className="bg-blue-500 text-white"/>
               </div>
             </div>
           </div>
