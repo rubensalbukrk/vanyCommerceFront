@@ -1,17 +1,23 @@
 "use client";
 import React from "react";
+import Image from "next/image";
+import Logo from '@/assets/logo.png'
 import { useCarrinho } from "@/contexts/CarrinhoContext/carrinhoContext";
 import CardItem from "@/components/CardItems/cardItems";
-import Header from '../../../components/Header/Header'
-
+import Header from "../../../components/Header/Header";
+import CompactMenu from "@/components/MenuCompact/MenuCompact";
 
 const Product = () => {
   const { produtos } = useCarrinho();
   return (
     <div className="flex-col w-full h-full bg-slate-200 justify-center items-center">
-
-      <Header />
-
+      <nav>
+      <Image src={Logo} alt='logo' width={40} height={40} />
+        <CompactMenu />
+      </nav>
+      <header>
+        <Header />
+      </header>
 
       <div className="flex flex-1 my-16 mt-36">
         <h1 className="text-6xl px-3 font-sans z-10 text-black/70 drop-shadow-lg ">

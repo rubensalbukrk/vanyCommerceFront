@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import { sky } from "tailwindcss/colors"
 
 const config = {
   darkMode: ["class"],
@@ -19,6 +20,9 @@ const config = {
     },
     extend: {
       colors: {
+        sky: {
+          200: '#C0D8DC'
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

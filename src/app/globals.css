@@ -58,7 +58,6 @@
     --chart-5: 340 75% 55%;
   }
 }
-
 @layer base {
   * {
     @apply border-border;
@@ -67,7 +66,6 @@
     @apply bg-background text-foreground;
   }
 }
-
 .body-login {
   font-family: "Montserrat", sans-serif;
   color: #404040;
@@ -81,7 +79,6 @@
   padding: 20px;
   
   }
-
   .form-login {
   background-color: white; 
   padding: 50px ;
@@ -91,11 +88,9 @@
   gap: 25px;
   box-shadow: 10px 10px 20px rgba(32, 31, 31, 0.5);
   }
-  
   .h1-login {
    font-size: 24x;
   }
-  
   .button-login{
    padding: 15px; 
    align-self: center; 
@@ -110,7 +105,6 @@
    font-weight: 700px;
    text-transform: uppercase;
   }
-  
   .input-login {
   padding: 10px 20px;
   border-radius: 10px;
@@ -118,34 +112,47 @@
   
   background-color: #f1f1f180;
   }
-  
   .a-login{
   color: #1690c9;
   }
-  
   .barra-horizontal{
    background-color: hsl(197, 70%, 47%);   
    height: 5px;
    width: 275px;
   }
-  
   .input-login{
   display: flex;
   flex-direction: column;
   gap: 5px;
   }
-  
   .remember{
    display: flex;   
    gap: 5px;
   
   }
-  
   .titulo{
    display: flex;  
    flex-direction: column; 
   }
-  
   .esqueceu-senha{
    text-align: center;
+  }
+
+
+  @media (max-width: 480px) {
+
+    header {
+      display: none;
+    }
+    .container1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      row-gap: 30px;
+    }
+    .h1-mob {
+      font-size: xx-large;
+    }
+
   }
