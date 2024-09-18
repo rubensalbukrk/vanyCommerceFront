@@ -34,47 +34,45 @@ function App() {
 
       <Separator />
 
-      <Container className="w-screen flex flex-row py-4 px-12 gap-x-8 container1">
-        <Card className="bg-sky-600 flex-row flex-2 ">
-          <div className="flex flex-2 flex-row px-6 justify-between cursor-pointer">
-            <div className="flex flex-col w-48 mt-8 justify-start items-start">
-              <h1 className="text-6xl z-10">50%</h1>
-              <h1 className="text-black/50 font-bold text-4xl z-10">
+      <Container className="w-screen flex-col justify-center items-center py-4 px-12 gap-x-8 
+                          md:flex-col lg:flex-row sm:flex-col gap-y-10">
+        <Card className="flex flex-1 w-80 bg-sky-600 flex-col md:w-80">
+
+          <div className="flex flex-col h-full w-full px-3 justify-between items-center cursor-pointer sm:flex-row">
+
+            <div className="flex flex-col mt-8 justify-center items-center">
+              <h1 className="text-6xl">50%</h1>
+              <h1 className="text-black/50 font-bold text-4xl">
                 DESCONTO
               </h1>
-              <h1 className="text-white text-4xl mt-2 z-10">
+              <h1 className="text-white text-2xl mt-2">
                 Selecionamos para você!
               </h1>
             </div>
-            <div className="w-48 mt-12">
-              <Image className="ml-6 mt-1" alt="Card item" src={CardImage} />
+
+            <div className="h-full">
+              <Image className="h-full object-fill" alt="Card item" src={CardImage} />
             </div>
-            <a onClick={() => null}>
-              <Image
-                src={ArrowIcon}
-                alt="ARROW ICON"
-                className="mt-6 transform transition-transform duration-300 ease-in-out hover:scale-150"
-              />
-            </a>
           </div>
+
         </Card>
 
-        <Card className="bg-sky-200 flex-row flex-2">
-          <div className="flex flex-row cursor-pointer">
+        <Card className="flex flex-1 bg-sky-200 flex-row">
+          <div className="flex w-full h-full px-4 flex-row justify-evenly cursor-pointer">
             <Image
-              className="relative  object-cover ml-6  justify-end items-end"
+              className="relative object-fill"
               alt="card item"
               src={CardImage2}
             />
 
-            <div className="flex flex-2 flex-col gap-y-6 ">
-              <div className="flex flex-col w-80 mt-8  mr-8 justify-start items-start">
-                <h1 className="text-slate-600 text-2xl z-10">Óculos com</h1>
-                <h1 className="text-slate-600 font-bold text-xl z-10">
+            <div className="flex h-full flex-col justify-center items-center gap-y-2 py-4">
+              <div className="flex flex-col">
+                <h1 className="text-slate-600 text-4xl z-10">Óculos com</h1>
+                <h1 className="text-slate-600 font-bold text-3xl z-10">
                   lentes inclusas
                 </h1>
               </div>
-              <div className="flex flex-col w-80  mr-8 justify-start items-start">
+              <div className="flex flex-col justify-start items-start">
                 <Button title="NOVIDADES" className="bg-blue-500 text-white" />
               </div>
             </div>
@@ -84,15 +82,15 @@ function App() {
 
       <Separator />
 
-      <Container className="flex-1 w-full">
-        <div className="flex flex-row gap-x-20 py-8 container1">
-          <div className="flex flex-col gap-y-4 items-center justify-center">
-            <h1 className="text-zinc-700 text-6xl h1-mob">NOVAS COLEÇÕES</h1>
-            <h1 className="text-zinc-700 text-5xl h1-mob">
-              Confira o que selecionamos
+      <Container className="w-screen">
+        <div className="flex flex-col gap-x-20 gap-y-4 py-8 sm:flex-row">
+          <div className="w-full flex flex-col gap-y-4 items-center justify-center">
+            <h1 className="text-zinc-700 font-semibold text-4xl sm:text-6xl">NOVAS COLEÇÕES</h1>
+            <h1 className="text-zinc-700 text-3xl sm:text-5xl">
+              Todos os estilos para você
             </h1>
-            <h1 className="text-zinc-700 text-4xl h1-mob">
-              para você e sua família!
+            <h1 className="text-zinc-700 text-4xl">
+              e sua família!
             </h1>
           </div>
           <Image
@@ -106,8 +104,8 @@ function App() {
       <Separator />
 
       <Container className="flex-1 w-full flex flex-col gap-y-4 justify-center items-center">
-        <h1 className="text-6xl text-black/80">Proteção UV 400</h1>
-        <h2 className="px-2 text-center text-6xl font-mono text-zinc-700 h1-mob">
+        <h1 className="text-4xl font-bold text-black/80 sm:text-6xl">Proteção UV-400</h1>
+        <h2 className="px-2 text-center text-2xl font-mono text-zinc-700 sm:text-5xl">
           Bloqueiam 100% dos raios UVA e UVB.
         </h2>
       </Container>
@@ -123,7 +121,7 @@ function App() {
           />
         </div>
         <div className="flex flex-1 h-96 px-8 justify-center items-center ">
-          <h1 className="responsive-text-small text-black/70 text-center font-extralight text-3xl">
+          <h1 className="text-xl font-semibold text-black/70 text-center font-extralight sm:text-3xl">
             Com óculos, você não só aprimora sua visão, mas também refina sua
             presença com uma elegância sutil e inconfundível.
           </h1>
@@ -140,7 +138,7 @@ function App() {
       <Separator />
 
       <Container className="w-flex flex-1 flex-col">
-        <h1 className="font-light mb-6 ml-4 text-black/80 text-6xl">
+        <h1 className="text-4xl font-bold text-black/80 sm:text-6xl ml-4 mb-4">
           Lançamentos
         </h1>
         <div className="w-full flex flex-1 flex-row flex-wrap px-20 gap-x-80 whitespace-break-spaces justify-start items-center">

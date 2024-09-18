@@ -6,7 +6,7 @@ interface ContainerProps {
 }
 
 const Container: React.FC<ContainerProps> = ({ children , className}) => {
-  const style = 'w-full flex justify-center items-center'
+  const style = 'w-screen flex justify-center items-center'
   return (
     <div 
     className={`${style + className}`}>
