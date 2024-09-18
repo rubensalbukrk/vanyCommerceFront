@@ -26,12 +26,10 @@ const Product = () => {
         <Header />
       </header>
 
-      <div className="flex flex-1 my-16 mt-36">
-        <h1 className="text-6xl px-3 font-sans z-10 text-black/70 drop-shadow-lg ">
+        <h1 className="w-screen my-20 text-center text-3xl px-3 font-sans z-10 text-black/70 drop-shadow-lg sm:text-4xl">
           CONFIRA NOSSO CATÁLOGO
         </h1>
-      </div>
-
+  
       <div
         className="flex z-10 w-screen flex-row 
              justify-center items-center gap-x-12 gap-y-12 flex-wrap"

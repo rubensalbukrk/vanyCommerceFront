@@ -18,8 +18,6 @@ const Header = () => {
         <Button title="Catálogo" />
       </Link>
 
-      <Button title="Promoções" />
-
       <Button title="Nós" />
 
       <Link href="/cart">

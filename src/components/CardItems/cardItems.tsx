@@ -32,7 +32,7 @@ const CardItem = (props: Produto) => {
       <p className="text-black text-xl font-bold">{title}</p>
       <p className="text-black">R$: {price}</p>
       <p className="text-zinc-400 font-bold">
-        Desconto {descount}%
+        Desconto {descount.toFixed(2).replace('0.', '')}%
       </p>
       </div>
       <ButtonCard onClick={() => {
