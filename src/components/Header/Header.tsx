@@ -10,8 +10,9 @@ const Header = () => {
   return (
     <header>
       {/**MENU COMPACTO */}
-      <nav className="flex w-screen flex-row items-center justify-between px-4 sm:hidden">
-        <Logo className="ml-4" />
+      <nav className="flex absolute z-50 w-screen flex-row items-center justify-between px-4 sm:hidden
+                bg-white/30 backdrop-blur-md shadow-black/10 shadow-md">
+        <Logo />
         <p className="text-2xl font-bold text- text-black/60">VANNY ÓCULOS</p>
         <CompactMenu />
       </nav>

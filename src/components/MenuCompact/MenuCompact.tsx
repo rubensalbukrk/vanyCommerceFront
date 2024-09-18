@@ -12,7 +12,7 @@ const CompactMenu = () => {
   return (
     <div className="relative z-30">
 
-      <button onClick={toggleMenu} className="text-white focus:outline-none">
+      <button onClick={toggleMenu} className="text-white mt-2 mr-2 focus:outline-none">
         {isOpen ? <FaTimes size={34} color={colors.green[400]} /> : <FaBars size={34} color={colors.green[400]} />}
       </button>
       

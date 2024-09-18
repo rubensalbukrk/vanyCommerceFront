@@ -9,14 +9,16 @@ import { authentication } from "@/services/authentication";
 
 export default function App() {
   const [auth, setAuth] = useState(false);
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const [password, setPassword] = useState("");
   const [user, setUser] = useState({
     token: "",
     user: {},
   });
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: email,
+    password: password,
   });
 
   const router = useRouter();
@@ -30,13 +32,14 @@ export default function App() {
 
   async function handleLogin() {
     const user = await authentication(formData);
-    setUser(user);
-    setAuth(true);
     if (!user.token) {
       setAuth(false);
       setLoading(false);
-      alert("Credênciais inválidas!");
+      alert("Dados Inválidos!");
+      return;
     }
+    setUser(user);
+    setAuth(true);
   }
 
   return (
