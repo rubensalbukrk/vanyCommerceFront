@@ -49,7 +49,7 @@ export default function App() {
       <div className="flex flex-1 w-screen h-screen justify-center items-center">
         {loading ? (
           <div className="flex flex-1 justify-center items-center">
-            <h1 className="text-2xl font-bold">Loading ....</h1>
+            <h1 className="text-2xl font-bold">Loading ...</h1>
           </div>
         ) : (
           <form
