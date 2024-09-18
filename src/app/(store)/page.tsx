@@ -20,27 +20,13 @@ import Button from "../../components/Header/Button/Button";
 import Background from "../../assets/header-background.png";
 import Container from "../../components/Container/Container";
 import { useCart } from "@/contexts/CartContext/cartContext";
-import CompactMenu from "@/components/MenuCompact/MenuCompact";
 
 function App() {
   const { products } = useCart();
 
   return (
     <div className="w-full items-center bg-slate-200">
-      <nav className="flex w-screen flex-row items-center justify-between px-4">
-        <Image
-          className="object-contain"
-          src={Logo}
-          alt="logo"
-          width={40}
-          height={10}
-        />
-        <p className="text-2xl font-bold text- text-black/60">VANNY ÓCULOS</p>
-        <CompactMenu />
-      </nav>
-      <header>
-        <Header />
-      </header>
+      <Header />
 
       <Container>
         <Image className="object-cover" alt="background" src={Background} />
@@ -75,8 +61,11 @@ function App() {
 
         <Card className="bg-sky-200 flex-row flex-2">
           <div className="flex flex-row cursor-pointer">
-       
-              <Image className="relative  object-cover ml-6  justify-end items-end" alt="card item" src={CardImage2} />
+            <Image
+              className="relative  object-cover ml-6  justify-end items-end"
+              alt="card item"
+              src={CardImage2}
+            />
 
             <div className="flex flex-2 flex-col gap-y-6 ">
               <div className="flex flex-col w-80 mt-8  mr-8 justify-start items-start">
@@ -86,7 +75,7 @@ function App() {
                 </h1>
               </div>
               <div className="flex flex-col w-80  mr-8 justify-start items-start">
-                <Button title="NOVIDADES" className="bg-blue-500 text-white"/>
+                <Button title="NOVIDADES" className="bg-blue-500 text-white" />
               </div>
             </div>
           </div>
@@ -97,13 +86,14 @@ function App() {
 
       <Container className="flex-1 w-full">
         <div className="flex flex-row gap-x-20 py-8 container1">
-          
           <div className="flex flex-col gap-y-4 items-center justify-center">
             <h1 className="text-zinc-700 text-6xl h1-mob">NOVAS COLEÇÕES</h1>
             <h1 className="text-zinc-700 text-5xl h1-mob">
               Confira o que selecionamos
             </h1>
-            <h1 className="text-zinc-700 text-4xl h1-mob">para você e sua família!</h1>
+            <h1 className="text-zinc-700 text-4xl h1-mob">
+              para você e sua família!
+            </h1>
           </div>
           <Image
             src={Collections}
@@ -126,7 +116,11 @@ function App() {
 
       <Container className="flex flex-col justify-center items-center gap-y-8">
         <div className="flex w-screen justify-center items-center">
-            <Image src={Oculos2} alt="image" className="shadow-black/20 rounded-lg self-center shadow-lg" />
+          <Image
+            src={Oculos2}
+            alt="image"
+            className="shadow-black/20 rounded-lg self-center shadow-lg"
+          />
         </div>
         <div className="flex flex-1 h-96 px-8 justify-center items-center ">
           <h1 className="responsive-text-small text-black/70 text-center font-extralight text-3xl">
@@ -141,7 +135,6 @@ function App() {
             className="bg-slate-200 shadow-black/20 shadow-lg rounded-2xl rounded-tl-2xl"
           />
         </div>
-        
       </Container>
 
       <Separator />

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import Logo from '@/assets/logo.png'
+import Logo from "@/assets/logo.png";
 import Header from "../../../components/Header/Header";
 import CardItem from "@/components/CardItems/cardItems";
 import { useCart } from "@/contexts/CartContext/cartContext";
@@ -11,25 +11,12 @@ const Product = () => {
   const { products } = useCart();
   return (
     <div className="flex-col w-full h-full bg-slate-200 justify-center items-center">
-      <nav className="flex w-screen flex-row items-center justify-between px-4">
-        <Image
-          className="object-contain"
-          src={Logo}
-          alt="logo"
-          width={40}
-          height={10}
-        />
-        <p className="text-2xl font-bold text- text-black/60">VANNY ÓCULOS</p>
-        <CompactMenu />
-      </nav>
-      <header>
-        <Header />
-      </header>
+      <Header />
+      
+      <h1 className="w-screen my-20 text-center text-3xl px-3 font-sans z-10 text-black/70 drop-shadow-lg sm:text-4xl">
+        CONFIRA NOSSO CATÁLOGO
+      </h1>
 
-        <h1 className="w-screen my-20 text-center text-3xl px-3 font-sans z-10 text-black/70 drop-shadow-lg sm:text-4xl">
-          CONFIRA NOSSO CATÁLOGO
-        </h1>
-  
       <div
         className="flex z-10 w-screen flex-row 
              justify-center items-center gap-x-12 gap-y-12 flex-wrap"

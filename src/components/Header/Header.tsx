@@ -1,29 +1,42 @@
 "use client";
 import React from "react";
-import Logo from "../../assets/logo.svg";
-import Button from "./Button/Button";
-import Cart from "@/components/Cart/Cart";
 import Link from "next/link";
+import Button from "./Button/Button";
+import Logo from "@/assets/logo.svg";
+import Cart from "@/components/Cart/Cart";
+import CompactMenu from "../MenuCompact/MenuCompact";
 
 const Header = () => {
   return (
-    <nav className="flex w-full h-20 px-2 top-0 z-40 fixed justify-between items-center bg-slate-100/80 backdrop-blur-lg shadow-black/20 shadow-md">
-      <Logo className="ml-4" />
+    <header>
+      {/**MENU COMPACTO */}
+      <nav className="flex w-screen flex-row items-center justify-between px-4 sm:hidden">
+        <Logo className="ml-4" />
+        <p className="text-2xl font-bold text- text-black/60">VANNY ÓCULOS</p>
+        <CompactMenu />
+      </nav>
 
-      <Link href="/">
-      <Button title="Inicio" />
-      </Link>
+      <nav
+        className="w-full h-20 px-2 top-0 z-30 fixed justify-between items-center 
+                bg-slate-100/80 backdrop-blur-lg shadow-black/20 shadow-md hidden sm:flex"
+      >
+        <Logo className="ml-4" />
 
-      <Link href="/product">
-        <Button title="Catálogo" />
-      </Link>
+        <Link href="/">
+          <Button title="Inicio" />
+        </Link>
 
-      <Button title="Nós" />
+        <Link href="/product">
+          <Button title="Catálogo" />
+        </Link>
 
-      <Link href="/cart">
-        <Cart />
-      </Link>
-    </nav>
+        <Button title="Nós" />
+
+        <Link href="/cart">
+          <Cart />
+        </Link>
+      </nav>
+    </header>
   );
 };
 

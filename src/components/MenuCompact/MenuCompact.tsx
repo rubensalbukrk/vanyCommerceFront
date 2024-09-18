@@ -11,12 +11,11 @@ const CompactMenu = () => {
 
   return (
     <div className="relative z-30">
-      {/* Botão para abrir/fechar o menu */}
+
       <button onClick={toggleMenu} className="text-white focus:outline-none">
         {isOpen ? <FaTimes size={34} color={colors.green[400]} /> : <FaBars size={34} color={colors.green[400]} />}
       </button>
-
-      {/* Menu expansível */}
+      
       <nav className={`absolute top-2 right-12 bg-gray-800 w-48 p-4 transition-transform duration-300 ${isOpen ? 'transform scale-100' : 'transform scale-0'} origin-top-right md:hidden`}>
         <ul className="space-y-4">
           <li>
