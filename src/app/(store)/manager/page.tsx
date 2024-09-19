@@ -5,7 +5,7 @@ import { FiImage } from "react-icons/fi";
 import Button from "@/components/Header/Button/Button";
 import Header from "../../../components/Header/Header";
 import ProductList from "../manager/_components/ProductlList";
-import Dashboard from "@/templates/dashboard/Dashboard";
+
 
 const Manager = () => {
 
@@ -102,4 +102,4 @@ const Manager = () => {
   );
 };
 
-export default Dashboard;
+export default Manager;
