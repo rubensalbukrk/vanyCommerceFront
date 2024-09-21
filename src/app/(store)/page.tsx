@@ -136,7 +136,7 @@ function App() {
 
       <Container className="w-flex flex-1 flex-col">
         <h1 className="text-4xl font-bold text-black/80 sm:text-6xl ml-4 mb-4">
-          Lançamentos
+        Ofertas
         </h1>
         <div className="w-full flex-row flex-wrap px-4 justify-center items-center">
           <Slider />
