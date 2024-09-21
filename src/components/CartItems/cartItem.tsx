@@ -3,6 +3,7 @@ import Image from "next/image";
 import AddItemIcon from '@/assets/addicon.png'
 import RemoveItemIcon from '@/assets/removeItem.png'
 import ItemCarrinho from "@/model/itemCarrinho/itemCarrinho";
+import { useCart } from "@/contexts/CartContext/cartContext";
 
 export interface CartItemProps{
   item: ItemCarrinho
@@ -11,6 +12,7 @@ export interface CartItemProps{
 }
 
 const CardItem = (props: CartItemProps) => {
+  const {addItem, removerItem} = useCart();
   return (
     <div
       className="flex flex-row px-3 h-36 my-4 bg-white shadow-black/10 shadow-md rounded-xl"
@@ -35,7 +37,7 @@ const CardItem = (props: CartItemProps) => {
         </p>
       </div>
       <div className="flex w-44 justify-between items-center"> 
-      <button className="w-7" onClick={() => props.adicionar?.(props.item)}>
+      <button className="w-7" onClick={() => props.adicionar?.(props.item )}>
         <Image src={AddItemIcon} alt='addicon' />
       </button>
       <h1 className="text-zinc-500 text-center flex-1 mr-2">
@@ -43,7 +45,7 @@ const CardItem = (props: CartItemProps) => {
         </h1>  
       <button className="w-7" onClick={() => props.remover?.(props.item)}>
         <Image src={RemoveItemIcon} alt='addicon' />
-      </button>  
+      </button>
       </div>
     </div>
   );

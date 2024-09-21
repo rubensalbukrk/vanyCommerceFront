@@ -35,15 +35,7 @@ const CardItem = (props: Produto) => {
       </p>
       </div>
       <ButtonCard onClick={() => {
-        addItem({
-            id: id,
-            title: title,
-            descrition: descrition,
-            descount: descount,
-            avaiable: avaiable,
-            img: img,
-            price: price
-        })
+        addItem({produto: props, quantidade: 1})
 
       }} />
     </div>

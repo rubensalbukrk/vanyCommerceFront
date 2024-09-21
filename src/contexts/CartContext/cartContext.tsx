@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import Produto from "@/model/produtos/produtos";
+import ItemCarrinho from "@/model/itemCarrinho/itemCarrinho";
 
 interface ContextCartProps {
   items: ItemCart[]
   itemsCount: number
   products: Array<Produto>;
-  addItem: (item: Produto) => void;
+  addItem: (item: ItemCarrinho) => void;
   removerItem: (produto: Produto) => void;
   descount: number
 }
@@ -95,17 +96,17 @@ export function CartProvider(props: any) {
   const [total, setTotal] = useState(0);
   const [descount, setDescount] = useState(0)
 
-  const addItem = (produto: Produto) => {
-    const indice = items.findIndex((i) => i.produto.id === produto.id )
+  const addItem = (item: ItemCarrinho) => {
+    const indice = items.findIndex((i) => i.produto.id === item.produto.id )
     
     if (indice === -1){
-      setItems([...items, {produto, quantidade: 1}])
+      setItems([...items, {produto: item.produto, quantidade: item.quantidade}])
     }else {
       const novoItens = [...items]
       novoItens[indice].quantidade++
       setItems(novoItens)
     }
-    calcularDesconto(produto.price, produto.descount)
+    calcularDesconto(item.produto.price, item.produto.descount)
   }
   const removerItem = (produto: Produto) => {
     const novosItems = items.map((i) => { 

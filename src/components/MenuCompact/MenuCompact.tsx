@@ -17,18 +17,20 @@ const CompactMenu = () => {
         className="text-white mt-2 mr-2 focus:outline-none"
       >
         {isOpen ? (
-          <FaTimes size={34} color={colors.green[400]} />
+          <div className="flex w-8 h-8 rounded-full justify-center items-center bg-blue-400">
+            <FaTimes size={28} color="white" />
+          </div>
         ) : (
-          <FaBars size={34} color={colors.green[400]} />
+          <FaBars size={34} color={colors.sky[400]} />
         )}
       </button>
 
       <nav
-        className={`absolute top-2 right-12 bg-gray-800 w-48 p-4 transition-transform duration-300 ${
+        className={`w-48 absolute top-2 right-12 bg-sky-600 p-4 transition-transform duration-300 ${
           isOpen ? "transform scale-100" : "transform scale-0"
-        } origin-top-right md:hidden`}
+        } origin-top-right md:hidden rounded-lg`}
       >
-        <ul className="space-y-4">
+        <ul className="space-y-4 font-bold">
           <li>
             <Link href="/">
               <p className="text-white hover:text-gray-300">Inicio</p>

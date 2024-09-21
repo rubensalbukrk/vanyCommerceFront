@@ -42,7 +42,7 @@ const Cart = () => {
           <CartItem
             key={item.produto.id}
             item={item}
-            adicionar={(item: ItemCarrinho) => addItem(item?.produto)}
+            adicionar={(item: ItemCarrinho) => addItem({produto: item?.produto, quantidade: item?.quantidade})}
             remover={(item: ItemCarrinho) => removerItem(item.produto)}
           />
         ))}
