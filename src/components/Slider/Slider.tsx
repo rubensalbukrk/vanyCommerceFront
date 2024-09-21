@@ -14,12 +14,12 @@ import { BsEye } from "react-icons/bs";
 import colors from "tailwindcss/colors";
 import { Autoplay } from "swiper/modules";
 import AddItemIcon from '@/assets/addicon.png'
-import RemoveItemIcon from '@/assets/removeItem.png'
 import Produto from "@/model/produtos/produtos";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useCart } from "@/contexts/CartContext/cartContext";
 import ButtonCard from "../CardItems/button/button";
+import RemoveItemIcon from '@/assets/removeItem.png';
 import { CartItemProps } from "../CartItems/cartItem";
+import { useCart } from "@/contexts/CartContext/cartContext";
 import ItemCarrinho from "@/model/itemCarrinho/itemCarrinho";
 
 interface SliderItemViewProps extends CartItemProps {
@@ -39,10 +39,7 @@ const Slider: React.FC = () => {
     setSelectedItem(undefined);
   };
   const DrawerItemView: React.FC<SliderItemViewProps> = ({
-    item,
-    onClose,
-    adicionar,
-    remover
+    item
   }) => {
     return (
       <Drawer open={open} onOpenChange={handleClose}>
