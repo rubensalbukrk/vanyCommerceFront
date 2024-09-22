@@ -1,28 +1,28 @@
 import React from "react";
 import Image from "next/image";
-import AddItemIcon from '@/assets/addicon.png'
-import RemoveItemIcon from '@/assets/removeItem.png'
+import Produto from "@/model/produtos/produtos";
 import ItemCarrinho from "@/model/itemCarrinho/itemCarrinho";
-import { useCart } from "@/contexts/CartContext/cartContext";
+import { MdOutlineAddCircle, MdOutlineRemoveCircle } from "react-icons/md"
+import colors from "tailwindcss/colors";
 
 export interface CartItemProps{
   item: ItemCarrinho
+  quantidade?: number
   adicionar?: (item: ItemCarrinho) => void;
-  remover?: (item: ItemCarrinho) => void;
+  remover?: (item: Produto) => void;
 }
 
-const CardItem = (props: CartItemProps) => {
-  const {addItem, removerItem} = useCart();
+const CartItem = (props: CartItemProps) => {
   return (
     <div
-      className="flex flex-row px-3 h-36 my-4 bg-white shadow-black/10 shadow-md rounded-xl"
+      className="flex flex-row px-2 h-auto my-2 bg-white shadow-black/10 shadow-sm rounded-xl"
     >
       <Image
         src={props.item?.produto.img}
         alt="item product"
-        className="w-40 h-36 rounded-xl"
+        className="w-20 h-auto rounded-xl sm:w-40"
       />
-      <div className="flex px-3 flex-col mb-2 justify-around">
+      <div className="flex px-3 flex-col mb-2">
         <p className="text-black text-xl font-bold">
           {props.item?.produto.title}
         </p>
@@ -37,18 +37,18 @@ const CardItem = (props: CartItemProps) => {
         </p>
       </div>
       <div className="flex w-44 justify-between items-center"> 
-      <button className="w-7" onClick={() => props.adicionar?.(props.item )}>
-        <Image src={AddItemIcon} alt='addicon' />
+      <button className="w-7" onClick={() => props.adicionar?.(props.item)}>
+      <MdOutlineAddCircle size={22} color={colors.sky[500]} />
       </button>
       <h1 className="text-zinc-500 text-center flex-1 mr-2">
         {props?.item.quantidade}
         </h1>  
-      <button className="w-7" onClick={() => props.remover?.(props.item)}>
-        <Image src={RemoveItemIcon} alt='addicon' />
+      <button className="w-7" onClick={() => props.remover?.(props.item.produto)}>
+        <MdOutlineRemoveCircle size={22} color={colors.sky[500]} />
       </button>
       </div>
     </div>
   );
 };
 
-export default CardItem;
+export default CartItem;

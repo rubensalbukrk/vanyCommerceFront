@@ -94,7 +94,7 @@ export function CartProvider(props: any) {
   ]);
   const [items, setItems] = useState<ItemCart[]>([]);
   const [total, setTotal] = useState(0);
-  const [descount, setDescount] = useState(0)
+  const [descount, setDescount] = useState(0);
 
   const addItem = (item: ItemCarrinho) => {
     const indice = items.findIndex((i) => i.produto.id === item.produto.id )
@@ -106,7 +106,7 @@ export function CartProvider(props: any) {
       novoItens[indice].quantidade++
       setItems(novoItens)
     }
-    calcularDesconto(item.produto.price, item.produto.descount)
+    calcularDesconto(item.produto.price , item.produto.descount)
   }
   const removerItem = (produto: Produto) => {
     const novosItems = items.map((i) => { 
@@ -118,8 +118,9 @@ export function CartProvider(props: any) {
     setItems(novosItems)
     retirarDesconto(produto.price, produto.descount)
   }
+
   function calcularDesconto(valor: number, descountItem: number) {
-    const desconto = valor * descountItem;
+    const desconto = valor * descountItem ;
     const valorComDesconto = valor - desconto;
     setDescount(descount + valorComDesconto)
   }
@@ -129,12 +130,15 @@ export function CartProvider(props: any) {
     setDescount(descount - valorComDesconto)
   }
 
-  {useEffect(() => {
-    items.map((item: ItemCart) => {
-          setTotal(total + item.produto.price)
-      })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[items])}
+
+    {
+      useEffect(() => {
+        const totalDesconto = items.reduce((total, item) => {
+          return total + (item.produto.price * item.quantidade);
+        }, 0);
+        setDescount(totalDesconto);
+      }, [items]);
+    }
 
   return (
     <ContextCart.Provider

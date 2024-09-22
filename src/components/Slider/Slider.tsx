@@ -78,7 +78,7 @@ const Slider: React.FC = () => {
             </DrawerClose>
             <ButtonCard
               className="rounded-xl sm:w-60"
-              onClick={() => selectedItem && addItem({produto: selectedItem.produto, quantidade: selectedItem.quantidade})}
+              onClick={() => selectedItem && addItem({produto: selectedItem.produto, quantidade: selectedItem?.quantidade})}
             />
           </DrawerFooter>
         </DrawerContent>
