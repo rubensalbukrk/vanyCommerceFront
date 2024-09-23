@@ -13,7 +13,7 @@ import ItemCarrinho from "@/model/itemCarrinho/itemCarrinho";
 const Cart = () => {
   const { items, addItem, removerItem } = useCart();
   return (
-    <div className="flex-col-reverse pb-10 bg-slate-200 justify-between items-center
+    <div className="flex-col-reverse pb-10 bg-slate-100 justify-between items-center
     sm:flex-col">
       <Header />
 
