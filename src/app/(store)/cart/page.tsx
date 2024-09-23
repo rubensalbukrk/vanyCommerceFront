@@ -6,7 +6,7 @@ import Produto from "@/model/produtos/produtos";
 import { TbAlertSquareRounded } from "react-icons/tb";
 import Header from "../../../components/Header/Header";
 import CartItem from "@/components/CartItems/cartItem";
-import CartDetails from "@/templates/Cart/cartDetails";
+import CartDetails from "@/components/CartDetails/cartDetails";
 import { useCart } from "@/contexts/CartContext/cartContext";
 import ItemCarrinho from "@/model/itemCarrinho/itemCarrinho";
 

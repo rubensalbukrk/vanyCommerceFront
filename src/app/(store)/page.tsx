@@ -84,10 +84,10 @@ function App() {
             <h1 className="text-zinc-700 font-semibold text-4xl sm:text-6xl">
               NOVAS COLEÇÕES
             </h1>
-            <h1 className="text-zinc-700 text-3xl sm:text-5xl">
-              Todos os estilos para você
+            <h1 className="text-zinc-700 text-3xl mb-2 sm:text-5xl">
+              Todos os estilos para você <br />
+              e sua família!
             </h1>
-            <h1 className="text-zinc-700 text-4xl">e sua família!</h1>
           </div>
           <Image
             src={Collections}

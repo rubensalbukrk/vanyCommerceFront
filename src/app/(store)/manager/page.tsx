@@ -1,11 +1,10 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import colors from "tailwindcss/colors";
 import { FiImage } from "react-icons/fi";
 import Button from "@/components/Header/Button/Button";
 import Header from "../../../components/Header/Header";
 import ProductList from "../manager/_components/ProductlList";
-
 
 const Manager = () => {
 

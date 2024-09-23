@@ -28,11 +28,11 @@ const CartItem = (props: CartItemProps) => {
         <p className="text-zinc-500 text-xs text-clip line-clamp-2 sm:text-sm">
           {props.item?.produto.descrition}
         </p>
-        <p className="text-emerald-700 font-bold">
+        <p>
           Desconto de{" "}
           {props.item?.produto.descount.toFixed(2).replace("0.", "")}%
         </p>
-        <p className="text-black font-bold">
+        <p className="font-bold">
           R$: {props.item?.produto.price.toFixed(2).replace(".", ",")}
         </p>
       </div>
