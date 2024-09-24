@@ -29,8 +29,8 @@ const Manager = () => {
     <div className="w-screen bg-slate-100 justify-center items-center">
       <Header />
       <h1
-        className="w-full flex flex-row gap-x-2 px-2 underline text-2xl mt-20 font-semibold text-slate-900 drop-shadow-lg
-      sm:mt-28 sm:text-4xl"
+        className="w-full flex flex-row gap-x-2 px-2 text-2xl mt-20 font-semibold items-center text-slate-900 drop-shadow-lg
+      bg-white rounded-lg sm:mt-28 sm:text-4xl"
       >
         <MdManageAccounts />
         GERENCIAMENTO DA LOJA

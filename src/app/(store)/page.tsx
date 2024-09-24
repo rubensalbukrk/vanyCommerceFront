@@ -39,7 +39,7 @@ function App() {
             <div className="flex flex-col mt-8 justify-center items-center">
               <h1 className="text-6xl">50%</h1>
               <h1 className="text-black/50 font-bold text-4xl">DESCONTO</h1>
-              <h1 className="text-white text-2xl mt-2">
+              <h1 className="text-white text-2xl my-2">
                 Selecionamos para você!
               </h1>
             </div>
@@ -64,8 +64,8 @@ function App() {
 
             <div className="flex h-full flex-col justify-center items-center gap-y-2 py-4">
               <div className="flex flex-col">
-                <h1 className="text-slate-600 text-4xl z-10">Óculos com</h1>
-                <h1 className="text-slate-600 font-bold text-3xl z-10">
+                <h1 className="text-slate-600 text-2xl sm:text-4xl">Óculos com</h1>
+                <h1 className="text-slate-600 font-bold text-2xl sm:text-4xl">
                   lentes inclusas
                 </h1>
               </div>
@@ -92,7 +92,7 @@ function App() {
           <Image
             src={Collections}
             alt="coleções"
-            className="shadow-black/20 shadow-md rounded-lg "
+            className="shadow-black/20 shadow-md rounded-lg"
           />
         </div>
       </Container>
@@ -115,7 +115,7 @@ function App() {
           <Image
             src={Oculos2}
             alt="image"
-            className="shadow-black/10 rounded-lg self-center shadow-lg"
+            className="shadow-black/5 rounded-lg self-center shadow-md"
           />
         </div>
         <div className="flex flex-1 h-96 mt-4 px-8 justify-center items-center ">
@@ -128,7 +128,7 @@ function App() {
           <Image
             src={Mulher}
             alt="image"
-            className="bg-slate-200 mt-4 shadow-black/10 shadow-lg rounded-2xl rounded-tl-2xl"
+            className="bg-slate-200 mt-4 shadow-black/5 shadow-md rounded-2xl rounded-tl-2xl"
           />
      
         <Separator />
