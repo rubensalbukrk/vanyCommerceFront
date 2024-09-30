@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { api } from "@/services/api";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Produto from "@/model/produtos/produtos";
 
 function GetProducts() {
@@ -84,8 +84,7 @@ function GetProducts() {
       price: 80.99,
       img: require("../../src/assets/Oculos/oculos4.jpg"),
     },
-  ];
-  
+  ]
   return glasses;
 }
 

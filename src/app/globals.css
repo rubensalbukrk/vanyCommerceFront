@@ -66,3 +66,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+.active {
+  color: white;
+  font-weight: 400;
+  background-color: #3b82f6;
+  border-radius: 50%;
+  height: 24px;
+  width: 20px;
+  align-self: center;
+  justify-content: center;
+  text-align: center;
+}
