@@ -34,7 +34,7 @@ export function CartProvider(props: any) {
         title: "Armação",
         price: 90.99,
         descrition: "Os óculos de sol aviador clássico são um ícone de estilo intemporal. Com armação metálica dourada e lentes polarizadas, oferecem proteção UV400, garantindo segurança e elegância em qualquer ocasião.",
-        descount: 0.10,
+        descount: 0.15,
         img: require('../../assets/Oculos/oculos2.png')
     },
     {
@@ -93,7 +93,6 @@ export function CartProvider(props: any) {
 }
   ]);
   const [items, setItems] = useState<ItemCart[]>([]);
-  const [total, setTotal] = useState(0);
   const [descount, setDescount] = useState(0);
 
   const addItem = (item: ItemCarrinho) => {
@@ -107,6 +106,7 @@ export function CartProvider(props: any) {
       setItems(novoItens)
     }
     calcularDesconto(item.produto.price , item.produto.descount)
+    
   }
   const removerItem = (produto: Produto) => {
     const novosItems = items.map((i) => { 
@@ -122,7 +122,7 @@ export function CartProvider(props: any) {
   function calcularDesconto(valor: number, descountItem: number) {
     const desconto = valor * descountItem ;
     const valorComDesconto = valor - desconto;
-    setDescount(descount + valorComDesconto)
+    setDescount(valorComDesconto + descount)
   }
   function retirarDesconto(valor: number, descountItem: number) {
     const desconto = valor * descountItem;
@@ -131,14 +131,6 @@ export function CartProvider(props: any) {
   }
 
 
-    {
-      useEffect(() => {
-        const totalDesconto = items.reduce((total, item) => {
-          return total + (item.produto.price * item.quantidade);
-        }, 0);
-        setDescount(totalDesconto);
-      }, [items]);
-    }
 
   return (
     <ContextCart.Provider

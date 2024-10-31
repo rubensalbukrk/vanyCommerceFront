@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { api } from "@/services/api";
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import Produto from "@/model/produtos/produtos";
 
 function GetProducts() {
@@ -19,7 +19,7 @@ function GetProducts() {
       descrition: "este oculos tem estilo verão este oculos tem estilo verão este oculos tem estilo verão",
       descount: 20,
       price: 80.99,
-      img: require("../../src/assets/Oculos/oculos1.jpg"),
+      img: require("../assets/Oculos/oculos1.png"),
     },
     {
       id: 2,
@@ -28,7 +28,7 @@ function GetProducts() {
       descrition: "este oculos tem estilo verão",
       descount: 20,
       price: 80.99,
-      img: require("../../src/assets/Oculos/oculos2.jpg"),
+      img: require("../assets/Oculos/oculos2.jpg"),
     },
     {
       id: 3,
@@ -37,7 +37,7 @@ function GetProducts() {
       descrition: "este oculos tem estilo verão",
       descount: 20,
       price: 80.99,
-      img: require("../../src/assets/Oculos/oculos3.jpg"),
+      img: require("../assets/Oculos/oculos3.jpg"),
     },
     {
       id: 4,
@@ -46,7 +46,7 @@ function GetProducts() {
       descrition: "este oculos tem estilo verão",
       descount: 20,
       price: 80.99,
-      img: require("../../src/assets/Oculos/oculos4.jpg"),
+      img: require("../assets/Oculos/oculos4.jpg"),
     },
     {
       id: 5,
@@ -55,7 +55,7 @@ function GetProducts() {
       descrition: "este oculos tem estilo verão este oculos tem estilo verão este oculos tem estilo verão",
       descount: 20,
       price: 80.99,
-      img: require("../../src/assets/Oculos/oculos1.jpg"),
+      img: require("../assets/Oculos/oculos1.jpg"),
     },
     {
       id: 6,
@@ -64,7 +64,7 @@ function GetProducts() {
       descrition: "este oculos tem estilo verão",
       descount: 20,
       price: 80.99,
-      img: require("../../src/assets/Oculos/oculos2.jpg"),
+      img: require("../assets/Oculos/oculos2.jpg"),
     },
     {
       id: 7,
@@ -73,7 +73,7 @@ function GetProducts() {
       descrition: "este oculos tem estilo verão",
       descount: 20,
       price: 80.99,
-      img: require("../../src/assets/Oculos/oculos3.jpg"),
+      img: require("../assets/Oculos/oculos3.jpg"),
     },
     {
       id: 8,
@@ -82,7 +82,7 @@ function GetProducts() {
       descrition: "este oculos tem estilo verão",
       descount: 20,
       price: 80.99,
-      img: require("../../src/assets/Oculos/oculos4.jpg"),
+      img: require("../assets/Oculos/oculos4.jpg"),
     },
   ]
   return glasses;

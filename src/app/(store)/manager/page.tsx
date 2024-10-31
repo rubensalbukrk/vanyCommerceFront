@@ -1,27 +1,75 @@
-"use client"
+"use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { CiImageOn } from "react-icons/ci";
 import { IoCreate } from "react-icons/io5";
 import { MdManageAccounts } from "react-icons/md";
 import { FaRectangleList } from "react-icons/fa6";
-import Button from "@/components/Header/Button/Button";
+import createProduct from "@/hooks/createProducts";
 import Header from "../../../components/Header/Header";
 import ProductList from "../manager/_components/ProductlList";
 
+interface ProductFormData {
+  estoque: true;
+  title: string;
+  descrition: string;
+  price: number;
+  descount: number;
+  quantidade: number;
+  image: File | null;
+}
+
 const Manager = () => {
-  const [imagePreview, setImagePreview] = useState<string | null>(null); // Permite null ou string
+  const [formData, setFormData] = useState<ProductFormData>({
+    estoque: true,
+    title: "",
+    descrition: "",
+    price: 0,
+    descount: 0.0,
+    quantidade: 1,
+    image: null,
+  });
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        if (typeof reader.result === 'string') {
-          setImagePreview(reader.result); // Armazena a URL da imagem se for string
-        }
-      };
-      reader.readAsDataURL(file); // Lê o arquivo como uma URL de dados
+      setImagePreview(URL.createObjectURL(file)); // Exibe a prévia da imagem
+      formData.image = file; // Armazena o arquivo no formData
+    }
+  };
+
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      setFormData((prevFormData: any) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+      console.log({ formData });
+    },
+    [formData]
+  );
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formDataToSend = new FormData();
+
+    formDataToSend.append("estoque", formData.estoque.toString());
+    formDataToSend.append("title", formData.title);
+    formDataToSend.append("descrition", formData.descrition);
+    formDataToSend.append("price", formData.price.toString());
+    formDataToSend.append("descount", formData.descount.toString());
+    formDataToSend.append("quantidade", formData.quantidade.toString());
+
+    formData.image && formDataToSend.append("image", formData.image);
+
+    try {
+      const response = await createProduct(formDataToSend);
+
+      console.log("Produto enviado com sucesso");
+    } catch (error) {
+      console.error("Erro ao enviar produto:", error);
     }
   };
 
@@ -61,96 +109,125 @@ const Manager = () => {
           </h1>
 
           <div className="w-full flex flex-col gap-x-8 sm:flex-row ">
-            <div className="flex flex-col gap-x-2 justify-around items-center">
-              <div className="w-full flex mt-2 items-center justify-center ">
-                <label
-                  htmlFor="file-upload"
-                  className="cursor-pointer flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100"
+            <form
+              onSubmit={handleSubmit}
+              className="flex p-4 bg-white gap-x-4"
+            >
+              <div className="flex flex-col gap-x-2 justify-around items-center">
+                <div className="w-full flex mt-2 items-center justify-center ">
+                  <label
+                    htmlFor="file-upload"
+                    className="cursor-pointer flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100"
+                  >
+                    {imagePreview ? (
+                      <div className="w-full flex items-center justify-center">
+                        <Image
+                          src={imagePreview}
+                          width={120}
+                          height={120}
+                          alt="Imagem selecionada"
+                          className="object-contain rounded-lg shadow-lg"
+                        />
+                      </div>
+                    ) : (
+                      <div className="flex flex-col items-center">
+                        <CiImageOn size={28} />
+                        <p className="text-sm text-center text-gray-600 mt-2">
+                          Clique para selecionar uma imagem
+                        </p>
+                      </div>
+                    )}
+
+                    <input
+                      id="file-upload"
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleImageChange}
+                    />
+                  </label>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+                  
                 >
-                  {imagePreview ? (
-                    <div className="w-full flex items-center justify-center">
-                      <Image
-                        src={imagePreview}
-                        width={120}
-                        height={120}
-                        alt="Imagem selecionada"
-                        className="object-contain rounded-lg shadow-lg"
-                      />
-                    </div>
-                  ) : (
-                    <div className="flex flex-col items-center">
-                      <CiImageOn size={28} />
-                      <p className="text-sm text-center text-gray-600 mt-2">
-                        Clique para selecionar uma imagem
-                      </p>
-                    </div>
-                  )}
+                  Enviar Produto
+                </button>
+              </div>
 
-                  <input
-                    id="file-upload"
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={handleImageChange}
-                  />
+              <div className="flex flex-col my-4">
+                <label className="text-slate-900 text-lg">Titulo</label>
+
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border rounded-md"
+                  required
+                />
+
+                <label htmlFor="descrition" className="block font-bold">
+                  Descrição
                 </label>
-              </div>
-            </div>
+                <input
+                  type="text"
+                  id="descrition"
+                  name="descrition"
+                  value={formData.descrition}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border rounded-md"
+                  required
+                />
 
-            <div className="flex flex-col my-4">
-              <h1 className="text-slate-900 text-lg">Titulo</h1>
-              <input
-                type="text"
-                className="w-60 px-2 bg-slate-100 rounded-md text-black"
-                id="title"
-              />
-              <h1 className="text-slate-900 text-lg">Descrição</h1>
-              <input
-                type="text"
-                className="w-60 px-2 bg-slate-100 rounded-md text-black"
-                id="descrition"
-              />
-              <div className="flex flex-row justify-between">
-                <div>
-                  <h1 className="text-slate-900 text-lg">
-                    Preço
-                  </h1>
-                  <input
-                    type="number"
-                    placeholder="0,00"
-                    className="w-24 px-2 bg-slate-100 rounded-md text-black"
-                    id="price"
-                  />
+                <div className="flex flex-row justify-between gap-x-2">
+                  <div>
+                    <label htmlFor="price" className="block font-bold">
+                      Preço
+                    </label>
+                    <input
+                      type="number"
+                      id="price"
+                      name="price"
+                      value={formData.price}
+                      onChange={handleInputChange}
+                      className="w-full p-2 border rounded-md"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="price" className="block font-bold">
+                      Quantidade
+                    </label>
+                    <input
+                      type="number"
+                      id="quantidade"
+                      name="quantidade"
+                      value={formData.quantidade}
+                      onChange={handleInputChange}
+                      className="w-full p-2 border rounded-md"
+                      required
+                    />
+                  </div>
                 </div>
-                <div>
-                  <h1 className="text-slate-900 text-lg">
-                    Quantidade
-                  </h1>
-                  <input
-                    type="number"
-                    defaultValue={1}
-                    className="w-24 px-2 bg-slate-100 rounded-md text-black"
-                    id="quantidade"
-                  />
-                </div>
+                <label htmlFor="price" className="block font-bold">
+                  Desconto
+                </label>
+                <input
+                  type="number"
+                  id="descount"
+                  name="descount"
+                  value={formData.descount}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border rounded-md"
+                  required
+                />
               </div>
-              <h1 className="text-slate-900 text-lg">
-                Desconto %
-                </h1>
-              <input
-                type="number"
-                placeholder="10"
-                className="w-24 px-2 bg-slate-100 rounded-md text-black"
-                id="descount"
-              />
-            </div>
+            </form>
           </div>
-
-          <Button
-            className="bg-blue-500 text-white self-center"
-            title="Adicionar" />
         </div>
-
       </div>
     </div>
   );

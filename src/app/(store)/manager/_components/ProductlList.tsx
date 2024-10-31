@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
 import { SiQt } from "react-icons/si";
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import colors from "tailwindcss/colors";
 import { BiDetail } from "react-icons/bi";
 import ReactPaginate from "react-paginate";
-import GetProdutos from "@/hooks/getProducts";
+import GetProdutos from "../../../../hooks/getProducts";
 import Produto from "@/model/produtos/produtos";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { TbCirclePercentage } from "react-icons/tb";
