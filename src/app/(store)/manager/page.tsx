@@ -46,9 +46,8 @@ const Manager = () => {
         ...prevFormData,
         [name]: value,
       }));
-      console.log({ formData });
     },
-    [formData]
+    []
   );
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -67,9 +66,10 @@ const Manager = () => {
     try {
       const response = await createProduct(formDataToSend);
 
-      console.log("Produto enviado com sucesso");
+      response && alert(JSON.stringify(response?.message))
+
     } catch (error) {
-      console.error("Erro ao enviar produto:", error);
+      console.error("Erro ao criar produto:", error);
     }
   };
 
@@ -77,8 +77,8 @@ const Manager = () => {
     <div className="w-screen bg-slate-100 justify-center items-center pb-10">
       <Header />
       <h1
-        className="w-full flex flex-row gap-x-2 px-2 text-2xl mt-20 font-semibold items-center text-slate-900 drop-shadow-lg
-      bg-white sm:mt-28 sm:text-4xl"
+        className="w-full flex flex-row gap-x-2 px-2 text-2xl mt-20 font-semibold items-center text-slate-900 
+         sm:mt-28 sm:text-4xl"
       >
         <MdManageAccounts />
         GERENCIAMENTO DA LOJA
@@ -87,7 +87,7 @@ const Manager = () => {
       <div className="flex flex-col sm:flex-row sm:justify-around gap-x-8">
         {/*LISTA DOS PRODUTOS */}
         <div
-          className="flex flex-col px-2 py-2 gap-x-10 gap-y-4 mt-8 bg-white rounded-md 
+          className="flex flex-col px-2 py-2 gap-x-10 gap-y-4 mt-8 bg-white rounded-md shadow-lg shadow-black/20 
         "
         >
           <h2 className="flex flex-row gap-x-2 px-2 font-bold text-start items-center text-2xl text-slate-700">
@@ -109,10 +109,7 @@ const Manager = () => {
           </h1>
 
           <div className="w-full flex flex-col gap-x-8 sm:flex-row ">
-            <form
-              onSubmit={handleSubmit}
-              className="flex p-4 bg-white gap-x-4"
-            >
+            <form onSubmit={handleSubmit} className="flex p-4 bg-white gap-x-4">
               <div className="flex flex-col gap-x-2 justify-around items-center">
                 <div className="w-full flex mt-2 items-center justify-center ">
                   <label
@@ -150,14 +147,13 @@ const Manager = () => {
                 <button
                   type="submit"
                   className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
-                  
                 >
-                  Enviar Produto
+                  Criar
                 </button>
               </div>
 
               <div className="flex flex-col my-4">
-                <label className="text-slate-900 text-lg">Titulo</label>
+                <label className="block font-bold">Titulo</label>
 
                 <input
                   type="text"
@@ -181,17 +177,31 @@ const Manager = () => {
                   className="w-full p-2 border rounded-md"
                   required
                 />
+                <div className="w-full">
+                  <label htmlFor="price" className="block font-bold">
+                    Preço
+                  </label>
+                  <input
+                    type="number"
+                    id="price"
+                    name="price"
+                    value={formData.price}
+                    onChange={handleInputChange}
+                    className="w-full p-2 border rounded-md"
+                    required
+                  />
+                </div>
 
                 <div className="flex flex-row justify-between gap-x-2">
                   <div>
-                    <label htmlFor="price" className="block font-bold">
-                      Preço
+                    <label htmlFor="descount" className="block font-bold">
+                      Desconto
                     </label>
                     <input
                       type="number"
-                      id="price"
-                      name="price"
-                      value={formData.price}
+                      id="descount"
+                      name="descount"
+                      value={formData.descount}
                       onChange={handleInputChange}
                       className="w-full p-2 border rounded-md"
                       required
@@ -199,7 +209,7 @@ const Manager = () => {
                   </div>
                   <div>
                     <label htmlFor="price" className="block font-bold">
-                      Quantidade
+                      Qnt.
                     </label>
                     <input
                       type="number"
@@ -207,23 +217,11 @@ const Manager = () => {
                       name="quantidade"
                       value={formData.quantidade}
                       onChange={handleInputChange}
-                      className="w-full p-2 border rounded-md"
+                      className="w-12 p-2 border rounded-md "
                       required
                     />
                   </div>
                 </div>
-                <label htmlFor="price" className="block font-bold">
-                  Desconto
-                </label>
-                <input
-                  type="number"
-                  id="descount"
-                  name="descount"
-                  value={formData.descount}
-                  onChange={handleInputChange}
-                  className="w-full p-2 border rounded-md"
-                  required
-                />
               </div>
             </form>
           </div>
