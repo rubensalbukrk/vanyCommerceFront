@@ -6,16 +6,15 @@ import { useRouter } from "next/navigation";
 import Header from "@/components/Header/Header";
 import React, { useState, useEffect } from "react";
 import { authentication } from "@/services/authentication";
+import { useCart } from "@/contexts/CartContext/cartContext";
 
 export default function App() {
+  const {user, setUser} = useCart();
   const [auth, setAuth] = useState(false);
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState({
-    token: "",
-    user: {},
-  });
+
   const [formData, setFormData] = useState({
     email: email,
     password: password,
@@ -48,8 +47,9 @@ export default function App() {
 
       <div className="flex flex-1 w-screen h-screen justify-center items-center">
         {loading ? (
-          <div className="flex flex-1 justify-center items-center">
-            <h1 className="text-2xl font-bold">Loading ...</h1>
+          <div className="flex flex-1 flex-col justify-center items-center self-center">
+            <div className="w-8 h-8 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+            <h1 className="text-2xl font-bold">Aguarde um momento...</h1>
           </div>
         ) : (
           <form

@@ -40,7 +40,7 @@ const Checkout = () => {
       >
         {items.map((item) => {
           return (
-            <div className="flex flex-row gap-3 items-center bg-slate-50 rounded-md pr-2">
+            <div key={item.produto.id} className="flex flex-row gap-3 items-center bg-slate-50 rounded-md pr-2">
               <Image
                 width={60}
                 height={60}

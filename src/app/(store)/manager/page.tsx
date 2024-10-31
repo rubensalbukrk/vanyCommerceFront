@@ -1,13 +1,15 @@
 "use client";
 import Image from "next/image";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { CiImageOn } from "react-icons/ci";
 import { IoCreate } from "react-icons/io5";
+import { useRouter } from "next/navigation";
 import { MdManageAccounts } from "react-icons/md";
 import { FaRectangleList } from "react-icons/fa6";
 import createProduct from "@/hooks/createProducts";
 import Header from "../../../components/Header/Header";
 import ProductList from "../manager/_components/ProductlList";
+import { useCart } from "@/contexts/CartContext/cartContext";
 
 interface ProductFormData {
   estoque: true;
@@ -20,6 +22,7 @@ interface ProductFormData {
 }
 
 const Manager = () => {
+  const {user} = useCart();
   const [formData, setFormData] = useState<ProductFormData>({
     estoque: true,
     title: "",
@@ -31,6 +34,8 @@ const Manager = () => {
   });
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
+  const router = useRouter();
+  
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -73,17 +78,34 @@ const Manager = () => {
     }
   };
 
+  useEffect(() => {
+    if (!user?.token) {
+      router.push('/login');
+      alert('ACESSO RESTRITO')
+    }
+  }, [user, router]);
+
+
   return (
     <div className="w-screen bg-slate-100 justify-center items-center pb-10">
       <Header />
-      <h1
+  
+      {/** LOADER */}
+      {!user.token ? 
+      <div className="flex z-50 absolute w-screen h-screen bg-blue-200 items-center justify-center">
+          <h1 className="text-xl text-slate-900 font-bold">VERIFICANDO ACESSO</h1>
+      </div>
+      :
+      (
+      <div className="w-screen">
+        <h1
         className="w-full flex flex-row gap-x-2 px-2 text-2xl mt-20 font-semibold items-center text-slate-900 
          sm:mt-28 sm:text-4xl"
       >
         <MdManageAccounts />
         GERENCIAMENTO DA LOJA
       </h1>
-
+      
       <div className="flex flex-col sm:flex-row sm:justify-around gap-x-8">
         {/*LISTA DOS PRODUTOS */}
         <div
@@ -227,6 +249,10 @@ const Manager = () => {
           </div>
         </div>
       </div>
+      </div>
+      )
+      }
+      
     </div>
   );
 };
