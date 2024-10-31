@@ -48,7 +48,7 @@ export default function App() {
       <div className="flex flex-1 w-screen h-screen justify-center items-center">
         {loading ? (
           <div className="flex flex-1 flex-col justify-center items-center self-center">
-            <div className="w-8 h-8 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+            <div className="w-8 h-8 border-4 border-sky-200 border-t-transparent rounded-full animate-spin"></div>
             <h1 className="text-2xl font-bold">Aguarde um momento...</h1>
           </div>
         ) : (

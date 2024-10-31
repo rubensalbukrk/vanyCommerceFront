@@ -31,8 +31,8 @@ const Header = () => {
           <Button title="Catálogo" />
         </Link>
 
-        <Link href="/manager">
-          <Button title="Manager" />
+        <Link href="/login">
+          <Button title="Acesso" />
         </Link>
 
         <Link href="/cart">

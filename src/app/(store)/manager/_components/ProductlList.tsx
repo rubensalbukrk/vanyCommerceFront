@@ -27,7 +27,7 @@ const ProductList: React.FC = () => {
   const currentItems = products.slice(offset, offset + itemsPerPage);
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col max-w-full">
       <ul>
         {currentItems.map((item: Produto, index: number) => (
           <div

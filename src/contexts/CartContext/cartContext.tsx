@@ -3,7 +3,14 @@ import Produto from "@/model/produtos/produtos";
 import ItemCarrinho from "@/model/itemCarrinho/itemCarrinho";
 
 interface ContextCartProps {
-  user: { token: string, user: {} };
+  user: { 
+    token: string, 
+    user: {
+      name: string,
+      avatar: string,
+      email: string,
+    } 
+  };
   setUser: (user: any) => void;
   items: ItemCart[]
   itemsCount: number
@@ -168,7 +175,11 @@ img: require('../../assets/Oculos/oculos4.png')
   ]);
   const [user, setUser] = useState({
     token: "",
-    user: {},
+    user: {
+      name: "",
+      avatar: "",
+      email: ""
+    },
   });
   const [items, setItems] = useState<ItemCart[]>([]);
   const [descount, setDescount] = useState(0);

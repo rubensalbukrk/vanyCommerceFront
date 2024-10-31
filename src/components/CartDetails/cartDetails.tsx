@@ -23,7 +23,7 @@ const CartDetails = () => {
             Total
           </h1>
           <h1 className="text-start text-md justify-start font-bold text-black/80 text-wrap">
-            {total.toFixed(2)}
+            {total.toFixed(2).replace(".", ",")}
           </h1>
         </div>
 
@@ -32,7 +32,7 @@ const CartDetails = () => {
             Total com desconto
           </h1>
           <h1 className="text-start text-md justify-start font-bold text-black/80 text-wrap">
-            R$ {descount.toFixed(2)}
+            R$ {descount.toFixed(2).replace(".", ",")}
           </h1>
         </div>
         <div className="flex flex-row justify-between">
