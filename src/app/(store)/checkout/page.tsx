@@ -55,7 +55,7 @@ const Checkout = () => {
               <div>
               <h1>{item.quantidade} unidade(s)</h1>
               <h1>
-                Desconto {item.produto.descount.toFixed(2).replace("0.", "")}%
+                Desconto {item.produto.descount.toString().replace("0.", "")}%
               </h1>
               </div>
             </div>

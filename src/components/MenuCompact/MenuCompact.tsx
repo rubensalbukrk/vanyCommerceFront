@@ -26,9 +26,9 @@ const CompactMenu = () => {
       </button>
 
       <nav
-        className={`w-48 absolute top-2 right-12 bg-sky-600 p-4 transition-transform duration-300 ${
+        className={`w-48 absolute top-2 left-12 bg-sky-600 p-4 transition-transform duration-300 ${
           isOpen ? "transform scale-100" : "transform scale-0"
-        } origin-top-right md:hidden rounded-lg`}
+        } origin-top-left md:hidden rounded-lg`}
       >
         <ul className="space-y-4 font-bold">
           <li>

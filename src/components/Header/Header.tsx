@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Button from "./Button/Button";
 import Logo from "@/assets/logo.svg";
-import Cart from "@/components/Cart/Cart";
+import ButtonCart from "@/components/Cart/Cart";
 import CompactMenu from "../MenuCompact/MenuCompact";
 
 const Header = () => {
@@ -12,9 +12,11 @@ const Header = () => {
       {/**MENU COMPACTO */}
       <nav className="flex fixed z-50 w-screen flex-row items-center justify-between px-4 sm:hidden
                 bg-white/30 backdrop-blur-md shadow-black/10 shadow-md">
-        <Logo />
-        <p className="text-2xl font-bold text- text-black/60">VANNY ÓCULOS</p>
         <CompactMenu />
+        <p className="text-2xl font-bold text- text-black/60">VANNY ÓCULOS</p>
+        <Link href="/cart">
+          <ButtonCart />
+        </Link> 
       </nav>
 
       <nav
@@ -36,7 +38,7 @@ const Header = () => {
         </Link>
 
         <Link href="/cart">
-          <Cart />
+          <ButtonCart />
         </Link>
       </nav>
     </header>
