@@ -5,31 +5,34 @@ import React, { useState } from "react";
 import colors from "tailwindcss/colors";
 import { BiDetail } from "react-icons/bi";
 import ReactPaginate from "react-paginate";
-import GetProdutos from "../../../../hooks/getProducts";
+import GetProducts from "@/hooks/getProducts";
 import Produto from "@/model/produtos/produtos";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { TbCirclePercentage } from "react-icons/tb";
 import { IoPricetagsOutline } from "react-icons/io5";
 import { MdOutlinePriceChange } from "react-icons/md";
+import { useCart } from "@/contexts/CartContext/cartContext";
 
 const itemsPerPage = 5;
 
 const ProductList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const products = GetProdutos() || [];
-
+  const {products} = useCart();
+  
   const handlePageClick = ({ selected }: { selected: number }) => {
     setCurrentPage(selected);
   };
 
   const offset = currentPage * itemsPerPage;
 
-  const currentItems = products.slice(offset, offset + itemsPerPage);
+  const currentItems = products?.slice(offset, offset + itemsPerPage);
 
   return (
-    <div className="flex flex-col max-w-full">
+    <div className="flex flex-col sm:w-full">
       <ul>
-        {currentItems.map((item: Produto, index: number) => (
+        {currentItems
+        ?.filter((item: Produto) => item) // Filtra itens que não são nulos/indefinidos
+        .map((item: Produto, index: number) => (
           <div
             key={index}
             className="flex my-2 flex-row bg-white/40 rounded-md justify-center items-center
@@ -73,7 +76,7 @@ const ProductList: React.FC = () => {
                 </div>
                 <div className="flex relative flex-row gap-x-2 items-start justify-start">
                   <SiQt size={16} color={colors.slate[700]} />
-                  <p className="text-slate-700 text-xs font-bold">2 uni.</p>
+                  <p className="text-slate-700 text-xs font-bold">{item.count} uni.</p>
                 </div>
               </div>
             </div>
@@ -85,7 +88,7 @@ const ProductList: React.FC = () => {
         previousLabel={"Anterior"}
         nextLabel={"Proxima"}
         breakLabel={"..."}
-        pageCount={Math.ceil(products.length / itemsPerPage)}
+        pageCount={Math.ceil(products?.length / itemsPerPage)}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={handlePageClick}

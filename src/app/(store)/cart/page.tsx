@@ -49,9 +49,9 @@ const Cart = () => {
       </div>
 
       <div className="flex flex-col px-2 py-4 pb-24 sm:px-14">
-        {items?.map((item) => (
+        {items?.map((item, index) => (
           <CartItem
-            key={item.produto.id}
+            key={index}
             item={item}
             quantidade={item.quantidade}
             adicionar={(item: ItemCarrinho) => addItem(item)}

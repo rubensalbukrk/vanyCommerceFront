@@ -10,6 +10,8 @@ import createProduct from "@/hooks/createProducts";
 import Header from "../../../components/Header/Header";
 import ProductList from "../manager/_components/ProductlList";
 import { useCart } from "@/contexts/CartContext/cartContext";
+import axios from "axios";
+import { api } from "@/services/api";
 
 interface ProductFormData {
   estoque: true;
@@ -17,19 +19,19 @@ interface ProductFormData {
   descrition: string;
   price: number;
   descount: number;
-  quantidade: number;
+  count: number;
   image: File | null;
 }
 
 const Manager = () => {
-  const { user } = useCart();
+  const { user, products, setProducts } = useCart();
   const [formData, setFormData] = useState<ProductFormData>({
     estoque: true,
     title: "",
     descrition: "",
     price: 0,
     descount: 0.0,
-    quantidade: 1,
+    count: 1,
     image: null,
   });
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -64,7 +66,7 @@ const Manager = () => {
     formDataToSend.append("descrition", formData.descrition);
     formDataToSend.append("price", formData.price.toString());
     formDataToSend.append("descount", formData.descount.toString());
-    formDataToSend.append("quantidade", formData.quantidade.toString());
+    formDataToSend.append("count", formData.count.toString());
 
     formData.image && formDataToSend.append("image", formData.image);
 
@@ -84,6 +86,15 @@ const Manager = () => {
     }
   }, [user, router]);
 
+  useEffect(() => {
+    async function _getProducts() {
+      const response = await axios
+        .get(`${api}/products`)
+        .then((response) => setProducts(response?.data?.Products));
+    }
+    _getProducts();
+  }, [setProducts]);
+
   return (
     <div className="w-screen bg-slate-100 justify-center items-center pb-10">
       <Header />
@@ -99,7 +110,7 @@ const Manager = () => {
       ) : (
         <div className="w-screen">
           <div
-            className="flex max-w-sm h-12 items-end px-4 gap-x-2 mt-20
+            className="flex max-w-sm h-12 items-end px-4 gap-x-2 mt-20 shadow-lg shadow-black/20
               bg-white rounded-lg sm:mt-28"
           >
             <Image
@@ -121,12 +132,11 @@ const Manager = () => {
             <MdManageAccounts />
             GERENCIAMENTO DA LOJA
           </h1>
-
-          <div className="flex flex-col sm:flex-row sm:justify-around gap-x-8">
+          <div className="flex flex-col sm:flex-row sm:justify-around">
             {/*LISTA DOS PRODUTOS */}
             <div
               className="flex flex-col px-2 py-2 gap-y-4 mt-8 bg-white rounded-md shadow-lg shadow-black/20 
-        "
+                        sm:w-6/12"
             >
               <h2 className="flex flex-row gap-x-2 px-2 font-bold text-start items-center text-2xl text-slate-700">
                 <FaRectangleList />
@@ -254,9 +264,9 @@ const Manager = () => {
                         </label>
                         <input
                           type="number"
-                          id="quantidade"
-                          name="quantidade"
-                          value={formData.quantidade}
+                          id="count"
+                          name="count"
+                          value={formData.count}
                           onChange={handleInputChange}
                           className="w-12 p-2 border rounded-md "
                           required
@@ -267,7 +277,6 @@ const Manager = () => {
                 </form>
               </div>
             </div>
-
           </div>
         </div>
       )}

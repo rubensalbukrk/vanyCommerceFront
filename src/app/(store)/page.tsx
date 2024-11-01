@@ -17,19 +17,45 @@ import Button from "../../components/Header/Button/Button";
 import Background from "../../assets/header-background.png";
 import Container from "../../components/Container/Container";
 import { useCart } from "@/contexts/CartContext/cartContext";
+import axios from "axios";
+import { api } from "@/services/api";
+import { useEffect } from "react";
 
 function App() {
-  const { products } = useCart();
+  const { products, setProducts } = useCart();
+
+  useEffect(() => {
+    async function _getProducts() {
+      const response = await axios
+        .get(`${api}/products`)
+        .then((response) => setProducts(response?.data?.Products));
+    }
+    _getProducts();
+  }, [setProducts]);
 
   return (
     <div className="w-screen justify-center items-center bg-slate-200">
       <Header />
 
       <Container>
-        <Image className="object-fill" alt="background" src={Background} />
+        <Image
+          width={100}
+          height={60}
+          className="object-fill"
+          alt="background"
+          src={Background}
+        />
       </Container>
 
-    
+      <Container className="w-flex flex-1 flex-col mt-2">
+        <h1 className="text-4xl font-bold text-black/80 sm:text-6xl ml-4 mb-4">
+          Ofertas
+        </h1>
+        <div className="w-full flex-row flex-wrap px-4 justify-center items-center">
+          <Slider />
+        </div>
+      </Container>
+
       <Container
         className="w-screen flex flex-col my-10 justify-center px-8 gap-x-8
                           sm:flex-col md:flex-row lg:flex-row "
@@ -46,7 +72,9 @@ function App() {
 
             <div className="h-full self-end">
               <Image
-                className="h-full self-end object-fill"
+                width={220}
+                height={80}
+                className="h-full self-end object-cover"
                 alt="Card item"
                 src={CardImage}
               />
@@ -57,6 +85,8 @@ function App() {
         <Card className="flex flex-1 w-full bg-sky-200 flex-row">
           <div className="flex w-full h-full px-4 flex-row justify-evenly cursor-pointer">
             <Image
+              width={220}
+              height={80}
               className="self-end object-cover"
               alt="card item"
               src={CardImage2}
@@ -64,7 +94,9 @@ function App() {
 
             <div className="flex h-full flex-col justify-center items-center gap-y-2 py-4">
               <div className="flex flex-col">
-                <h1 className="text-slate-600 text-2xl sm:text-4xl">Óculos com</h1>
+                <h1 className="text-slate-600 text-2xl sm:text-4xl">
+                  Óculos com
+                </h1>
                 <h1 className="text-slate-600 font-bold text-2xl sm:text-4xl">
                   lentes inclusas
                 </h1>
@@ -75,30 +107,21 @@ function App() {
             </div>
           </div>
         </Card>
-        
       </Container>
 
       <Container className="w-screen">
-        <div className="flex flex-col gap-x-20 sm:flex-row">
-          <div className="w-full flex flex-col gap-y-4 items-center justify-center">
-            <h1 className="text-zinc-700 font-semibold text-4xl sm:text-6xl">
-              NOVAS COLEÇÕES
-            </h1>
-            <h1 className="text-zinc-700 text-3xl mb-2 sm:text-5xl">
-              Todos os estilos para você <br />
-              e sua família!
-            </h1>
-          </div>
-          <Image
-            src={Collections}
-            alt="coleções"
-            className="shadow-black/20 shadow-md rounded-lg"
-          />
+        <div className="flex flex-col gap-x-20 sm:flex-row items-center justify-center">
+          <h1 className="text-zinc-700 font-semibold text-4xl sm:text-6xl">
+            NOVAS COLEÇÕES
+          </h1>
+          <h1 className="text-zinc-700 text-3xl mb-2 sm:text-5xl">
+            Todos os estilos para você <br />e sua família!
+          </h1>
         </div>
       </Container>
 
       <Container className="flex-1 w-full flex flex-col justify-center items-center">
-      <Separator />
+        <Separator />
         <h1 className="text-4xl font-bold text-black/80 sm:text-6xl">
           Proteção UV-400
         </h1>
@@ -108,39 +131,18 @@ function App() {
         <Separator />
       </Container>
 
-     
-
       <Container className="flex flex-col justify-center items-center ">
-        <div className="flex w-screen justify-center items-center">
-          <Image
-            src={Oculos2}
-            alt="image"
-            className="shadow-black/5 rounded-lg self-center shadow-md"
-          />
-        </div>
-        <div className="flex flex-1 h-96 mt-4 px-8 justify-center items-center ">
-          <h1 className="text-xl text-black/70 text-center font-extralight sm:text-3xl">
-            Com óculos, você não só aprimora sua visão, mas também refina sua
-            presença com uma elegância sutil e inconfundível.
-          </h1>
-        </div>
-
-          <Image
-            src={Mulher}
-            alt="image"
-            className="bg-slate-200 mt-4 shadow-black/5 shadow-md rounded-2xl rounded-tl-2xl"
-          />
-     
-        <Separator />
-      </Container>
-
-      <Container className="w-flex flex-1 flex-col">
-        <h1 className="text-4xl font-bold text-black/80 sm:text-6xl ml-4 mb-4">
-        Ofertas
+        <Image
+          width={200}
+          height={200}
+          src={Mulher}
+          alt="image"
+          className="bg-slate-200 my-4 shadow-black/5 shadow-md rounded-2xl rounded-tl-2xl"
+        />
+        <h1 className="text-xl text-black/70 text-center font-extralight sm:text-3xl">
+          Com óculos, você não só aprimora sua visão, mas também refina sua
+          presença com uma elegância sutil e inconfundível.
         </h1>
-        <div className="w-full flex-row flex-wrap px-4 justify-center items-center">
-          <Slider />
-        </div>
         <Separator />
       </Container>
 
@@ -153,8 +155,10 @@ function App() {
         </div>
       </Container>
 
-      <footer className="flex w-screen flex-col justify-center items-center gap-y-8
-                      bg-gradient-to-b from-slate-200 to-sky-300">
+      <footer
+        className="flex w-screen flex-col justify-center items-center gap-y-8
+                      bg-gradient-to-b from-slate-200 to-sky-300"
+      >
         <div className="w-full flex flex-wrap px-8 gap-y-10 justify-between lg:px-20 ">
           <div className="flex flex-col">
             <h1 className="text-xl text-slate-900 font-semibold drop-shadow-lg">
@@ -194,7 +198,9 @@ function App() {
         </div>
 
         <div className="flex flex-1 flex-col justify-center items-center gap-y-4">
-          <h1 className="text-2xl text-black/80 font-bold">VANNY ÓCULOS E-Commerce</h1>
+          <h1 className="text-2xl text-black/80 font-bold">
+            VANNY ÓCULOS E-Commerce
+          </h1>
           <h1 className="text-2xl md:text-4xl text-center mb-10 text-black/80">
             Todos os direitos reservados ©2024
           </h1>

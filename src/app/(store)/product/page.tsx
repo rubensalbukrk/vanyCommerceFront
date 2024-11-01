@@ -3,6 +3,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import Header from "../../../components/Header/Header";
 import CardItem from "@/components/CardItems/cardItems";
 import { useCart } from "@/contexts/CartContext/cartContext";
+import axios from "axios";
+import { api } from "@/services/api";
 
 const Product = () => {
   const { products } = useCart();
@@ -10,6 +12,8 @@ const Product = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  
+
 
   const loadMoreProducts = useCallback(() => {
     if (loading || !hasMore) return; 
@@ -50,17 +54,19 @@ const Product = () => {
         className="flex z-10 w-screen flex-row 
              justify-center items-center gap-x-12 gap-y-12 flex-wrap"
       >
-        {displayedProducts.map((item) => (
-          <CardItem
+        {displayedProducts.map((item, index) => (
+          <div key={index}>
+            <CardItem
             key={item.id}
             id={item.id}
-            avaiable={item.avaiable}
+            estoque={item.estoque}
             price={item.price}
             title={item.title}
             descount={item.descount}
             descrition={item.descrition}
             img={item.img}
           />
+          </div>
         ))}
       </div>
 

@@ -6,18 +6,19 @@ import ButtonCard from "./button/button";
 import { useCart } from "@/contexts/CartContext/cartContext";
 
 const CardItem = (props: Produto) => {
-    const {id, title, price, descount, descrition, avaiable, img} = props;
+    const {id, title, price, descount, descrition, estoque, img} = props;
     const {items, addItem} = useCart()
 
   return (
     <div
+      key={id}
       className="flex flex-col w-64 h-80 bg-white shadow-black/40 shadow-lg rounded-xl justify-between 
         transition duration-900 ease-linear
         hover:scale-110
         "
     >
       <div className="relative w-44 left-4 top-2 text-black text-xl">
-        <p>{avaiable ? "Disponível" : "Esgotado"}</p>
+        <p>{estoque ? "Disponível" : "Esgotado"}</p>
       </div>
 
       <Image
@@ -29,9 +30,9 @@ const CardItem = (props: Produto) => {
       />
       <div className="flex px-3 flex-col mb-2">
       <p className="text-black text-xl font-bold">{title}</p>
-      <p className="text-black">R$: {price.toFixed(2).replace(".", ",")}</p>
+      <p className="text-black">R$: {price.toString().replace(".", ",")}</p>
       <p className="text-zinc-400 font-bold">
-        Desconto {descount.toFixed(2).replace('0.', '')}%
+        Desconto {descount.toString().replace("0.", "")}%
       </p>
       </div>
       <ButtonCard onClick={() => {

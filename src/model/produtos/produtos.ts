@@ -1,9 +1,10 @@
 export default interface Produto {
     id?: number
-    avaiable: boolean
+    estoque: boolean | string | number
     title: string
     price: number
     descrition: string 
     descount: number
     img: any;
+    count?: number
 }
