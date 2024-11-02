@@ -97,7 +97,7 @@ const Checkout = () => {
           title="ENVIAR MEU PEDIDO"
           onClick={() =>
             window.open(
-              "https://wa.me/5583986731696?text=Olá%2C+estou+enviando+meu+pedido%3A%0D%0A%0D%0A📦+N°+PEDIDO:+222222+%0D%0A💳+TOTAL%3A+" + `R$ ${total}+ +%0D%0A` + "📍+ENDEREÇO%3A+" + `${address.address}` + "📍+BAIRRO%3A+" + `${address.city}` + "%0A+⏱️+Aguardando%20link%20de%20pagamento...%20obrigado!%0D%0A"
+              "https://wa.me/5583987904804?text=Olá%2C+estou+enviando+meu+pedido%3A%0D%0A%0D%0A📦+N°+PEDIDO:+222222+%0D%0A💳+TOTAL%3A+" + `R$ ${total}+ +%0D%0A` + "📍+ENDEREÇO%3A+" + `${address.address}` + "📍+BAIRRO%3A+" + `${address.city}` + "%0A+⏱️+Aguardando%20link%20de%20pagamento...%20obrigado!%0D%0A"
             )
           }
           className="flex w-64 my-4 text-lg self-center gap-x-0 justify-evenly shadow-lg shadow-green-400"

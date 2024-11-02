@@ -30,28 +30,51 @@ const CompactMenu = () => {
           isOpen ? "transform scale-100" : "transform scale-0"
         } origin-top-left md:hidden rounded-lg`}
       >
-        <div className="w-full h-20 bg-blue-800 rounded-lg mb-8">
-
+        <div className="flex w-full h-20 bg-blue-400 rounded-lg mb-8 items-center justify-center">
+          <h1 className="text-white font-extrabold text-3xl">MENU</h1>
         </div>
         <ul className="space-y-4 font-bold">
           <li>
             <Link href="/">
-              <p className="text-sky-600 text-2xl hover:text-gray-300">Inicio</p>
+              <p className="text-sky-600 text-2xl hover:text-gray-300">
+                Inicio
+              </p>
             </Link>
           </li>
           <li>
             <Link href="/product">
-              <p className="text-sky-600 text-2xl hover:text-gray-300">Catálogo</p>
+              <p className="text-sky-600 text-2xl hover:text-gray-300">
+                Catálogo
+              </p>
+            </Link>
+          </li>
+          <li>
+            <Link href="/product">
+              <p className="text-sky-600 text-2xl hover:text-gray-300">
+                Promoções
+              </p>
             </Link>
           </li>
           <li>
             <Link href="/cart">
-              <p className="text-sky-600 text-2xl hover:text-gray-300">Carrinho</p>
+              <p className="text-sky-600 text-2xl hover:text-gray-300">
+                Carrinho
+              </p>
             </Link>
           </li>
           <li>
+            <p
+              onClick={() => window.open("https://wa.me/5583987904804")}
+              className="text-sky-600 text-2xl hover:text-gray-300"
+            >
+              Contato
+            </p>
+          </li>
+          <li>
             <Link href="/login">
-              <p className="text-sky-600 text-2xl hover:text-gray-300">Login</p>
+              <p className="text-sky-600 mt-10 text-2xl hover:text-gray-300">
+                Login
+              </p>
             </Link>
           </li>
         </ul>
