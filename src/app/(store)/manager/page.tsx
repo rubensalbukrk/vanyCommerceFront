@@ -34,6 +34,7 @@ const Manager = () => {
     count: 1,
     image: null,
   });
+  const [productUpdated, setProductUpdated] = useState(false);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const router = useRouter();
@@ -79,6 +80,10 @@ const Manager = () => {
     }
   };
 
+  const handleUpdateProduct = () => {
+    setProductUpdated(prev => !prev)
+  }
+
   useEffect(() => {
     if (!user?.token) {
       router.push("/login");
@@ -89,11 +94,15 @@ const Manager = () => {
   useEffect(() => {
     async function _getProducts() {
       const response = await axios
-        .get(`${api}/products`)
+        .get(`${api}/products`,{
+          headers: {
+            'ngrok-skip-browser-warning': 'true'
+          }
+        })
         .then((response) => setProducts(response?.data?.Products));
     }
     _getProducts();
-  }, [setProducts]);
+  }, [productUpdated, setProducts]);
 
   return (
     <div className="w-screen bg-slate-100 justify-center items-center pb-10">
@@ -197,6 +206,7 @@ const Manager = () => {
                     </div>
                     <button
                       type="submit"
+                      onClick={() => handleUpdateProduct()}
                       className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
                     >
                       Criar

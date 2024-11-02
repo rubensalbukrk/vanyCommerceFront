@@ -6,15 +6,13 @@ import "swiper/css/effect-coverflow";
 import Payments from "@/assets/payments.png";
 import Card from "../../components/Cards/Cards";
 import Slider from "@/components/Slider/Slider";
-import Collections from "../../assets/family.jpg";
 import Header from "../../components/Header/Header";
 import CardImage from "../../assets/Cards/card1.png";
 import CardImage2 from "../../assets/Cards/card2.png";
-import Mulher from "../../assets/mulher-container3.png";
+import BannerWoman from "../../assets/Banner-home.png";
 import Separator from "@/components/Separator/Separator";
-import Oculos2 from "../../assets/oculos2-container3.png";
 import Button from "../../components/Header/Button/Button";
-import Background from "../../assets/header-background.png";
+import HeaderBackground from "../../assets/header-background.png";
 import Container from "../../components/Container/Container";
 import { useCart } from "@/contexts/CartContext/cartContext";
 import axios from "axios";
@@ -27,7 +25,11 @@ function App() {
   useEffect(() => {
     async function _getProducts() {
       const response = await axios
-        .get(`${api}/products`)
+        .get(`${api}/products`,{
+          headers: {
+            'ngrok-skip-browser-warning': 'true'
+          }
+        })
         .then((response) => setProducts(response?.data?.Products));
     }
     _getProducts();
@@ -39,33 +41,40 @@ function App() {
 
       <Container>
         <Image
-          width={100}
-          height={60}
-          className="object-fill"
+          width={16}
+          height={9}
+          className="flex object-cover w-full h-40 sm:h-full sm:w-9/16 rounded-bl-xl rounded-br-xl"
           alt="background"
-          src={Background}
+          src={HeaderBackground}
         />
+        <h1
+          className="absolute top-20 text-white font-mono text-lg sm:top-44 sm:text-5xl
+                    animate-scalePulse"
+        >
+          O futuro está à sua vista!
+        </h1>
       </Container>
 
       <Container className="w-flex flex-1 flex-col mt-2">
-        <h1 className="text-4xl font-bold text-black/80 sm:text-6xl ml-4 mb-4">
+        <p className="text-4xl font-bold text-black/80 sm:text-6xl ml-4 mb-4">
           Ofertas
-        </h1>
+        </p>
         <div className="w-full flex-row flex-wrap px-4 justify-center items-center">
           <Slider />
         </div>
+        <Separator />
       </Container>
 
       <Container
-        className="w-screen flex flex-col my-10 justify-center px-8 gap-x-8
+        className="w-screen flex flex-col my-4 justify-center px-8 gap-x-8
                           sm:flex-col md:flex-row lg:flex-row "
       >
-        <Card className="flex flex-1 w-full bg-sky-600 flex-col mb-8 md:flex-1">
+        <Card className="flex flex-1 w-full bg-sky-300/20 flex-col mb-8 md:flex-1">
           <div className="flex flex-row h-full w-full px-3 justify-between items-center cursor-pointer sm:flex-row">
             <div className="flex flex-col mt-8 justify-center items-center">
               <h1 className="text-6xl">50%</h1>
               <h1 className="text-black/50 font-bold text-4xl">DESCONTO</h1>
-              <h1 className="text-white text-2xl my-2">
+              <h1 className="text-black/70 text-2xl my-2">
                 Selecionamos para você!
               </h1>
             </div>
@@ -109,13 +118,14 @@ function App() {
         </Card>
       </Container>
 
-      <Container className="w-screen">
+      <Container className="w-screen flex-col px-4">
+        <Separator />
         <div className="flex flex-col gap-x-20 sm:flex-row items-center justify-center">
           <h1 className="text-zinc-700 font-semibold text-4xl sm:text-6xl">
             NOVAS COLEÇÕES
           </h1>
-          <h1 className="text-zinc-700 text-3xl mb-2 sm:text-5xl">
-            Todos os estilos para você <br />e sua família!
+          <h1 className="text-zinc-700 text-3xl mb-2 sm:text-5xl self-center text-center">
+            Todos os estilos para você e sua família!
           </h1>
         </div>
       </Container>
@@ -131,13 +141,13 @@ function App() {
         <Separator />
       </Container>
 
-      <Container className="flex flex-col justify-center items-center ">
+      <Container className="flex flex-col justify-center items-center px-8 sm:px-16">
         <Image
-          width={200}
+          width={400}
           height={200}
-          src={Mulher}
+          src={BannerWoman}
           alt="image"
-          className="bg-slate-200 my-4 shadow-black/5 shadow-md rounded-2xl rounded-tl-2xl"
+          className="bg-slate-200 my-4 shadow-black/5 shadow-md rounded-2xl rounded-tl-2xl sm:w-full sm:object-cover"
         />
         <h1 className="text-xl text-black/70 text-center font-extralight sm:text-3xl">
           Com óculos, você não só aprimora sua visão, mas também refina sua

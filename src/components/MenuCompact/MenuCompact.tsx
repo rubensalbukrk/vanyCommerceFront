@@ -17,38 +17,41 @@ const CompactMenu = () => {
         className="text-white mt-2 mr-2 focus:outline-none"
       >
         {isOpen ? (
-          <div className="flex w-8 h-8 rounded-full justify-center items-center bg-blue-400">
-            <FaTimes size={28} color="white" />
+          <div className="flex w-9 h-9 mb-2 rounded-full justify-center items-center bg-blue-500">
+            <FaTimes size={26} color="white" />
           </div>
         ) : (
-          <FaBars size={34} color={colors.sky[400]} />
+          <FaBars size={30} color={colors.sky[500]} className="mb-1" />
         )}
       </button>
 
       <nav
-        className={`w-48 absolute top-2 left-12 bg-sky-600 p-4 transition-transform duration-300 ${
+        className={`w-72 h-screen absolute top-0 left-14 bg-white/95 backdrop-blur-2xl shadow-black/20 shadow-lg p-4 transition-transform duration-300 ${
           isOpen ? "transform scale-100" : "transform scale-0"
         } origin-top-left md:hidden rounded-lg`}
       >
+        <div className="w-full h-20 bg-blue-800 rounded-lg mb-8">
+
+        </div>
         <ul className="space-y-4 font-bold">
           <li>
             <Link href="/">
-              <p className="text-white hover:text-gray-300">Inicio</p>
+              <p className="text-sky-600 text-2xl hover:text-gray-300">Inicio</p>
             </Link>
           </li>
           <li>
             <Link href="/product">
-              <p className="text-white hover:text-gray-300">Produtos</p>
+              <p className="text-sky-600 text-2xl hover:text-gray-300">Catálogo</p>
             </Link>
           </li>
           <li>
             <Link href="/cart">
-              <p className="text-white hover:text-gray-300">Carrinho</p>
+              <p className="text-sky-600 text-2xl hover:text-gray-300">Carrinho</p>
             </Link>
           </li>
           <li>
             <Link href="/login">
-              <p className="text-white hover:text-gray-300">Login</p>
+              <p className="text-sky-600 text-2xl hover:text-gray-300">Login</p>
             </Link>
           </li>
         </ul>

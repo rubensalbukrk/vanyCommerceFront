@@ -71,14 +71,26 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        jump: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        scalePulse: {
+          '0%, 100%': { transform: 'scale(1)' }, // Começa e termina com escala normal
+          '50%': { transform: 'scale(1.2)' },    // No meio, aumenta 20%
+        },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        "accordion-down": "accordion-down 3s ease-out",
+        "accordion-up": "accordion-up 3s ease-out infinite",
+        "jump": 'animate-rotate-x animate-infinite',
+        "scalePulse": 'scalePulse 3s ease-in-out infinite',
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate")
+  ],
 } satisfies Config
 
 export default config

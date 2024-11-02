@@ -52,7 +52,7 @@ const Slider: React.FC = () => {
               src={item.produto.img}
               alt={item.produto.title}
               width={200} // Proporção de 16:9, por exemplo
-              height={120} // O Next.js ajusta a altura automaticamente
+              height={170} // O Next.js ajusta a altura automaticamente
             />
             <div className="flex flex-col">
               <DrawerTitle className="text-3xl text-start">
@@ -149,7 +149,7 @@ const Slider: React.FC = () => {
         >
           <div className="bg-white rounded-md pt-4 cursor-pointer">
             <p className="absolute z-20 top-0 left-0 px-1 text-white text-xs rounded-t-md rounded-br-md bg-red-500 sm:text-lg">
-              -{produto.descount}%
+              -{produto.descount.toString().replace("0.", "")}%
             </p>
             <Image
               src={produto.img}
