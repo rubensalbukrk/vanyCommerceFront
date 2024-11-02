@@ -13,7 +13,7 @@ const CardRecent: React.FC<CardRecentProps> = ({
   price,
   descount,
   descrition,
-  avaiable,
+  estoque,
   img,
   className,
 }) => {
