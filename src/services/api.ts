@@ -1,1 +1,1 @@
-export const api = "https://b363-2804-61c4-f572-8d00-66db-8530-ff8d-d56c.ngrok-free.app/v1"
+export const api = "https://vannycommerce-backend.vercel.app/v1"
