@@ -1,4 +1,4 @@
-sese"use client";
+"use client";
 import "../globals.css";
 import Image from "next/image";
 import "swiper/swiper-bundle.css";
