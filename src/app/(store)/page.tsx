@@ -1,4 +1,4 @@
-se"use client";
+sese"use client";
 import "../globals.css";
 import Image from "next/image";
 import "swiper/swiper-bundle.css";
@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     async function _getProducts() {
       const response = await axios
-        .get(`${api}/products`})
+        .get(`${api}/products`)
         .then((response) => setProducts(response?.data?.Products));
     }
     _getProducts();
