@@ -1,4 +1,4 @@
-"use client";
+se"use client";
 import "../globals.css";
 import Image from "next/image";
 import "swiper/swiper-bundle.css";
@@ -25,11 +25,7 @@ function App() {
   useEffect(() => {
     async function _getProducts() {
       const response = await axios
-        .get(`${api}/products`,{
-          headers: {
-            'ngrok-skip-browser-warning': 'true'
-          }
-        })
+        .get(`${api}/products`})
         .then((response) => setProducts(response?.data?.Products));
     }
     _getProducts();
