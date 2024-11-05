@@ -1,6 +1,7 @@
 import React, {
   createContext,
   useContext,
+  useEffect,
   useState,
 } from "react";
 import Produto from "@/model/produtos/produtos";
@@ -44,6 +45,20 @@ export function CartProvider(props: any) {
   const [items, setItems] = useState<ItemCart[]>([]);
   const [descount, setDescount] = useState(0);
 
+useEffect(() => {
+  function calcularDescontoTotal() {
+    const totalDesconto = items.reduce((acc, item) => {
+      const desconto = item.produto.price * item.produto.descount;
+      const descontoPorProduto = item.produto.price - desconto;
+      const descontoTotalPorProduto = descontoPorProduto * item.quantidade;
+      return acc + descontoTotalPorProduto;
+    }, 0);
+  
+    setDescount(totalDesconto); // Atualizando o estado do desconto total
+  }
+  calcularDescontoTotal();
+},[items])
+
   const addItem = (item: ItemCarrinho) => {
     const indice = items.findIndex((i) => i.produto.id === item.produto.id);
 
@@ -57,30 +72,35 @@ export function CartProvider(props: any) {
       novoItens[indice].quantidade++;
       setItems(novoItens);
     }
-    calcularDesconto(item.produto.price, item.produto.descount);
+      //calcularDesconto(item.produto.price, item.produto.descount, item.quantidade)
+
   };
+
+
   const removerItem = (produto: Produto) => {
     const novosItems = items
       .map((i) => {
         if (i.produto.id === produto.id) {
           i.quantidade--;
+          //retirarDesconto(produto.price, produto.descount, i.quantidade);
         }
         return i;
       })
       .filter((i) => i.quantidade > 0);
     setItems(novosItems);
-    retirarDesconto(produto.price, produto.descount);
+    
   };
 
-  function calcularDesconto(valor: number, descountItem: number) {
+  function calcularDesconto(valor: number, descountItem: number, quantidade: number) {
     const desconto = valor * descountItem;
     const valorComDesconto = valor - desconto;
-    setDescount(valorComDesconto + descount);
+    setDescount((valorComDesconto * quantidade));
   }
-  function retirarDesconto(valor: number, descountItem: number) {
+
+  function retirarDesconto(valor: number, descountItem: number, quantidade: number) {
     const desconto = valor * descountItem;
     const valorComDesconto = valor - desconto;
-    setDescount(descount - valorComDesconto);
+    setDescount((valorComDesconto * quantidade));
   }
 
   return (
