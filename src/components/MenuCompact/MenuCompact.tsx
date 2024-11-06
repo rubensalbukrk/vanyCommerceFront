@@ -49,7 +49,7 @@ const CompactMenu = () => {
             </Link>
           </li>
           <li>
-            <Link href="/product">
+            <Link href="/promotions">
               <p className="text-sky-600 text-2xl hover:text-gray-300">
                 Promoções
               </p>

@@ -141,7 +141,9 @@ const Slider: React.FC = () => {
       loop={true}
       className="flex w-full justify-center items-center"
     >
-      {products?.map((produto: Produto, index: number) => (
+      {products?.
+      filter(item => item.descount > 0)
+      .map((produto: Produto, index: number) => (
         <SwiperSlide
           key={index}
           style={{ width: "20%" }}
@@ -157,11 +159,11 @@ const Slider: React.FC = () => {
               width={80}
               height={80}
               layout="responsive"
-              className="flex self-center rounded-md"
+              className="flex self-center rounded-tl-md rounded-tr-md"
             />
-            <div className="flex flex-row gap-x-1 justify-center items-center">
-              <BsEye size={18} color={colors.sky[400]} />
-              <p className="text-xs sm:text-lg text-sky-400 hover:underline">
+            <div className="flex flex-row gap-x-1 bg-sky-400 rounded-bl-md rounded-br-md justify-center items-center">
+              <BsEye size={18} color="white" />
+              <p className="text-xs sm:text-lg text-white hover:underline">
                 Ver
               </p>
             </div>

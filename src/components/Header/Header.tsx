@@ -33,6 +33,10 @@ const Header = () => {
           <Button title="Catálogo" />
         </Link>
 
+        <Link href="/promotions">
+          <Button title="Promoções" />
+        </Link>
+
         <Link href="/login">
           <Button title="Acesso" />
         </Link>

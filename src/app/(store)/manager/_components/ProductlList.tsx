@@ -30,12 +30,12 @@ const ProductList: React.FC = () => {
   const offset = currentPage * itemsPerPage;
 
   let currentItems = products?.slice(offset, offset + itemsPerPage);
-   
+
   async function _getProducts() {
-      const response = await axios
-        .get(`${api}/products`)
-        .then((response) => setProducts(response?.data?.Products));
-    }
+    const response = await axios
+      .get(`${api}/products`)
+      .then((response) => setProducts(response?.data?.Products));
+  }
 
   return (
     <div className="flex flex-col sm:w-full">
@@ -63,10 +63,8 @@ const ProductList: React.FC = () => {
                       {item.title}
                     </p>
                     <RiDeleteBinLine
-                    className="cursor-pointer"
-                      onClick={() => [
-                        deleteProduct(item.id),
-                        _getProducts()]}
+                      className="cursor-pointer"
+                      onClick={() => [deleteProduct(item.id), _getProducts()]}
                       size={16}
                       color={colors.slate[700]}
                     />
@@ -82,13 +80,13 @@ const ProductList: React.FC = () => {
                 <div className="flex flex-row justify-between items-start">
                   <p className="flex flex-row items-center text-slate-500 text-xs font-bold gap-x-2 ">
                     <TbCirclePercentage size={16} color={colors.slate[500]} />
-                    Desconto: {item.descount}%
+                    Desconto: {item.descount.toString() === "0.00" ? "Não" : `${item.descount.toString().replace("0.", "")} %` }
                   </p>
 
                   <div className="flex flex-row gap-x-2 items-start justify-start">
                     <MdOutlinePriceChange size={16} color={colors.green[700]} />
                     <p className="text-green-700 text-xs font-bold">
-                      R$ {item.price}
+                      R$ {item.price.toString().replace(".", ",")}
                     </p>
                   </div>
                   <div className="flex relative flex-row gap-x-2 items-start justify-start">
@@ -98,14 +96,14 @@ const ProductList: React.FC = () => {
                     </p>
                   </div>
                   <div className="flex relative flex-row gap-x-2 items-start justify-start">
-                    <p className="text-slate-700 text-xs font-bold">
-                      Estoque
-                    </p>
-                    <Switch 
-                    checked={item.estoque} 
-                    onCheckedChange={() => [
-                      updateProduct(item.id, item.count, !item.estoque),
-                      _getProducts()]} />
+                    <p className="text-slate-700 text-xs font-bold">Estoque</p>
+                    <Switch
+                      checked={item.estoque}
+                      onCheckedChange={() => [
+                        updateProduct(item.id, item.count, !item.estoque),
+                        _getProducts(),
+                      ]}
+                    />
                   </div>
                 </div>
               </div>

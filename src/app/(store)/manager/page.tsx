@@ -17,7 +17,7 @@ interface ProductFormData {
   estoque: true;
   title: string;
   descrition: string;
-  price: number;
+  price: string;
   descount: number;
   count: number;
   image: File | null;
@@ -25,11 +25,12 @@ interface ProductFormData {
 
 const Manager = () => {
   const { user, products, setProducts } = useCart();
+  const [valor, setValor] = useState('');
   const [formData, setFormData] = useState<ProductFormData>({
     estoque: true,
     title: "",
     descrition: "",
-    price: 0,
+    price: valor,
     descount: 0.0,
     count: 1,
     image: null,
@@ -57,6 +58,31 @@ const Manager = () => {
     },
     []
   );
+
+  function handleInputChangeMoeda(e: React.ChangeEvent<HTMLInputElement>) {
+    const valorDigitado = e.target.value;
+    const valorSemFormatacao = valorDigitado.replace(/[^\d]/g, '');
+    if (valorSemFormatacao === '') {
+      setValor('');
+      return;
+    }
+    setFormData({...formData, price: formatarParaReal(valorSemFormatacao)})
+    // Formatar o valor para moeda e atualizar o estado
+    setValor(formatarParaReal(valorSemFormatacao));
+  }
+
+  function formatarParaReal(valor: string): string {
+    const valorNumerico = parseFloat(valor.replace(/[^\d]/g, '')) / 100;
+
+    if (isNaN(valorNumerico)) {
+      return '';
+    }
+
+    return valorNumerico.toLocaleString('pt-BR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,11 +120,7 @@ const Manager = () => {
   useEffect(() => {
     async function _getProducts() {
       const response = await axios
-        .get(`${api}/products`,{
-          headers: {
-            'ngrok-skip-browser-warning': 'true'
-          }
-        })
+        .get(`${api}/products`)
         .then((response) => setProducts(response?.data?.Products));
     }
     _getProducts();
@@ -243,11 +265,12 @@ const Manager = () => {
                         Preço
                       </label>
                       <input
-                        type="number"
                         id="price"
                         name="price"
-                        value={formData.price}
-                        onChange={handleInputChange}
+                        type="text"
+                        value={valor}
+                        onChange={handleInputChangeMoeda}
+                        placeholder="Digite o valor"
                         className="w-full p-2 border rounded-md"
                         required
                       />

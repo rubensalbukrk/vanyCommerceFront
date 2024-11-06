@@ -17,10 +17,6 @@ const CardItem = (props: Produto) => {
         hover:scale-110
         "
     >
-      <div className="relative w-44 left-4 top-2 text-black text-xl">
-        <p>{estoque ? "Disponível" : "Esgotado"}</p>
-      </div>
-
       <Image
         src={img}
         alt="item product"
@@ -32,7 +28,7 @@ const CardItem = (props: Produto) => {
         <p className="text-black text-xl font-bold">{title}</p>
         <p className="text-black">R$: {price.toString().replace(".", ",")}</p>
         <p className="text-zinc-400 font-bold">
-          Desconto {descount.toString().replace("0.", "")}%
+          {descount.toString() === "0.00" ? "Sem desconto" : `Desconto ${descount.toString().replace("0.", "")}%`}
         </p>
       </div>
       {estoque ? (

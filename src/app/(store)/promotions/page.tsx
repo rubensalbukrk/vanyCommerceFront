@@ -47,14 +47,15 @@ const Product = () => {
     <div className="flex-col w-full h-full bg-slate-200 justify-center items-center">
       <Header />
       <h1 className="w-screen my-20 text-center text-3xl px-3 font-sans z-10 text-black/70 drop-shadow-lg sm:text-4xl sm:mt-36">
-        CONFIRA NOSSO CATÁLOGO
+        NOSSAS PROMOÇÕES SEMANAIS
       </h1>
 
       <div
         className="flex z-10 w-screen flex-row 
              justify-center items-center gap-x-12 gap-y-12 flex-wrap"
       >
-        {displayedProducts.map((item, index) => (
+        {displayedProducts.filter(item => item.descount.toString() !== "0.00")
+        .map((item, index) => (
           <div key={index}>
             <CardItem
             key={item.id}

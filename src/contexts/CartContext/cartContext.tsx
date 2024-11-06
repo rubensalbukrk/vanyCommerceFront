@@ -59,6 +59,7 @@ useEffect(() => {
   calcularDescontoTotal();
 },[items])
 
+
   const addItem = (item: ItemCarrinho) => {
     const indice = items.findIndex((i) => i.produto.id === item.produto.id);
 
@@ -72,36 +73,19 @@ useEffect(() => {
       novoItens[indice].quantidade++;
       setItems(novoItens);
     }
-      //calcularDesconto(item.produto.price, item.produto.descount, item.quantidade)
-
   };
-
-
   const removerItem = (produto: Produto) => {
     const novosItems = items
       .map((i) => {
         if (i.produto.id === produto.id) {
           i.quantidade--;
-          //retirarDesconto(produto.price, produto.descount, i.quantidade);
         }
         return i;
       })
       .filter((i) => i.quantidade > 0);
     setItems(novosItems);
-    
   };
 
-  function calcularDesconto(valor: number, descountItem: number, quantidade: number) {
-    const desconto = valor * descountItem;
-    const valorComDesconto = valor - desconto;
-    setDescount((valorComDesconto * quantidade));
-  }
-
-  function retirarDesconto(valor: number, descountItem: number, quantidade: number) {
-    const desconto = valor * descountItem;
-    const valorComDesconto = valor - desconto;
-    setDescount((valorComDesconto * quantidade));
-  }
 
   return (
     <ContextCart.Provider
