@@ -16,17 +16,18 @@ const CartItem = (props: CartItemProps) => {
   return (
     <div
       key={props.item.produto.id}
-      className="flex flex-row px-2 h-auto my-2 bg-white shadow-black/10 shadow-sm rounded-xl
+      className="flex flex-row pr-2 items-center h-auto my-2 bg-white shadow-black/10 shadow-sm rounded-xl
     md:mx-20 lg:mx-32"
     >
       <Image
-        width={60} // Proporção de 16:9, por exemplo
-        height={60} // O Next.js ajusta a altura automaticamente
+      width={40}
+      height={20}
         src={props.item?.produto.img}
         alt="item product"
-        className="object-fill rounded-xl sm:w-40"
+        layout="cover"
+        className="w-48 h-full rounded-xl"
       />
-      <div className="flex w-full px-3 flex-col">
+      <div className="flex w-full h-full px-3 flex-col">
         <p className="text-black text-xl font-bold">
           {props.item?.produto.title}
         </p>

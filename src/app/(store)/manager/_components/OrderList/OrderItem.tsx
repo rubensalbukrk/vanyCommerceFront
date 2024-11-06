@@ -22,16 +22,16 @@ export interface OrderItemProps {
 }
 
 const colors = [
-  "red-300",
-  "blue-300",
-  "green-300",
-  "yellow-300",
-  "purple-300",
-  "pink-300",
-  "indigo-300",
-  "cyan-300",
-  "orange-300",
-  "lime-300",
+  "bg-red-300",
+  "bg-blue-300",
+  "bg-green-300",
+  "bg-yellow-300",
+  "bg-purple-300",
+  "bg-pink-300",
+  "bg-indigo-300",
+  "bg-cyan-300",
+  "bg-orange-300",
+  "bg-lime-300",
 ];
 
 const OrderItem = (props: OrderItemProps) => {
@@ -68,7 +68,7 @@ const OrderItem = (props: OrderItemProps) => {
               colors[Math.floor(Math.random() * colors.length)];
             return (
               <div key={item.id} className="flex min-w-min">
-                <p className={`px-2 bg-${randomColor} rounded-lg shadow-${randomColor} shadow-md`}>{item.title}</p>
+                <p className={`px-2 ${randomColor} rounded-lg shadow-black/20 shadow-md`}>{item.title}</p>
               </div>
             );
           })}

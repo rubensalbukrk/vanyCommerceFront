@@ -15,17 +15,14 @@ import {
 import Image from "next/image";
 
 const Checkout = () => {
-  const { items, itemsCount } = useCart();
+  const { items, itemsCount, descount } = useCart();
   const [clientDetail, setClientDetail] = useState({
     name: "",
     address: "",
     city: "",
     phone: "",
   });
-  const total = items
-    .reduce((acc, item) => acc + item.produto.price * item?.quantidade, 0)
-    .toFixed(2)
-    .replace(".", ",");
+  const total = descount.toFixed(2).replace(".", ",");
 
   let pedidoDetails = {
     items: [...items],
@@ -52,6 +49,7 @@ const Checkout = () => {
              justify-center items-center gap-x-12 gap-y-4 flex-wrap py-4"
       >
         {items.map((item) => {
+          
           // Calcula o desconto apenas para o item atual
           const descount = item.produto.price * (item.produto.descount);
           const totalDescount = descount * item.quantidade;
