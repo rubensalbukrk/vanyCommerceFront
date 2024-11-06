@@ -17,8 +17,6 @@ import { useCart } from "@/contexts/CartContext/cartContext";
 import updateProduct from "@/hooks/updateProduct";
 import { api } from "@/services/api";
 
-const itemsPerPage = 5;
-
 const ProductList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const { products, setProducts } = useCart();
@@ -27,6 +25,7 @@ const ProductList: React.FC = () => {
     setCurrentPage(selected);
   };
 
+  const itemsPerPage = 5;
   const offset = currentPage * itemsPerPage;
 
   let currentItems = products?.slice(offset, offset + itemsPerPage);
@@ -45,7 +44,7 @@ const ProductList: React.FC = () => {
           .map((item: Produto, index: number) => (
             <div
               key={index}
-              className="flex my-2 flex-row bg-white/40 rounded-md justify-center items-center
+              className="flex my-2 flex-row bg-slate-100 rounded-md justify-center items-center
           shadow-black/20 shadow-sm"
             >
               <Image
@@ -62,13 +61,20 @@ const ProductList: React.FC = () => {
                       <IoPricetagsOutline size={16} color={colors.slate[500]} />
                       {item.title}
                     </p>
-                    <RiDeleteBinLine
-                      className="cursor-pointer"
-                      onClick={() => [deleteProduct(item.id), _getProducts()]}
-                      size={16}
-                      color={colors.slate[700]}
+                    <div className="flex relative flex-row gap-x-2 pr-3 items-center justify-center">
+                    <p className="text-slate-700 text-xs font-bold">Estoque</p>
+                    <Switch
+    
+                    className="w-8 h-3"
+                      checked={item.estoque}
+                      onCheckedChange={() => [
+                        updateProduct(item.id, item.count, !item.estoque),
+                        _getProducts(),
+                      ]}
                     />
                   </div>
+                  </div>
+                  
                   <div className="flex flex-row overflow-hidden items-center gap-x-2">
                     <BiDetail size={16} color={colors.slate[500]} />
                     <p className="w-full text-sm line-clamp-2 overflow-y-scroll">
@@ -95,16 +101,13 @@ const ProductList: React.FC = () => {
                       {item.count} uni.
                     </p>
                   </div>
-                  <div className="flex relative flex-row gap-x-2 items-start justify-start">
-                    <p className="text-slate-700 text-xs font-bold">Estoque</p>
-                    <Switch
-                      checked={item.estoque}
-                      onCheckedChange={() => [
-                        updateProduct(item.id, item.count, !item.estoque),
-                        _getProducts(),
-                      ]}
+                  <RiDeleteBinLine
+                      className="cursor-pointer"
+                      onClick={() => [deleteProduct(item.id), _getProducts()]}
+                      size={16}
+                      color={colors.slate[700]}
                     />
-                  </div>
+
                 </div>
               </div>
             </div>

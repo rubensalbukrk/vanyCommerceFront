@@ -1,17 +1,22 @@
 "use client";
 import axios from "axios";
+import React, { 
+  useCallback, 
+  useState, 
+  useEffect } from "react";
 import Image from "next/image";
 import { api } from "@/services/api";
-import React, { useCallback, useState, useEffect } from "react";
 import { CiImageOn } from "react-icons/ci";
 import { IoCreate } from "react-icons/io5";
 import { useRouter } from "next/navigation";
+import { TbTruckDelivery } from "react-icons/tb";
 import { MdManageAccounts } from "react-icons/md";
 import { FaRectangleList } from "react-icons/fa6";
 import createProduct from "@/hooks/createProducts";
 import Header from "../../../components/Header/Header";
 import ProductList from "../manager/_components/ProductlList";
 import { useCart } from "@/contexts/CartContext/cartContext";
+import OrderList from "./_components/OrderList/OrderList";
 
 interface ProductFormData {
   estoque: true;
@@ -25,7 +30,7 @@ interface ProductFormData {
 
 const Manager = () => {
   const { user, products, setProducts } = useCart();
-  const [valor, setValor] = useState('');
+  const [valor, setValor] = useState("");
   const [formData, setFormData] = useState<ProductFormData>({
     estoque: true,
     title: "",
@@ -61,24 +66,24 @@ const Manager = () => {
 
   function handleInputChangeMoeda(e: React.ChangeEvent<HTMLInputElement>) {
     const valorDigitado = e.target.value;
-    const valorSemFormatacao = valorDigitado.replace(/[^\d]/g, '');
-    if (valorSemFormatacao === '') {
-      setValor('');
+    const valorSemFormatacao = valorDigitado.replace(/[^\d]/g, "");
+    if (valorSemFormatacao === "") {
+      setValor("");
       return;
     }
-    setFormData({...formData, price: formatarParaReal(valorSemFormatacao)})
+    setFormData({ ...formData, price: formatarParaReal(valorSemFormatacao) });
     // Formatar o valor para moeda e atualizar o estado
     setValor(formatarParaReal(valorSemFormatacao));
   }
 
   function formatarParaReal(valor: string): string {
-    const valorNumerico = parseFloat(valor.replace(/[^\d]/g, '')) / 100;
+    const valorNumerico = parseFloat(valor.replace(/[^\d]/g, "")) / 100;
 
     if (isNaN(valorNumerico)) {
-      return '';
+      return "";
     }
 
-    return valorNumerico.toLocaleString('pt-BR', {
+    return valorNumerico.toLocaleString("pt-BR", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
@@ -107,8 +112,8 @@ const Manager = () => {
   };
 
   const handleUpdateProduct = () => {
-    setProductUpdated(prev => !prev)
-  }
+    setProductUpdated((prev) => !prev);
+  };
 
   useEffect(() => {
     if (!user?.token) {
@@ -163,7 +168,19 @@ const Manager = () => {
             <MdManageAccounts />
             GERENCIAMENTO DA LOJA
           </h1>
-          <div className="flex flex-col sm:flex-row sm:justify-around">
+          <div className="flex flex-col flex-wrap sm:flex-row sm:justify-around sm:gap-x-4">
+            {/*LISTA DE PEDIDOS*/}
+            <div
+              className="flex flex-col px-2 py-2 gap-y-4 mt-8 bg-white rounded-md shadow-lg shadow-black/20 
+                        sm:w-6/12"
+            >
+              <h2 className="flex flex-row gap-x-2 px-2 font-bold text-start items-center text-2xl text-slate-700">
+                <TbTruckDelivery />
+                Pedidos pendentes
+              </h2>
+              <OrderList />
+            </div>
+
             {/*LISTA DOS PRODUTOS */}
             <div
               className="flex flex-col px-2 py-2 gap-y-4 mt-8 bg-white rounded-md shadow-lg shadow-black/20 
@@ -267,10 +284,11 @@ const Manager = () => {
                       <input
                         id="price"
                         name="price"
+                        inputMode="numeric"
                         type="text"
                         value={valor}
                         onChange={handleInputChangeMoeda}
-                        placeholder="Digite o valor"
+                        placeholder="0"
                         className="w-full p-2 border rounded-md"
                         required
                       />

@@ -42,18 +42,18 @@ export default function App() {
   }
 
   return (
-    <div className="w-screen bg-gradient-to-r from-sky-200 to-sky-500 justify-center items-center">
+    <div className="w-screen h-screen bg-gradient-to-r from-sky-200 to-sky-500 justify-center items-center">
       <Header />
 
-      <div className="flex flex-1 w-screen h-screen justify-center items-center">
+      <div className="flex w-screen h-full justify-center items-center">
         {loading ? (
-          <div className="flex flex-1 flex-col justify-center items-center self-center">
+          <div className="flex flex-col justify-center items-center self-center">
             <div className="w-8 h-8 border-4 border-sky-200 border-t-transparent rounded-full animate-spin"></div>
             <h1 className="text-2xl font-bold">Aguarde um momento...</h1>
           </div>
         ) : (
           <form
-            className="flex flex-2 flex-col w-80 gap-y-6 rounded-lg 
+            className="flex flex-col self-center w-80 mb-16 gap-y-6 rounded-lg 
                       bg-white/40 drop-shadow-md shadow-black/10 shadow-xl"
             action=""
           >
