@@ -1,10 +1,10 @@
 export default interface Produto {
-    id?: number
-    estoque: boolean | string | number
+    id: string
+    estoque: boolean
     title: string
     price: number
     descrition: string 
     descount: number
     img: any;
-    count?: number
+    count: number;
 }

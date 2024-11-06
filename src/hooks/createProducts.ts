@@ -5,11 +5,9 @@ export const createProduct = async (formDataToSend: FormData) => {
   try {
     const response = await axios.post(`${api}/products`, formDataToSend, {
       headers: {
-         'ngrok-skip-browser-warning': 'true',
         'Content-Type': 'multipart/form-data',
       },
     });
-
     return response.data;
     
   } catch (error) {

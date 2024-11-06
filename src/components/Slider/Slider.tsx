@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import {
   Drawer,
   DrawerClose,
@@ -9,7 +9,6 @@ import {
   DrawerTitle,
 } from "@/components/ui/drawer";
 import Image from "next/legacy/image";
-import { Button } from "../ui/button";
 import { BsEye } from "react-icons/bs";
 import colors from "tailwindcss/colors";
 import { Autoplay } from "swiper/modules";
@@ -32,19 +31,19 @@ const Slider: React.FC = () => {
   const [open, setOpen] = React.useState(true);
 
   const handleItemView = (produto: ItemCarrinho) => {
-    console.log(`QUANTIDADE: ${produto.quantidade}`);
+    setOpen(true);
     setSelectedItem(produto);
   };
   const handleClose = () => {
-    setSelectedItem(undefined);
+    setOpen(false);
   };
-  const DrawerItemView: React.FC<SliderItemViewProps> = ({ item }) => {
+  const DrawerItemView: React.FC<SliderItemViewProps> = memo(({ item }) => {
     return (
-      <Drawer open={open}>
+      <Drawer open={open} onOpenChange={handleClose}>
         <DrawerContent className="sm:mx-52 sm:w-8/12">
           <DrawerHeader
             className="flex flex-col py-0 pt-8
-          sm:flex-row sm:justify-center sm:items-center sm:gap-10"
+              sm:flex-row sm:justify-center sm:items-center sm:gap-10"
           >
             <Image
               className="object-cover self-center"
@@ -74,10 +73,12 @@ const Slider: React.FC = () => {
                 <div className="flex flex-row w-16 self-center h-16 items-center justify-between">
                   <button
                     onClick={() =>
-                      [setSelectedItem((previous: any) => ({
+                      setSelectedItem((previous: any) => ({
                         ...previous,
-                        quantidade: selectedItem  && selectedItem?.quantidade + 1,
-                      })), console.log(selectedItem)]
+                        quantidade: previous?.quantidade
+                          ? previous.quantidade + 1
+                          : 1,
+                      }))
                     }
                   >
                     <MdOutlineAddCircle size={22} color={colors.sky[500]} />
@@ -87,10 +88,13 @@ const Slider: React.FC = () => {
                   </h1>
                   <button
                     onClick={() =>
-                      [setSelectedItem((previous: any) => ({
+                      setSelectedItem((previous: any) => ({
                         ...previous,
-                        quantidade: selectedItem  && selectedItem?.quantidade - 1,
-                      })), console.log(selectedItem)]
+                        quantidade:
+                          previous?.quantidade && previous.quantidade > 1
+                            ? previous.quantidade - 1
+                            : 0,
+                      }))
                     }
                   >
                     <MdOutlineRemoveCircle size={22} color={colors.sky[500]} />
@@ -108,9 +112,8 @@ const Slider: React.FC = () => {
             <button
               className="flex w-full px-6 h-14 bg-blue-400 justify-between items-center rounded-bl-xl rounded-br-xl hover:bg-blue-500 transition duration-1000 ease-in-out active:bg-blue-700  rounded-xl sm:w-60"
               onClick={() => [
-                selectedItem &&
-                  addItem(selectedItem),
-                  handleClose
+                selectedItem && addItem(selectedItem),
+                handleClose(),
               ]}
             >
               <Image src={IconAddCart} alt="icon cart" className="w-8 h-6" />
@@ -120,7 +123,10 @@ const Slider: React.FC = () => {
         </DrawerContent>
       </Drawer>
     );
-  };
+  });
+
+  // Definindo o displayName para o componente memoizado
+  DrawerItemView.displayName = "DrawerItemView";
 
   return (
     <Swiper
@@ -141,17 +147,17 @@ const Slider: React.FC = () => {
           style={{ width: "20%" }}
           onClick={() => handleItemView({ produto: produto, quantidade: 1 })}
         >
-          <div className="bg-white rounded-md pt-4 cursor-pointer">
-            <p className="absolute z-20 top-0 left-0 px-1 text-white text-xs rounded-t-md rounded-br-md bg-red-500 sm:text-lg">
+          <div className="bg-white rounded-md mb-2 ml-1 cursor-pointer shadow-black/20 shadow-md">
+            <p className="absolute z-20 top-0 left-1 px-1 text-white text-xs rounded-t-md rounded-br-md bg-red-500 sm:text-lg">
               -{produto.descount.toString().replace("0.", "")}%
             </p>
             <Image
               src={produto.img}
               alt={produto.title}
               width={80}
-              height={60}
+              height={80}
               layout="responsive"
-              className="self-center rounded-md"
+              className="flex self-center rounded-md"
             />
             <div className="flex flex-row gap-x-1 justify-center items-center">
               <BsEye size={18} color={colors.sky[400]} />

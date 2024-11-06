@@ -44,7 +44,7 @@ const Product = () => {
   }, [loadMoreProducts, loading]);
 
   return (
-    <div className="flex-col w-full h-full bg-slate-200 justify-center items-center">
+    <div className="flex-col w-full h-screen bg-slate-200 justify-center items-center">
       <Header />
       <h1 className="w-screen my-20 text-center text-3xl px-3 font-sans z-10 text-black/70 drop-shadow-lg sm:text-4xl">
         CONFIRA NOSSO CATÁLOGO
@@ -65,6 +65,7 @@ const Product = () => {
             descount={item.descount}
             descrition={item.descrition}
             img={item.img}
+            count={item.count}
           />
           </div>
         ))}

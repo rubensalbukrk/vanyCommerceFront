@@ -1,1 +1,1 @@
-export const api = "https://vannycommerce-backend.vercel.app/v1"
+export const api = "https://vannycommerce-backend.vercel.app/v1";

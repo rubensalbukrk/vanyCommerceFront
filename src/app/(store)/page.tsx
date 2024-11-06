@@ -35,34 +35,17 @@ function App() {
     <div className="w-screen justify-center items-center bg-slate-200">
       <Header />
 
-      <Container>
-        <Image
-          width={16}
-          height={9}
-          className="flex object-cover w-full h-40 sm:h-full sm:w-9/16 rounded-bl-xl rounded-br-xl"
-          alt="background"
-          src={HeaderBackground}
-        />
-        <h1
-          className="absolute top-20 text-white font-mono text-lg sm:top-44 sm:text-5xl
-                    animate-scalePulse"
-        >
-          O futuro está à sua vista!
-        </h1>
-      </Container>
-
-      <Container className="w-flex flex-1 flex-col mt-2">
-        <p className="text-4xl font-bold text-black/80 sm:text-6xl ml-4 mb-4">
+      <Container className="w-screen flex-col mt-20">
+        <p className="text-4xl font-bold ml-4 mb-4 text-black/80 sm:text-6xl sm:mt-20 sm:px-8">
           Ofertas
         </p>
-        <div className="w-full flex-row flex-wrap px-4 justify-center items-center">
+        <div className="w-full flex-row flex-wrap px-4 justify-center items-center sm:px-4">
           <Slider />
         </div>
-        <Separator />
       </Container>
 
       <Container
-        className="w-screen flex flex-col my-4 justify-center px-8 gap-x-8
+        className="w-screen flex flex-col my-4 mt-8 justify-center px-8 gap-x-8
                           sm:flex-col md:flex-row lg:flex-row "
       >
         <Card className="flex flex-1 w-full bg-sky-300/20 flex-col mb-8 md:flex-1">

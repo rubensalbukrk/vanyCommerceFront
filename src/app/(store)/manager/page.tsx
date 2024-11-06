@@ -1,5 +1,7 @@
 "use client";
+import axios from "axios";
 import Image from "next/image";
+import { api } from "@/services/api";
 import React, { useCallback, useState, useEffect } from "react";
 import { CiImageOn } from "react-icons/ci";
 import { IoCreate } from "react-icons/io5";
@@ -10,8 +12,6 @@ import createProduct from "@/hooks/createProducts";
 import Header from "../../../components/Header/Header";
 import ProductList from "../manager/_components/ProductlList";
 import { useCart } from "@/contexts/CartContext/cartContext";
-import axios from "axios";
-import { api } from "@/services/api";
 
 interface ProductFormData {
   estoque: true;
