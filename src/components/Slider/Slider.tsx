@@ -12,7 +12,7 @@ import Image from "next/legacy/image";
 import { BsEye } from "react-icons/bs";
 import colors from "tailwindcss/colors";
 import { Autoplay } from "swiper/modules";
-import Produto from "@/model/produtos/produtos";
+import Produto from "@/model/Produtos/produtos";
 import { Swiper, SwiperSlide } from "swiper/react";
 import IconAddCart from "@/assets/CARTADDICON.png";
 import { CartItemProps } from "../CartItems/cartItem";

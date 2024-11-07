@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import ArrowIcon from "../../assets/arrow-right-black.png";
-import Produto from "@/model/produtos/produtos";
+import Produto from "@/model/Produtos/produtos";
 
 interface CardRecentProps extends Produto {
   className?: string;

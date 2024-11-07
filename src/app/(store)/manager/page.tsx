@@ -1,9 +1,6 @@
 "use client";
 import axios from "axios";
-import React, { 
-  useCallback, 
-  useState, 
-  useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import Image from "next/image";
 import { api } from "@/services/api";
 import { CiImageOn } from "react-icons/ci";
@@ -131,6 +128,7 @@ const Manager = () => {
     _getProducts();
   }, [productUpdated, setProducts]);
 
+ 
   return (
     <div className="w-screen bg-slate-100 justify-center items-center pb-10">
       <Header />

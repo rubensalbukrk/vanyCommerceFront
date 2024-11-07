@@ -3,9 +3,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import Header from "../../../components/Header/Header";
 import CardItem from "@/components/CardItems/cardItems";
 import { useCart } from "@/contexts/CartContext/cartContext";
-import axios from "axios";
-import { api } from "@/services/api";
-
 const Product = () => {
   const { products } = useCart();
   const [displayedProducts, setDisplayedProducts] = useState(products.slice(0, 10));

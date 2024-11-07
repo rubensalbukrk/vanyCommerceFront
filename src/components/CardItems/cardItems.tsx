@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Produto from "@/model/produtos/produtos";
+import Produto from "@/model/Produtos/produtos";
 import Image from "next/image";
 import ButtonCard from "./button/button";
 import { useCart } from "@/contexts/CartContext/cartContext";

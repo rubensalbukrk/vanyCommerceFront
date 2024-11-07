@@ -4,7 +4,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import Produto from "@/model/produtos/produtos";
+import Produto from "@/model/Produtos/produtos";
 import ItemCarrinho from "@/model/itemCarrinho/itemCarrinho";
 
 interface ContextCartProps {

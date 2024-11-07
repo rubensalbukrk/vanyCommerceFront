@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import noCartItems from "@/assets/noCart.png";
-import Produto from "@/model/produtos/produtos";
+import Produto from "@/model/Produtos/produtos";
 import { TbAlertSquareRounded } from "react-icons/tb";
 import Header from "../../../components/Header/Header";
 import CartItem from "@/components/CartItems/cartItem";

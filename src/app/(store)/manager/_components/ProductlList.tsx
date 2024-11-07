@@ -7,7 +7,7 @@ import colors from "tailwindcss/colors";
 import { BiDetail } from "react-icons/bi";
 import ReactPaginate from "react-paginate";
 import { Switch } from "@/components/ui/switch";
-import Produto from "@/model/produtos/produtos";
+import Produto from "@/model/Produtos/produtos";
 import { RiDeleteBinLine } from "react-icons/ri";
 import deleteProduct from "@/hooks/deleteProduct";
 import { TbCirclePercentage } from "react-icons/tb";

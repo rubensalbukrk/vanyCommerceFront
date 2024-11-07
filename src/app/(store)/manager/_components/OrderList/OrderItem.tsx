@@ -7,19 +7,7 @@ import { TbShoppingCartDown } from "react-icons/tb";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { BiMoneyWithdraw } from "react-icons/bi";
 import { GiConfirmed } from "react-icons/gi";
-
-export interface OrderItemProps {
-  orderId: number;
-  name: string;
-  address: string;
-  city: string;
-  phone: string;
-  total: string;
-  products: {
-    id: string;
-    title: string;
-  }[];
-}
+import { OrderItemProps } from "@/model/OrderItem/OrderItem";
 
 const colors = [
   "bg-red-300",

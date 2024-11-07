@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Produto from "@/model/produtos/produtos";
+import Produto from "@/model/Produtos/produtos";
 import ItemCarrinho from "@/model/itemCarrinho/itemCarrinho";
 import { MdOutlineAddCircle, MdOutlineRemoveCircle } from "react-icons/md";
 import colors from "tailwindcss/colors";
