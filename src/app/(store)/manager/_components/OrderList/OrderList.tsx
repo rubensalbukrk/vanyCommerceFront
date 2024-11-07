@@ -118,7 +118,7 @@ useEffect(() => {
 
   return (
     <div className="flex flex-col w-full h-full items-center justify-center">
-      {currentItems.map((item: OrderItemProps) => {
+      {currentItems.length > 0 ? currentItems.map((item: OrderItemProps) => {
         return (
           <OrderItem
             key={item.orderId}
@@ -131,7 +131,10 @@ useEffect(() => {
             total={item.total}
           />
         );
-      })}
+      })
+      :
+      <h1 className="my-8 font-semibold">Não ah pedidos no momento</h1>
+      }
 
       <ReactPaginate
         previousLabel={"Anterior"}

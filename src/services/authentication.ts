@@ -22,7 +22,6 @@ export const authentication = async ({ email, password }: AuthProps) => {
         }else{
             return false;
         }
-        return true
     } catch (error) {
         return false;
     }

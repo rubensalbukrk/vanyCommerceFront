@@ -8,6 +8,8 @@ import { MdOutlineLocationOn } from "react-icons/md";
 import { BiMoneyWithdraw } from "react-icons/bi";
 import { GiConfirmed } from "react-icons/gi";
 import { OrderItemProps } from "@/model/OrderItem/OrderItem";
+import axios from "axios";
+import { api } from "@/services/api";
 
 const colors = [
   "bg-red-300",
@@ -21,6 +23,15 @@ const colors = [
   "bg-orange-300",
   "bg-lime-300",
 ];
+
+const handleConfirmOrder = async (orderId: number) => {
+  try {
+    const response = axios.delete(`${api}/orders/${orderId}`)
+    .then(response => alert(JSON.stringify(response.data.message)))
+  } catch (error) {
+    alert('Não foi possível confirmar o pedido no momento!')
+  }
+}
 
 const OrderItem = (props: OrderItemProps) => {
   return (
@@ -69,7 +80,9 @@ const OrderItem = (props: OrderItemProps) => {
             </h1>
           </div>
 
-          <button className="flex flex-row px-2 h-10 gap-x-2 font-semibold items-center justify-evenly
+          <button 
+          onClick={() => handleConfirmOrder(props.orderId)}
+          className="flex flex-row px-2 h-10 gap-x-2 font-semibold items-center justify-evenly
              text-white bg-green-500 rounded-lg shadow-green-500 shadow-md">
             <GiConfirmed color="white" size={18} />
             Confirmar

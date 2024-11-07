@@ -13,23 +13,63 @@ import {
 } from "@/components/ui/select";
 
 import Image from "next/image";
+import { OrderItemProps } from "@/model/OrderItem/OrderItem";
+import axios from "axios";
+import { api } from "@/services/api";
+import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
 
 const Checkout = () => {
-  const { items, itemsCount, descount } = useCart();
-  const [clientDetail, setClientDetail] = useState({
+  const { items, descount } = useCart();
+  const total = descount.toFixed(2).replace(".", ",");
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [orderDetail, setOrderDetail] = useState<OrderItemProps>({
+    orderId: Math.floor(Math.random() * 10000),
     name: "",
     address: "",
     city: "",
     phone: "",
+    products: items.map((item) => ({
+      id: item.produto.id,
+      title: `${item.produto.title} x${item.quantidade}`,
+    })),
+    total: total,
   });
-  const total = descount.toFixed(2).replace(".", ",");
 
-  let pedidoDetails = {
-    items: [...items],
+  const handleValueChangeSelect = (value: string) => {
+    setOrderDetail({ ...orderDetail, city: value });
   };
 
-  const handleValueChange = (value: string) => {
-    setClientDetail({ ...clientDetail, city: value });
+  const handleCreateOrder = async () => {
+    setFormSubmitted(true);
+    try {
+      const { name, address, city, phone, products } = orderDetail;
+
+      if (!name || !address || !city || !phone || products.length === 0) {
+        alert("Por favor, preencha todos os campos obrigatórios!");
+        return;
+      }
+
+      setIsLoading(true);
+      const response = await axios
+        .post(`${api}/orders`, orderDetail)
+        .then((response) => [
+          alert(JSON.stringify(response.data?.message)),
+          window.open(
+            "https://wa.me/5583987904804?text=Olá%2C+estou+enviando+meu+pedido%3A%0D%0A%0D%0A📦+N°+PEDIDO:+222222+%0D%0A💳+TOTAL%3A+" +
+              `R$ ${total}+ +%0D%0A` +
+              "📍+ENDEREÇO%3A+" +
+              `${orderDetail.address}` +
+              "📍+BAIRRO%3A+" +
+              `${orderDetail.city}` +
+              "%0A+⏱️+Aguardando%20link%20de%20pagamento...%20obrigado!%0D%0A"
+          ),
+        ]);
+    } catch (error) {
+      alert("Tente novamente em alguns instantes!");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -49,11 +89,11 @@ const Checkout = () => {
              justify-center items-center gap-x-12 gap-y-4 flex-wrap py-4"
       >
         {items.map((item) => {
-          
           // Calcula o desconto apenas para o item atual
-          const descount = item.produto.price * (item.produto.descount);
+          const descount = item.produto.price * item.produto.descount;
           const totalDescount = descount * item.quantidade;
-          const finalPriceProduct = item.produto.price * item.quantidade - totalDescount;
+          const finalPriceProduct =
+            item.produto.price * item.quantidade - totalDescount;
 
           return (
             <div
@@ -100,26 +140,32 @@ const Checkout = () => {
           </h1>
           <label>Nome</label>
           <input
-            value={clientDetail.name}
+            value={orderDetail.name}
             onChange={(e) =>
-              setClientDetail({ ...clientDetail, name: e.target.value })
+              setOrderDetail({ ...orderDetail, name: e.target.value })
             }
             placeholder=""
             type="text"
             className="w-80 h-8 px-2 bg-slate-200 rounded-md"
           />
+          {formSubmitted && !orderDetail.name && (
+            <span className="text-red-500">Um nome é obrigatório</span>
+          )}
           <label>Endereço</label>
           <input
-            value={clientDetail.address}
+            value={orderDetail.address}
             onChange={(e) =>
-              setClientDetail({ ...clientDetail, address: e.target.value })
+              setOrderDetail({ ...orderDetail, address: e.target.value })
             }
             placeholder="Ex: Rua São José, 495 "
             type="text"
             className="w-80 h-8 px-2 bg-slate-200 rounded-md"
           />
+          {formSubmitted && !orderDetail.address && (
+            <span className="text-red-500">Um endereço é obrigatório</span>
+          )}
           <label>Bairro</label>
-          <Select onValueChange={handleValueChange}>
+          <Select onValueChange={handleValueChangeSelect}>
             <SelectTrigger className="w-[240px] bg-slate-200">
               <SelectValue placeholder="Bairro" />
             </SelectTrigger>
@@ -135,34 +181,31 @@ const Checkout = () => {
               </SelectItem>
             </SelectContent>
           </Select>
-
+          {formSubmitted && !orderDetail.city && (
+            <span className="text-red-500">Um bairro é obrigatório</span>
+          )}
           <label>Telefone</label>
           <input
-            value={clientDetail.phone}
+            value={orderDetail.phone}
             onChange={(e) =>
-              setClientDetail({ ...clientDetail, phone: e.target.value })
+              setOrderDetail({ ...orderDetail, phone: e.target.value })
             }
             placeholder="83 9xxxx-xxxx"
             type="number"
             className="w-80 h-8 px-2 bg-slate-200 rounded-md"
           />
+          {formSubmitted && !orderDetail.phone && (
+            <span className="text-red-500">
+              Um numero de contato é obrigatório
+            </span>
+          )}
         </div>
         <ButtonGreen
-          title="ENVIAR MEU PEDIDO"
-          onClick={() =>
-            window.open(
-              "https://wa.me/5583987904804?text=Olá%2C+estou+enviando+meu+pedido%3A%0D%0A%0D%0A📦+N°+PEDIDO:+222222+%0D%0A💳+TOTAL%3A+" +
-                `R$ ${total}+ +%0D%0A` +
-                "📍+ENDEREÇO%3A+" +
-                `${clientDetail.address}` +
-                "📍+BAIRRO%3A+" +
-                `${clientDetail.city}` +
-                "%0A+⏱️+Aguardando%20link%20de%20pagamento...%20obrigado!%0D%0A"
-            )
-          }
+          title={`${isLoading ? "" : "ENVIAR MEU PEDIDO"}`}
+          onClick={() => handleCreateOrder()}
           className="flex w-64 my-8 mb-28 text-lg self-center gap-x-0 justify-evenly shadow-lg shadow-green-400"
         >
-          <FaWhatsapp size={28} />
+          {isLoading ? <LoadingSpinner /> : <FaWhatsapp size={28} />}
         </ButtonGreen>
       </div>
     </div>

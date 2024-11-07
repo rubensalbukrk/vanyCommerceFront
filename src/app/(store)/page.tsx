@@ -51,7 +51,7 @@ function App() {
         <Card className="flex flex-1 w-full bg-sky-300/20 flex-col mb-8 md:flex-1">
           <div className="flex flex-row h-full w-full px-3 justify-between items-center cursor-pointer sm:flex-row">
             <div className="flex flex-col mt-8 justify-center items-center">
-              <h1 className="text-6xl">50%</h1>
+              <h1 className="text-4xl">ATÉ 50%</h1>
               <h1 className="text-black/50 font-bold text-4xl">DESCONTO</h1>
               <h1 className="text-black/70 text-2xl my-2">
                 Selecionamos para você!

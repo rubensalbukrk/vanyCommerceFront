@@ -135,7 +135,7 @@ const Manager = () => {
 
       {/** LOADER */}
       {!user.token ? (
-        <div className="flex flex-col z-50 absolute w-screen h-screen bg-blue-100 items-center justify-center">
+        <div className="flex flex-col z-50 absolute w-screen h-full bg-blue-100 items-center justify-center">
           <div className="w-8 h-8 border-4 my-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
           <h1 className="text-xl text-slate-900 font-bold">
             VERIFICANDO ACESSO
